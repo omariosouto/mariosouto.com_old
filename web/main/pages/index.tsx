@@ -1,17 +1,40 @@
-import styled from 'styled-components'
+import React from 'react';
+import UIThemeProvider, { useBrowserTheme } from '@devsoutinho/ui/src/theme/provider/UIThemeProvider';
 import Demo from '@devsoutinho/ui/src/theme/Demo';
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+function websiteHOC(Component) {
+  return () => (
+    <Provider>
+      <Component />
+    </Provider>
+  );
+}
 
-export default function Home() {
+function Provider({ children }) {
   return (
-    <div>
-      <Title>Get Started</Title>
-      <Demo />
-    </div>
-
+    <UIThemeProvider>
+      {children}
+    </UIThemeProvider>
   )
 }
+
+// ==============================================================================
+// ==============================================================================
+
+function HomeScreen() {
+  const browserTheme = useBrowserTheme();
+
+  return (
+    <div>
+      <h1>Get Started</h1>
+      <Demo />
+
+      <button onClick={() => browserTheme.toggleTheme()}>
+        Dark mode toggler!
+      </button>
+    </div>
+  )
+}
+
+
+export default websiteHOC(HomeScreen); 

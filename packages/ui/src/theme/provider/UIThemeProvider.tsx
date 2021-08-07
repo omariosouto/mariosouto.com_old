@@ -1,3 +1,4 @@
+import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { palleteDevSoutinho } from './palletes/palleteDevSoutinho';
 import { createDefinitionTheme } from './createDefinitionTheme';
@@ -27,13 +28,34 @@ const GlobalStyle = createGlobalStyle<{ cssVariables: CSSColorPallete }>`
   }
 `;
 
+const BrowserThemeContext = React.createContext({
+  theme: 'light',
+  toggleTheme: () => {
+    console.log('Err, wrong!')
+  },
+});
+
+export const useBrowserTheme = () => React.useContext(BrowserThemeContext);
+
 export default function UIThemeProvider({ children }) {
+  const [browserTheme, setBrowserTheme] = React.useState(globalThis.__theme || 'light');
   const { cssVariables, theme } = createDefinitionTheme(palleteDevSoutinho);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle cssVariables={cssVariables} />
-      {children}
-    </ThemeProvider>
+    <BrowserThemeContext.Provider value={{
+      theme: browserTheme,
+      toggleTheme: () => {
+        setBrowserTheme((currentTheme) => {
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          globalThis.__setPreferredTheme(newTheme);
+          return newTheme;
+        });
+      }
+    }}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle cssVariables={cssVariables} />
+        {children}
+      </ThemeProvider>
+    </BrowserThemeContext.Provider>
   );
 }
