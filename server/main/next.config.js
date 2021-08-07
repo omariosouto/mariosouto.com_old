@@ -1,4 +1,5 @@
 module.exports = {
+  trailingSlash: false,
   async headers() {
     return [
       {
@@ -13,4 +14,13 @@ module.exports = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/api/graphql/',
+        permanent: true,
+      },
+    ]
+  }
 };
