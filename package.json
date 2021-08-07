@@ -7,7 +7,8 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "web/*"
+      "web/*",
+      "server/*"
     ],
     "nohoist": [
       "**/tailwindcss",
@@ -20,6 +21,9 @@
     "web": "yarn workspace @devsoutinho/web-main",
     "dev:web": "yarn web dev",
     "build:web": "yarn web build",
+    "server": "yarn workspace @devsoutinho/server-main",
+    "dev:server": "yarn server dev",
+    "build:server": "yarn server build",
     "ui": "yarn workspace @devsoutinho/ui",
     "dev:ui": "yarn ui dev",
     "build:ui": "yarn ui build"
