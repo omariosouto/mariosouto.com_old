@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background: black;
+  background: ${({ theme }) => theme.colors.primary.main.color};
   color: white;
 `;
 
