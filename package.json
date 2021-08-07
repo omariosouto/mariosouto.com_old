@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "mariosouto.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "ui": "yarn workspace @devsoutinho/ui",
+    "dev:ui": "yarn ui dev"
+  }
+}
