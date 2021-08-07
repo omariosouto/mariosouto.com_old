@@ -6,11 +6,25 @@
   "license": "MIT",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "web/*"
+    ],
+    "nohoist": [
+      "**/tailwindcss",
+      "**/tailwindcss/**",
+      "**/postcss",
+      "**/postcss/**"
     ]
   },
   "scripts": {
+    "web": "yarn workspace @devsoutinho/web-main",
+    "dev:web": "yarn web dev",
+    "build:web": "yarn web build",
     "ui": "yarn workspace @devsoutinho/ui",
-    "dev:ui": "yarn ui dev"
+    "dev:ui": "yarn ui dev",
+    "build:ui": "yarn ui build"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.2.7"
   }
 }

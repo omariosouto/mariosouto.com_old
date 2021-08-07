@@ -10,11 +10,11 @@ export const parameters = {
     },
     expanded: true,
   },
-  options: {
-    storySort: {
-      order: ['Foundation', 'Components', '*'],
-    },
-  },
+  // options: {
+  //   storySort: {
+  //     order: ['Foundation', 'Components', '*'],
+  //   },
+  // },
 }
 
 export const decorators = [
