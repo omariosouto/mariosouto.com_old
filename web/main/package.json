@@ -17,6 +17,8 @@
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
+    "@types/react": "^17.0.16",
+    "typescript": "^4.3.5",
     "@devsoutinho/eslint-config-devsoutinho": "*",
     "eslint": "^7.23.0",
     "eslint-plugin-prettier": "3.4.0",

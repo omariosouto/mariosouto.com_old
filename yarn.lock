@@ -2632,7 +2632,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.15", "@types/react@^17.0.16":
+"@types/react@*", "@types/react@^17.0.16":
   version "17.0.16"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.16.tgz#056f40c45645761527baeb7d89d842a6abdf285a"
   integrity sha512-3kCUiOOlQTwUUvjNFkbBTWMTxdTGybz/PfjCw9JmaRGcEDBQh+nGMg7/E9P2rklhJuYVd25IYLNcvqgSPCPksg==
