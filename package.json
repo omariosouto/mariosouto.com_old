@@ -21,6 +21,7 @@
     "web": "yarn workspace @devsoutinho/web-main",
     "dev:web": "yarn web dev",
     "build:web": "yarn web build",
+    "lint:web": "yarn web lint",
     "server": "yarn workspace @devsoutinho/server-main",
     "dev:server": "yarn server dev",
     "build:server": "yarn server build",

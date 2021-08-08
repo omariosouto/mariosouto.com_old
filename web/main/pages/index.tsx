@@ -1,5 +1,7 @@
 import React from 'react';
-import UIThemeProvider, { useBrowserTheme } from '@devsoutinho/ui/src/theme/provider/UIThemeProvider';
+import UIThemeProvider, {
+  useBrowserTheme,
+} from '@devsoutinho/ui/src/theme/provider/UIThemeProvider';
 import Demo from '@devsoutinho/ui/src/theme/Demo';
 
 function websiteHOC(Component) {
@@ -11,11 +13,7 @@ function websiteHOC(Component) {
 }
 
 function Provider({ children }) {
-  return (
-    <UIThemeProvider>
-      {children}
-    </UIThemeProvider>
-  )
+  return <UIThemeProvider>{children}</UIThemeProvider>;
 }
 
 // ==============================================================================
@@ -33,8 +31,7 @@ function HomeScreen() {
         Dark mode toggler!
       </button>
     </div>
-  )
+  );
 }
 
-
-export default websiteHOC(HomeScreen); 
+export default websiteHOC(HomeScreen);
