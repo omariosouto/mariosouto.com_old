@@ -17,43 +17,50 @@ const GlobalStyle = createGlobalStyle<{ cssVariables: CSSColorPallete }>`
   }
 
   :root {
-    ${({ cssVariables }) => cssVariables.light
-    .map(({ path, value }) => `--${path}: ${value};`)
-    .join('')}
+    ${({ cssVariables }) =>
+      cssVariables.light
+        .map(({ path, value }) => `--${path}: ${value};`)
+        .join('')}
   }
   .dark { 
-      ${({ cssVariables }) => cssVariables.dark
-    .map(({ path, value }) => `--${path}: ${value};`)
-    .join('')}
+      ${({ cssVariables }) =>
+        cssVariables.dark
+          .map(({ path, value }) => `--${path}: ${value};`)
+          .join('')}
   }
 `;
 
 const BrowserThemeContext = React.createContext({
   theme: 'light',
   toggleTheme: () => {
-    console.log('Err, wrong!')
+    console.error('Err, wrong!');
   },
 });
 
 export const useBrowserTheme = () => React.useContext(BrowserThemeContext);
 
 export default function UIThemeProvider({ children }) {
-  const [browserTheme, setBrowserTheme] = React.useState(globalThis.__theme || 'light');
+  const [browserTheme, setBrowserTheme] = React.useState(
+    globalThis.__theme || 'light'
+  );
   const { cssVariables, theme } = createDefinitionTheme(palleteDevSoutinho);
 
   return (
-    <BrowserThemeContext.Provider value={{
-      theme: browserTheme,
-      toggleTheme: () => {
-        setBrowserTheme((currentTheme) => {
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-          globalThis.__setPreferredTheme(newTheme);
-          return newTheme;
-        });
-      }
-    }}>
-      <script dangerouslySetInnerHTML={{
-        __html: `
+    <BrowserThemeContext.Provider
+      value={{
+        theme: browserTheme,
+        toggleTheme: () => {
+          setBrowserTheme((currentTheme) => {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            globalThis.__setPreferredTheme(newTheme);
+            return newTheme;
+          });
+        },
+      }}
+    >
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
           (function() {
             function setTheme(newTheme) {
               console.log('Tematizou!', newTheme)
@@ -81,8 +88,9 @@ export default function UIThemeProvider({ children }) {
 
             setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
           })();
-          `
-      }} />
+          `,
+        }}
+      />
       <ThemeProvider theme={theme}>
         <GlobalStyle cssVariables={cssVariables} />
         {children}

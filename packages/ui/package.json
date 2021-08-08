@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build": "build-storybook -s public -o build"
+    "build": "build-storybook -s public -o build",
+    "lint": "eslint ."
   },
   "dependencies": {
     "lodash": "^4.17.21",
@@ -16,6 +17,9 @@
     "typescript": "^4.3.5"
   },
   "devDependencies": {
+    "@devsoutinho/eslint-config-devsoutinho": "*",
+    "eslint": "^7.23.0",
+    "eslint-plugin-prettier": "3.4.0",
     "@babel/core": "^7.15.0",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",

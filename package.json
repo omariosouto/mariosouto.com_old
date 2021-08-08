@@ -27,7 +27,8 @@
     "build:server": "yarn server build",
     "ui": "yarn workspace @devsoutinho/ui",
     "dev:ui": "yarn ui dev",
-    "build:ui": "yarn ui build"
+    "build:ui": "yarn ui build",
+    "lint:ui": "yarn ui lint"
   },
   "dependencies": {
     "tailwindcss": "^2.2.7"
