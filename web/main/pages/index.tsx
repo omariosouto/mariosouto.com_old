@@ -1,8 +1,10 @@
 import React from 'react';
-import UIThemeProvider, { useBrowserTheme } from '@devsoutinho/ui/src/theme/provider/UIThemeProvider';
+import UIThemeProvider, {
+  useBrowserTheme,
+} from '@devsoutinho/ui/src/theme/provider/UIThemeProvider';
 import Demo from '@devsoutinho/ui/src/theme/Demo';
 
-function websiteHOC(Component) {
+function websiteHOC(Component: React.ComponentType) {
   return () => (
     <Provider>
       <Component />
@@ -10,12 +12,11 @@ function websiteHOC(Component) {
   );
 }
 
-function Provider({ children }) {
-  return (
-    <UIThemeProvider>
-      {children}
-    </UIThemeProvider>
-  )
+interface ProviderProps {
+  children: React.ReactNode;
+}
+function Provider({ children }: ProviderProps) {
+  return <UIThemeProvider>{children}</UIThemeProvider>;
 }
 
 // ==============================================================================
@@ -33,8 +34,7 @@ function HomeScreen() {
         Dark mode toggler!
       </button>
     </div>
-  )
+  );
 }
 
-
-export default websiteHOC(HomeScreen); 
+export default websiteHOC(HomeScreen);

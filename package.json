@@ -21,12 +21,14 @@
     "web": "yarn workspace @devsoutinho/web-main",
     "dev:web": "yarn web dev",
     "build:web": "yarn web build",
+    "lint:web": "yarn web lint",
     "server": "yarn workspace @devsoutinho/server-main",
     "dev:server": "yarn server dev",
     "build:server": "yarn server build",
     "ui": "yarn workspace @devsoutinho/ui",
     "dev:ui": "yarn ui dev",
-    "build:ui": "yarn ui build"
+    "build:ui": "yarn ui build",
+    "lint:ui": "yarn ui lint"
   },
   "dependencies": {
     "tailwindcss": "^2.2.7"

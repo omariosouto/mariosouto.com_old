@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { palleteDevSoutinho } from './palletes/palleteDevSoutinho';
@@ -17,43 +19,53 @@ const GlobalStyle = createGlobalStyle<{ cssVariables: CSSColorPallete }>`
   }
 
   :root {
-    ${({ cssVariables }) => cssVariables.light
-    .map(({ path, value }) => `--${path}: ${value};`)
-    .join('')}
+    ${({ cssVariables }) =>
+      cssVariables.light
+        .map(({ path, value }) => `--${path}: ${value};`)
+        .join('')}
   }
   .dark { 
-      ${({ cssVariables }) => cssVariables.dark
-    .map(({ path, value }) => `--${path}: ${value};`)
-    .join('')}
+      ${({ cssVariables }) =>
+        cssVariables.dark
+          .map(({ path, value }) => `--${path}: ${value};`)
+          .join('')}
   }
 `;
 
 const BrowserThemeContext = React.createContext({
   theme: 'light',
   toggleTheme: () => {
-    console.log('Err, wrong!')
+    console.error('Err, wrong!');
   },
 });
 
 export const useBrowserTheme = () => React.useContext(BrowserThemeContext);
 
-export default function UIThemeProvider({ children }) {
-  const [browserTheme, setBrowserTheme] = React.useState(globalThis.__theme || 'light');
+interface UIThemeProviderProps {
+  children: React.ReactNode;
+}
+export default function UIThemeProvider({ children }: UIThemeProviderProps) {
+  const [browserTheme, setBrowserTheme] = React.useState(
+    (globalThis as any).__theme || 'light'
+  );
   const { cssVariables, theme } = createDefinitionTheme(palleteDevSoutinho);
 
   return (
-    <BrowserThemeContext.Provider value={{
-      theme: browserTheme,
-      toggleTheme: () => {
-        setBrowserTheme((currentTheme) => {
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-          globalThis.__setPreferredTheme(newTheme);
-          return newTheme;
-        });
-      }
-    }}>
-      <script dangerouslySetInnerHTML={{
-        __html: `
+    <BrowserThemeContext.Provider
+      value={{
+        theme: browserTheme,
+        toggleTheme: () => {
+          setBrowserTheme((currentTheme: 'light' | 'dark') => {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            (globalThis as any).__setPreferredTheme(newTheme);
+            return newTheme;
+          });
+        },
+      }}
+    >
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
           (function() {
             function setTheme(newTheme) {
               console.log('Tematizou!', newTheme)
@@ -81,8 +93,9 @@ export default function UIThemeProvider({ children }) {
 
             setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
           })();
-          `
-      }} />
+          `,
+        }}
+      />
       <ThemeProvider theme={theme}>
         <GlobalStyle cssVariables={cssVariables} />
         {children}
