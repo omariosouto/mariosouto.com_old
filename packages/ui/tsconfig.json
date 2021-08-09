@@ -20,7 +20,6 @@
     "noImplicitAny": true,
   },
   "include": [
-    "next-env.d.ts",
     "src"
   ],
   "exclude": [
