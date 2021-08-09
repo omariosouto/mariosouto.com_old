@@ -6,6 +6,8 @@ Monorepo for my personal projects, also used as a playground for new ideas relat
 
 
 ## Projects in this monorepo
-- ![GitHub deployments](https://img.shields.io/github/deployments/omariosouto/mariosouto.com/Production%20%E2%80%93%20skntech-site?label=vercel&logo=vercel&logoColor=white) [Site](https://skntech-site.vercel.app/) 
-- ![GitHub deployments](https://img.shields.io/github/deployments/omariosouto/mariosouto.com/Production%20%E2%80%93%20skntech-ui?label=vercel&logo=vercel&logoColor=white) [UI](https://skntech-ui.vercel.app/) 
-- ![GitHub deployments](https://img.shields.io/github/deployments/omariosouto/mariosouto.com/Production%20%E2%80%93%20skntech-api?label=vercel&logo=vercel&logoColor=white) [BackEnd For FrontEnd](https://skntech-api.vercel.app/) 
+| Status | Project |
+| --- | --- |
+| ![GitHub deployments](https://img.shields.io/github/deployments/omariosouto/mariosouto.com/Production%20%E2%80%93%20skntech-site?label=vercel&logo=vercel&logoColor=white) | [Site](https://skntech-site.vercel.app/)  |
+| ![GitHub deployments](https://img.shields.io/github/deployments/omariosouto/mariosouto.com/Production%20%E2%80%93%20skntech-ui?label=vercel&logo=vercel&logoColor=white) | [UI](https://skntech-ui.vercel.app/) |
+| ![GitHub deployments](https://img.shields.io/github/deployments/omariosouto/mariosouto.com/Production%20%E2%80%93%20skntech-api?label=vercel&logo=vercel&logoColor=white) | [BackEnd For FrontEnd](https://skntech-api.vercel.app/) |
