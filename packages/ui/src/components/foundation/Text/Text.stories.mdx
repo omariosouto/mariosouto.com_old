@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Text from './index';
+
+<Meta
+  title="Patterns/Text"
+  component={Text}
+  argTypes={{}}
+/>
+
+# Text
+
+Text component is the base for everything that depends on typography.
+
+<ArgsTable of={Text} />
+
+<Canvas>
+  <Story
+    name="Text Component"
+    args={{
+      ...Text.defaultProps,
+    }}
+  >
+    {(args) => (
+      <Text {...args} />
+    )} 
+  </Story>
+</Canvas>
