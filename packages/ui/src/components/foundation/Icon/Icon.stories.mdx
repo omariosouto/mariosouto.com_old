@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Icon from './index';
+
+<Meta
+  title="components/foundation/Icon"
+  component={Icon}
+  argTypes={{}}
+/>
+
+# Icon
+
+Icon component is the main entrypoint to access every icon avaiable for this app. All of them are an SVG.
+
+<ArgsTable of={Icon} />
+
+<Canvas>
+  <Story
+    name="Icon Component"
+    args={{
+      ...Icon.defaultProps,
+    }}
+  >
+    {(args) => (
+      <Icon {...args} />
+    )} 
+  </Story>
+</Canvas>
