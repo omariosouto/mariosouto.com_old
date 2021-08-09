@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { palleteDevSoutinho } from './palletes/palleteDevSoutinho';
@@ -39,9 +41,12 @@ const BrowserThemeContext = React.createContext({
 
 export const useBrowserTheme = () => React.useContext(BrowserThemeContext);
 
-export default function UIThemeProvider({ children }) {
+interface UIThemeProviderProps {
+  children: React.ReactNode;
+}
+export default function UIThemeProvider({ children }: UIThemeProviderProps) {
   const [browserTheme, setBrowserTheme] = React.useState(
-    globalThis.__theme || 'light'
+    (globalThis as any).__theme || 'light'
   );
   const { cssVariables, theme } = createDefinitionTheme(palleteDevSoutinho);
 
@@ -50,9 +55,9 @@ export default function UIThemeProvider({ children }) {
       value={{
         theme: browserTheme,
         toggleTheme: () => {
-          setBrowserTheme((currentTheme) => {
+          setBrowserTheme((currentTheme: 'light' | 'dark') => {
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            globalThis.__setPreferredTheme(newTheme);
+            (globalThis as any).__setPreferredTheme(newTheme);
             return newTheme;
           });
         },

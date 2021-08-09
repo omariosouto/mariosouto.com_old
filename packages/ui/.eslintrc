@@ -1,3 +1,6 @@
 {
-  "extends": ["@devsoutinho/eslint-config-devsoutinho"]
+  "extends": ["@devsoutinho/eslint-config-devsoutinho"],
+  "globals": {
+    "__theme": true
+  }
 }

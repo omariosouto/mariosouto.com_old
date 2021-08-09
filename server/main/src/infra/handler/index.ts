@@ -18,7 +18,7 @@ const resolvers = {
     greet: () => 'Welcome to @devsoutinho/api-gateway',
   },
   Mutation: {
-    createSampleText: (_: unknown, args) => args.input.text,
+    createSampleText: (_: unknown, args: any) => args.input.text,
   }
 }
 

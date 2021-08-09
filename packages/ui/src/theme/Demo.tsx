@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   color: white;
 `;
 
-export default function Demo() {
+export default function Demo(): JSX.Element {
   return (
     <Wrapper>
       <div className="space-y-12 py-10">

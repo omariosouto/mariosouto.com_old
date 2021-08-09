@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { IColorPallete } from './@types/IColorPallete';
 
-function traverseFlat(acc, arr) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function traverseFlat(acc: any, arr: any) {
   const [, value, path] = arr;
 
   if (Array.isArray(value)) {
@@ -20,7 +22,8 @@ function traverseFlat(acc, arr) {
   return [];
 }
 
-function createDataStructure(currentValue, prevPath = '') {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function createDataStructure(currentValue: any, prevPath = ''): any {
   if (typeof currentValue === 'string') return currentValue;
   if (typeof currentValue === 'number') return currentValue;
   if (typeof currentValue === 'boolean') return currentValue;
@@ -39,7 +42,8 @@ function createDataStructure(currentValue, prevPath = '') {
 }
 
 const proxyHandler = {
-  get: (target, key) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  get: (target: any, key: any): any => {
     if (typeof target[key] === 'object' && target[key] !== null) {
       return new Proxy(
         {
@@ -63,7 +67,8 @@ const proxyHandler = {
   },
 };
 
-const reduceVariables = (acc, [_, value]) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const reduceVariables = (acc: any, [_, value]: Array<any>) => {
   return [...acc, ...value.reduce(traverseFlat, [])];
 };
 export function createDefinitionTheme(pallete: IColorPallete) {
