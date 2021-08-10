@@ -1,5 +1,8 @@
 import 'styled-components';
+import { ThemeTypography } from '../theme/types/ThemeTypography';
+import { ThemeBreakpoints } from '../theme/types/ThemeBreakpoints';
 
+// Color
 interface Color {
   main: {
     color: string;
@@ -10,15 +13,16 @@ interface Color {
     contrastColor: string;
   };
 }
-
-interface ThemeColor {
+export interface ThemeColor {
   background: Color;
   primary: Color;
   secondary?: Color;
 }
 
 declare module 'styled-components' {
-  export interface DefaultThemeBase {
+  export interface DefaultTheme {
+    typography: ThemeTypography;
     colors: ThemeColor;
+    breakpoints: ThemeBreakpoints;
   }
 }
