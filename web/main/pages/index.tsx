@@ -1,8 +1,7 @@
 import React from 'react';
 import UIThemeProvider, {
   useBrowserTheme,
-} from '@devsoutinho/ui/src/theme/provider/UIThemeProvider';
-import Demo from '@devsoutinho/ui/src/theme/Demo';
+} from '@devsoutinho/ui/src/theme/provider/BrowserThemeProvider';
 
 function websiteHOC(Component: React.ComponentType) {
   return () => (
@@ -28,7 +27,6 @@ function HomeScreen() {
   return (
     <div>
       <h1>Get Started</h1>
-      <Demo />
 
       <button onClick={() => browserTheme.toggleTheme()}>
         Dark mode toggler!

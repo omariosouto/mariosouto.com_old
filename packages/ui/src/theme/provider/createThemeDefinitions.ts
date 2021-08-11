@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { IColorPallete } from './@types/IColorPallete';
+import { DefaultTheme } from 'styled-components';
+import { Theme } from '../createTheme';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function traverseFlat(acc: any, arr: any) {
@@ -29,9 +31,7 @@ function createDataStructure(currentValue: any, prevPath = ''): any {
   if (typeof currentValue === 'boolean') return currentValue;
 
   const result = Object.keys(currentValue).map((key) => {
-    const currentPrevPath = prevPath
-      ? `${prevPath.replace(/^(dark_|light_)/g, '')}_${key}`
-      : `${key}`;
+    const currentPrevPath = prevPath ? `${prevPath}_${key}` : `${key}`;
     return [
       key,
       createDataStructure(currentValue[key], currentPrevPath),
@@ -68,17 +68,41 @@ const proxyHandler = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const reduceVariables = (acc: any, [_, value]: Array<any>) => {
-  return [...acc, ...value.reduce(traverseFlat, [])];
+const reduceVariables = (acc: any, [_, value, path]: Array<any>) => {
+  if (value.reduce) return [...acc, ...value.reduce(traverseFlat, [])];
+
+  return [
+    ...acc,
+    {
+      path,
+      value,
+    },
+  ];
 };
-export function createDefinitionTheme(pallete: IColorPallete) {
-  const [light, dark] = createDataStructure(pallete);
+export function createThemeDefinitions({
+  colorsDark,
+  colorsLight,
+  ...theme
+}: Theme) {
+  // TODO: Refactor this to a more performatic approach
+  const cssVariables = createDataStructure({
+    ...theme,
+    colorsLight,
+    colorsDark,
+  }).reduce((acc: any, item: any) => {
+    return {
+      ...acc,
+      [item[0]]: item[1].reduce(reduceVariables, []),
+    };
+  }, {});
+
+  const appTheme: DefaultTheme = {
+    ...theme,
+    colors: colorsLight,
+  };
 
   return {
-    cssVariables: {
-      light: light[1].reduce(reduceVariables, []),
-      dark: dark[1].reduce(reduceVariables, []),
-    },
-    theme: new Proxy(pallete.light, proxyHandler),
+    cssVariables,
+    theme: new Proxy(appTheme, proxyHandler),
   };
 }
