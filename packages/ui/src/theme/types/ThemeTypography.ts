@@ -1,18 +1,20 @@
-export enum TypographyVariants {
-  display_1 = 'display_1',
+export const TypographyVariants = {
+  display_1: 'display_1',
 
-  heading_1 = 'heading_1',
-  heading_2 = 'heading_2',
-  heading_3 = 'heading_3',
-  heading_4 = 'heading_4',
-  heading_5 = 'heading_5',
-  heading_6 = 'heading_6',
+  heading_1: 'heading_1',
+  heading_2: 'heading_2',
+  heading_3: 'heading_3',
+  heading_4: 'heading_4',
+  heading_5: 'heading_5',
+  heading_6: 'heading_6',
 
-  body_1 = 'body_1',
-  body_2 = 'body_2',
-  body_3 = 'body_3',
-  body_4 = 'body_4',
-}
+  body_1: 'body_1',
+  body_2: 'body_2',
+  body_3: 'body_3',
+  body_4: 'body_4',
+};
+
+export type TypographyVariantsName = keyof typeof TypographyVariants;
 
 interface Text {
   fontSize: string;

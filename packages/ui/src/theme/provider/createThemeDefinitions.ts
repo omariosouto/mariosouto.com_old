@@ -101,9 +101,6 @@ export function createThemeDefinitions({
     colors: colorsLight,
   };
 
-  console.log('appTheme', appTheme);
-  console.log('cssVariables', cssVariables);
-
   return {
     cssVariables,
     theme: new Proxy(appTheme, proxyHandler),

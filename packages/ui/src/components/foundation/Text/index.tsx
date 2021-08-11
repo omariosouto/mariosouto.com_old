@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/breakpointsMedia';
-import { TypographyVariants } from '../../../theme/types/ThemeTypography';
+import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 
 function boldHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -45,7 +45,7 @@ const TextBase = styled.span<TextProps>`
 type asText = 'span' | 'p' | 'li' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 interface TextProps {
   bold: boolean;
-  variant: TypographyVariants;
+  variant: TypographyVariantsName;
   as: asText;
   children: React.ReactNode;
 }
@@ -54,9 +54,10 @@ export default function Text({
   variant,
   bold,
   as,
+  ...props
 }: TextProps): JSX.Element {
   return (
-    <TextBase as={as} bold={bold} variant={variant}>
+    <TextBase as={as} bold={bold} variant={variant} {...props}>
       {children}
     </TextBase>
   );

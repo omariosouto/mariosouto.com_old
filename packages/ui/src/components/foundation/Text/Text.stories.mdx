@@ -1,5 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import Text from './index';
+import Example from './__stories__/Example'
+
 
 <Meta
   title="Patterns/Text"
@@ -11,7 +13,7 @@ import Text from './index';
 
 Text component is the base for everything that depends on typography.
 
-<ArgsTable of={Text} />
+<ArgsTable story="Text Component" />
 
 <Canvas>
   <Story
@@ -26,3 +28,7 @@ Text component is the base for everything that depends on typography.
     )} 
   </Story>
 </Canvas>
+
+## Style Description
+
+<Example />
