@@ -3,10 +3,18 @@ import {
   DefaultTheme,
   FlattenSimpleInterpolation,
 } from 'styled-components';
-import { ThemeBreakpoints, BreakpointNames } from '../types/ThemeBreakpoints';
+import { BreakpointNames } from '../types/ThemeBreakpoints';
 
-export default function breakpointsMedia(cssByBreakpoints: ThemeBreakpoints) {
-  return ({ theme }: { theme: DefaultTheme }): FlattenSimpleInterpolation[] => {
+export default function breakpointsMedia(
+  cssByBreakpoints: Partial<
+    Record<BreakpointNames, string | FlattenSimpleInterpolation>
+  >
+) {
+  return ({
+    theme,
+  }: {
+    theme: DefaultTheme;
+  }): FlattenSimpleInterpolation[] | string[] => {
     const breakpointsNames = Object.keys(cssByBreakpoints);
     return breakpointsNames.map(
       (breakpointName: BreakpointNames) => css`
