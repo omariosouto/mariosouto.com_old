@@ -17,3 +17,4 @@ Monorepo for my personal projects, also used as a playground for new ideas relat
 | Kind | Project |
 | --- | --- |
 | [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) | [Developer Guide DevSoutinho](https://github.com/omariosouto/awesome-dev-guide-devsoutinho) |
+| ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCzR2u5RWXWjUh7CwLSvbitA?style=social) | [YouTube Channel](https://youtube.com/c/DevSoutinho) |
