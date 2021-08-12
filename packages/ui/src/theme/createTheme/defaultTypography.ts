@@ -89,33 +89,41 @@ const body = {
   body_1: {
     xs: {
       ...fontSize.text_lg,
+      fontWeight: fontWeight.normal,
     },
     md: {
       ...fontSize.text_lg,
+      fontWeight: fontWeight.normal,
     },
   },
   body_2: {
     xs: {
       ...fontSize.text_base,
+      fontWeight: fontWeight.normal,
     },
     md: {
       ...fontSize.text_base,
+      fontWeight: fontWeight.normal,
     },
   },
   body_3: {
     xs: {
       ...fontSize.text_sm,
+      fontWeight: fontWeight.normal,
     },
     md: {
       ...fontSize.text_sm,
+      fontWeight: fontWeight.normal,
     },
   },
   body_4: {
     xs: {
       ...fontSize.text_xs,
+      fontWeight: fontWeight.normal,
     },
     md: {
       ...fontSize.text_xs,
+      fontWeight: fontWeight.normal,
     },
   },
 };

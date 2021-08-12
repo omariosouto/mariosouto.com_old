@@ -62,6 +62,9 @@ const proxyHandler = {
         proxyHandler
       );
     } else {
+      if (target.path.includes('breakpoints')) {
+        return target.target[key];
+      }
       return `var(--${target.path}_${key})`;
     }
   },

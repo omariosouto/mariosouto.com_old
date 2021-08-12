@@ -44,7 +44,7 @@ export default function Example(): JSX.Element {
                 key={variantName}
                 className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
               >
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-gray-900">
                   <Text as="p" variant={variantName}>
                     {variantName}
                   </Text>

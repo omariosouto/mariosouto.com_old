@@ -1,6 +1,7 @@
 import 'styled-components';
 import { ThemeTypography } from '../theme/types/ThemeTypography';
 import { ThemeBreakpoints } from '../theme/types/ThemeBreakpoints';
+import { ThemeSpace } from '../theme/types/ThemeSpace';
 
 // Color
 interface Color {
@@ -23,6 +24,7 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     typography: ThemeTypography;
     colors: ThemeColor;
+    space: ThemeSpace;
     breakpoints: ThemeBreakpoints;
   }
 }

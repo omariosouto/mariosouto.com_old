@@ -7,6 +7,7 @@ export const tracking = {
 export const fontWeight = {
   bold: '700',
   extrabold: '800',
+  normal: '400',
 };
 
 // https://tailwindcss.com/docs/font-size

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 
-function boldHandler(bold: boolean, variant: string, fontWeight: string) {
+function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
     semibold: '600',
     extrabold: '800',
@@ -21,7 +21,7 @@ const TextBase = styled.span<TextProps>`
       font-size: ${theme.typography[variant].xs.fontSize};
       line-height: ${theme.typography[variant].xs.lineHeight};
       letter-spacing: ${theme.typography[variant].xs.letterSpacing};
-      font-weight: ${boldHandler(
+      font-weight: ${fontWeightHandler(
         bold,
         variant,
         theme.typography[variant].xs.fontWeight
@@ -30,7 +30,7 @@ const TextBase = styled.span<TextProps>`
       ${breakpointsMedia({
         md: css`
           font-size: ${theme.typography[variant].md.fontSize};
-          font-weight: ${boldHandler(
+          font-weight: ${fontWeightHandler(
             bold,
             variant,
             theme.typography[variant].md.fontWeight
