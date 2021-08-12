@@ -1,9 +1,9 @@
 import { ThemeBreakpoints } from '../types/ThemeBreakpoints';
 
 export const defaultBreakpoints: ThemeBreakpoints = {
-  xs: '0',
-  sm: '480',
-  md: '768',
-  lg: '992',
-  xl: '1200',
+  xs: '0px',
+  sm: '480px',
+  md: '768px',
+  lg: '992px',
+  xl: '1200px',
 };
