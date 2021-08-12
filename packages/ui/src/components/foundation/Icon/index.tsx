@@ -1,20 +1,22 @@
 import styled, { css } from 'styled-components';
+import { RecordOfThemeBasicSizes } from '../../../theme/types/ThemeBasicSizes';
+import { ThemeSpaceNames } from '../../../theme/types/ThemeSpace';
 import { iconMapByName } from './iconMapByName';
 export { iconMapByName } from './iconMapByName';
 
-// TODO: Move basic sizes to a type (xs, sm, md, lg, xl)
-// TODO: Refactor this
-export const iconSizes: Record<'xs' | 'sm', 'x1' | 'x2'> = {
-  xs: 'x1',
-  sm: 'x2',
+export const iconSizes: RecordOfThemeBasicSizes<ThemeSpaceNames> = {
+  xs: 'x4',
+  sm: 'x6',
 };
 
 const Svg = styled.svg<Partial<IconProps>>`
-  ${({ theme, size }) =>
-    css`
-      width: ${theme.space[iconSizes[size]]};
-      height: ${theme.space[iconSizes[size]]};
-    `}
+  ${({ theme, size }) => {
+    const spaceBySize = iconSizes[size];
+    return css`
+      width: ${theme.space[spaceBySize]};
+      height: ${theme.space[spaceBySize]};
+    `;
+  }}
 `;
 
 type IconProps = {
