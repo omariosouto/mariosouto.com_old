@@ -2,26 +2,24 @@ import styled, { css } from 'styled-components';
 import { iconMapByName } from './iconMapByName';
 export { iconMapByName } from './iconMapByName';
 
-export const iconSizes = {
-  xs: '4',
-  sm: '6',
+// TODO: Move basic sizes to a type (xs, sm, md, lg, xl)
+// TODO: Refactor this
+export const iconSizes: Record<'xs' | 'sm', 'x1' | 'x2'> = {
+  xs: 'x1',
+  sm: 'x2',
 };
 
 const Svg = styled.svg<Partial<IconProps>>`
-  ${({ size }) => (
-    console.error(size),
+  ${({ theme, size }) =>
     css`
-      /* w-4  // xs
-      w-6  // sm */
-      width: ${({ theme }) => theme.space[0]};
-      height: 50px;
-    `
-  )}
+      width: ${theme.space[iconSizes[size]]};
+      height: ${theme.space[iconSizes[size]]};
+    `}
 `;
 
 type IconProps = {
   name: keyof typeof iconMapByName;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' /* | 'md' | 'lg' | 'xl' */;
 };
 
 export default function Icon({ name, size, ...props }: IconProps): JSX.Element {
@@ -41,5 +39,5 @@ export default function Icon({ name, size, ...props }: IconProps): JSX.Element {
 }
 
 Icon.defaultProps = {
-  size: 'xs',
+  size: 'sm',
 };

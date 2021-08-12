@@ -24,7 +24,10 @@ export default function createTheme({
     colorsDark: colorsDark || colorsLight,
     typography: typography || defaultTypography,
     breakpoints: breakpoints || defaultBreakpoints,
-    space: [''],
+    space: {
+      x1: '1em',
+      x2: '2em',
+    },
   };
 }
 
