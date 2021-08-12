@@ -28,7 +28,8 @@
     "ui": "yarn workspace @devsoutinho/ui",
     "dev:ui": "yarn ui dev",
     "build:ui": "yarn ui build",
-    "lint:ui": "yarn ui lint"
+    "lint:ui": "yarn ui lint",
+    "test:ui": "yarn ui test"
   },
   "dependencies": {
     "tailwindcss": "^2.2.7"
