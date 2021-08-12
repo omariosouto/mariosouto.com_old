@@ -1,12 +1,45 @@
-export default function Icon(): JSX.Element {
+import styled, { css } from 'styled-components';
+import { iconMapByName } from './iconMapByName';
+export { iconMapByName } from './iconMapByName';
+
+export const iconSizes = {
+  xs: '4',
+  sm: '6',
+};
+
+const Svg = styled.svg<Partial<IconProps>>`
+  ${({ size }) => (
+    console.error(size),
+    css`
+      /* w-4  // xs
+      w-6  // sm */
+      width: ${({ theme }) => theme.space[0]};
+      height: 50px;
+    `
+  )}
+`;
+
+type IconProps = {
+  name: keyof typeof iconMapByName;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+};
+
+export default function Icon({ name, size, ...props }: IconProps): JSX.Element {
+  const iconName = name || 'default';
+  const CurrentIcon = iconMapByName[iconName];
   return (
-    <svg
+    <Svg
+      {...props}
       xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
       viewBox="0 0 24 24"
-      width="24"
-      height="24"
+      size={size}
     >
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-    </svg>
+      <CurrentIcon />
+    </Svg>
   );
 }
+
+Icon.defaultProps = {
+  size: 'xs',
+};
