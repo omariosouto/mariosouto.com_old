@@ -3,6 +3,7 @@ import { ThemeTypography } from '../types/ThemeTypography';
 import { ThemeBreakpoints } from '../types/ThemeBreakpoints';
 import { ThemeSpace } from '../types/ThemeSpace';
 import { defaultTypography } from './defaultTypography';
+import { defaultSpace } from './defaultSpace';
 import { defaultBreakpoints } from './defaultBreakpoints';
 
 export type Theme = {
@@ -24,19 +25,7 @@ export default function createTheme({
     colorsDark: colorsDark || colorsLight,
     typography: typography || defaultTypography,
     breakpoints: breakpoints || defaultBreakpoints,
-    space: {
-      x0: '0',
-      x0_5: '0.125rem',
-      x1: '0.25rem',
-      x1_5: '0.375rem',
-      x2: '0.5rem',
-      x2_5: '0.625rem',
-      x3: '0.75rem',
-      x3_5: '0.875rem',
-      x4: '1rem',
-      x5: '1.25rem',
-      x6: '1.5rem',
-    },
+    space: defaultSpace,
   };
 }
 
