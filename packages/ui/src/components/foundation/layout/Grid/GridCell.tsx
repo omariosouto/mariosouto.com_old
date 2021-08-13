@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Box from '../index';
+import Box from '../Box';
 
 interface CellProps {
   width?: number | string;
@@ -11,10 +11,10 @@ interface CellProps {
   area?: string;
   className?: string;
 }
-const Cell = styled(Box)<CellProps>`
+const GridCell = styled(Box)<CellProps>`
   height: 100%;
   min-width: 0;
-  grid-column-end: ${({ width = 1 }) => `span ${width}`};
+  grid-column-end: ${({ width }) => `span ${width}`};
   grid-row-end: ${({ height = 1 }) => `span ${height}`};
   ${({ left }) => left && `grid-column-start: ${left}`};
   ${({ top }) => top && `grid-row-start: ${top}`};
@@ -31,4 +31,8 @@ const Cell = styled(Box)<CellProps>`
   };
 `;
 
-export default Cell;
+GridCell.defaultProps = {
+  width: 1,
+};
+
+export default GridCell;

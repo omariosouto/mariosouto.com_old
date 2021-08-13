@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Box from '../index';
+import Box from '../Box';
 
 const autoRows = ({ minRowHeight = '20px' }: GridProps) =>
   `minmax(${minRowHeight}, auto)`;

@@ -5,8 +5,8 @@ import { iconMapByName } from './iconMapByName';
 export { iconMapByName } from './iconMapByName';
 
 export const iconSizes: RecordOfThemeBasicSizes<ThemeSpaceNames> = {
-  xs: 4,
-  sm: 5,
+  xs: 2.5,
+  sm: '2/3',
 };
 
 const Svg = styled.svg<Partial<IconProps>>`

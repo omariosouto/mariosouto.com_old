@@ -16,6 +16,7 @@ const ContainerWrapper = styled.div<ContainerProps>`
 `;
 
 interface ContainerProps {
+  className: string;
   children: React.ReactNode;
 }
 
@@ -26,22 +27,6 @@ export default function Container(props: ContainerProps): JSX.Element {
 }
 
 Container.defaultProps = {
-  children: (
-    // <div className="bg-pink-100">
-    // </div>
-    <svg
-      className="border-2 border-dashed border-gray-300 bg-white h-64 w-full text-gray-200"
-      preserveAspectRatio="none"
-      stroke="currentColor"
-      fill="none"
-      viewBox="0 0 200 200"
-      aria-hidden="true"
-    >
-      <path
-        vectorEffect="non-scaling-stroke"
-        strokeWidth="2"
-        d="M0 0l200 200M0 200L200 0"
-      ></path>
-    </svg>
-  ),
+  className: '',
+  children: null,
 };

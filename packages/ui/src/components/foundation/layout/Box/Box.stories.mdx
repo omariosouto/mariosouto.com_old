@@ -1,6 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import Box from './index';
-import { HolyGrailExample, TwoColumnExample } from './__stories__/Example'
 
 <Meta
   title="Foundation/Layout/Box"
@@ -18,6 +17,7 @@ import { HolyGrailExample, TwoColumnExample } from './__stories__/Example'
     name="Box Component"
     args={{
       ...Box.defaultProps,
+      children: 'Sample Content'
     }}
   >
     {(args) => (
@@ -25,9 +25,3 @@ import { HolyGrailExample, TwoColumnExample } from './__stories__/Example'
     )} 
   </Story>
 </Canvas>
-
-## HolyGrailExample
-<HolyGrailExample/>
-
-## TwoColumnExample
-<TwoColumnExample/>

@@ -65,6 +65,11 @@ const proxyHandler = {
       if (target.path.includes('breakpoints')) {
         return target.target[key];
       }
+      if (target.path.includes('space')) {
+        return `var(--${target.path}_${key
+          .replace('.', '\\.')
+          .replace('/', '\\/')})`;
+      }
       return `var(--${target.path}_${key})`;
     }
   },
