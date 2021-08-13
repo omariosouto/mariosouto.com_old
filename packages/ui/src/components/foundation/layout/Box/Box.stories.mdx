@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import Box from './index';
+import { HolyGrailExample, TwoColumnExample } from './__stories__/Example'
+
+<Meta
+  title="Foundation/Layout/Box"
+  component={Box}
+/>
+
+# Box
+
+...
+
+<ArgsTable story="Box Component" />
+
+<Canvas>
+  <Story
+    name="Box Component"
+    args={{
+      ...Box.defaultProps,
+    }}
+  >
+    {(args) => (
+      <Box {...args} />
+    )} 
+  </Story>
+</Canvas>
+
+## HolyGrailExample
+<HolyGrailExample/>
+
+## TwoColumnExample
+<TwoColumnExample/>

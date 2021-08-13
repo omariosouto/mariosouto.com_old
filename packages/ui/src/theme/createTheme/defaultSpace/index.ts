@@ -29,6 +29,7 @@ const partition = {
   '11/12': '91.666667%',
 };
 
+// TOOD: Fix CSS Rendering for x/x and x.5 values
 export const defaultSpace: ThemeSpace = {
   px: '1px',
   ...partition,
