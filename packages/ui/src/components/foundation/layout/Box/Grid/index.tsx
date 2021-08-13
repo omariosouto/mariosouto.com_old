@@ -13,6 +13,8 @@ const flow = ({ flow = 'row' }) => flow;
 
 const formatAreas = (areas) => areas.map((area) => `"${area}"`).join(' ');
 
+// TODO: Grid alignment https://tailwindcss.com/docs/align-content
+// TODO: Grid auto row https://tailwindcss.com/docs/grid-auto-rows
 interface GridProps {
   height?: string;
   flow?: string;
