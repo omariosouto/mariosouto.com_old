@@ -67,8 +67,8 @@ const proxyHandler = {
       }
       if (target.path.includes('space')) {
         return `var(--${target.path}_${key
-          .replace('.', '\\.')
-          .replace('/', '\\/')})`;
+          .replace('.', '__')
+          .replace('/', '__')})`;
       }
       return `var(--${target.path}_${key})`;
     }

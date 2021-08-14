@@ -20,11 +20,8 @@ export const GlobalStyle = createGlobalStyle<{ cssVariables: any }>`
             return otherValues[key];
           })
           .map(({ path, value }: any) => {
-            if (path.includes('.')) {
-              return `--${path.replace('.', '\\.')}: ${value};`;
-            }
-            if (path.includes('/')) {
-              return `--${path.replace('/', '\\/')}: ${value};`;
+            if (path.includes('.') || path.includes('/')) {
+              return `--${path.replace('.', '__')}: ${value};`;
             }
             return `--${path}: ${value};`;
           })

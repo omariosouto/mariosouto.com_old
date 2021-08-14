@@ -6,7 +6,7 @@ test('to be or not be', () => {
   expect(true).toBe(true);
 });
 
-test('component', () => {
+it('componento', () => {
   const Title = styled.h1`
     color: ${({ theme }) => theme.colors.primary.main.color};
   `;
@@ -16,5 +16,6 @@ test('component', () => {
     </div>
   );
   render(<Component />);
+
   expect(screen.getAllByTestId('test')).toMatchSnapshot();
 });

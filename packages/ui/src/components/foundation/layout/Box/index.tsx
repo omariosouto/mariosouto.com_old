@@ -2,21 +2,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledBox = styled.div<BoxProps>`
-  background: ${({ background }) => background} !important;
-`;
+const StyledBox = styled.div<BoxProps>``;
 
 interface BoxProps {
-  background: string;
   children: React.ReactNode;
 }
 export default function Box({ children, ...props }: BoxProps): JSX.Element {
   return <StyledBox {...props}>{children}</StyledBox>;
 }
 
-Box.defaultProps = {
-  background: '#fff4eb',
-};
+Box.defaultProps = {};
 
 // TODO: List: https://tailwindcss.com/docs/list-style-type
 // TODO: Divider: https://tailwindcss.com/docs/divide-style

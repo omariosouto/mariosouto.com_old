@@ -4,12 +4,19 @@ import {
   FlattenSimpleInterpolation,
 } from 'styled-components';
 import { BreakpointNames } from '../types/ThemeBreakpoints';
+import { ThemeSpaceNames } from '../types/ThemeSpace';
 
-export default function breakpointsMedia(
-  cssByBreakpoints: Partial<
-    Record<BreakpointNames, string | FlattenSimpleInterpolation>
+export type CSSByBreakpoints = Partial<
+  Record<
+    BreakpointNames,
+    | string
+    | FlattenSimpleInterpolation
+    | ThemeSpaceNames
+    | Record<string, string>
   >
-) {
+>;
+
+export default function breakpointsMedia(cssByBreakpoints: CSSByBreakpoints) {
   return ({
     theme,
   }: {
