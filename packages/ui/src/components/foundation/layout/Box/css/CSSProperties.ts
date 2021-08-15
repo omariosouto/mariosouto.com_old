@@ -6,6 +6,8 @@ export type PropertyDefinition<T> = T | ResponsiveProperty<T>;
 
 export interface CSSProperties {
   // Box Model
+  width?: PropertyDefinition<string>;
+  height?: PropertyDefinition<string>;
   display?: PropertyDefinition<
     | 'block'
     | 'inline'
@@ -53,4 +55,13 @@ export interface CSSProperties {
   gridRowEnd?: PropertyDefinition<string>;
   gridRowStart?: PropertyDefinition<string>;
   gridColumnStart?: PropertyDefinition<string>;
+  gridAutoFlow?: PropertyDefinition<string>;
+  gridAutoRows?: PropertyDefinition<string>;
+  gridTemplateRows?: PropertyDefinition<string>;
+  gridTemplateColumns?: PropertyDefinition<string>;
+  gridGap?: PropertyDefinition<string>;
+  columnGap?: PropertyDefinition<string>;
+  rowGap?: PropertyDefinition<string>;
+  gridTemplateAreas?: PropertyDefinition<string>;
+  alignContent?: PropertyDefinition<string>;
 }

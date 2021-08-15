@@ -25,10 +25,10 @@ Strongly inspired by: https://styled-css-grid.js.org/
   <Story name="Holy Grail Layout">
     {(args) => (
       <Grid
-        gap="15px"
-        columns={"100px 1fr 100px"}
-        rows={"45px 1fr 45px"}
-        areas={[
+        gridGap="15px"
+        gridColumns={"100px 1fr 100px"}
+        gridRows={"45px 1fr 45px"}
+        gridAreas={[
           "header header  header",
           "menu   content ads   ",
           "footer footer  footer",
@@ -62,13 +62,11 @@ Strongly inspired by: https://styled-css-grid.js.org/
 <Canvas>
   <Story name="Two Column">
     {(args) => (
-      <Grid columns={2} gap="15px" minRowHeight="250px">
+      <Grid gridColumns={2} gridGap="x5" minRowHeight={{xs: 'x80', sm: 'x36'}}>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
           <GridCell
             className="border border-red-300 p-3 bg-red-50"
             key={`TwoColumnExample_${item}`}
-            center
-            display="flex"
             alignItems="center"
             justifyContent="center"
           >
@@ -87,7 +85,7 @@ Strongly inspired by: https://styled-css-grid.js.org/
 <Canvas>
   <Story name="Responsive Layout: Simple">
     {(args) => (
-      <Grid columns="repeat(auto-fit,minmax(120px,1fr))">
+      <Grid gridColumns="repeat(auto-fit,minmax(120px,1fr))">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
           <GridCell
             className="border border-red-300 p-3 bg-red-50"
@@ -106,7 +104,7 @@ Strongly inspired by: https://styled-css-grid.js.org/
 <Canvas>
   <Story name="Positioning Cells">
     {(args) => (
-      <Grid columns={3} minRowHeight="65px">
+      <Grid gridColumns={3} minRowHeight="x20">
         <GridCell className="border border-red-300 p-3 bg-red-50">Top Left</GridCell>
         <GridCell className="border border-red-300 p-3 bg-red-50" cellPositionLeft={3}>Top Right</GridCell>
         <GridCell className="border border-red-300 p-3 bg-red-50" cellPositionLeft={2} cellPositionTop={2}>

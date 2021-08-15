@@ -19,13 +19,7 @@ export default function propToStyle(
     const { theme } = props;
     const propValue = props[propName] || props[propNameAlias];
 
-    if (typeof propValue === 'string' || typeof propValue === 'number') {
-      return {
-        [propName]: parseValue(theme, propName, valueAdapter(propValue)),
-      };
-    }
-
-    if (typeof propValue === 'object') {
+    if (typeof propValue === 'object' && !Array.isArray(propValue)) {
       const breakpoints: CSSByBreakpoints = {};
 
       if (propValue.xs)
@@ -50,6 +44,16 @@ export default function propToStyle(
         };
 
       return breakpointsMedia(breakpoints);
+    }
+
+    if (
+      typeof propValue === 'string' ||
+      typeof propValue === 'number' ||
+      Array.isArray(propValue)
+    ) {
+      return {
+        [propName]: parseValue(theme, propName, valueAdapter(propValue)),
+      };
     }
 
     return {};

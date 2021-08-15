@@ -5,6 +5,8 @@ import propToStyle from '../../../../theme/utils/propToStyle';
 
 const allPropToStyle = {
   /* Box Model */
+  width: propToStyle('width'),
+  height: propToStyle('height'),
   display: propToStyle('display'),
   margin: propToStyle('margin'),
   padding: propToStyle('padding'),
