@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { css, createGlobalStyle } from 'styled-components';
+import { Preflight } from './Preflight';
 
 export const GlobalStyle = createGlobalStyle<{ cssVariables: any }>`
-  * {
-    box-sizing: border-box;
-  }
+  ${Preflight}
 
   ${({ cssVariables: { colorsLight, colorsDark, ...otherValues } }) => {
     return css`
@@ -19,7 +18,12 @@ export const GlobalStyle = createGlobalStyle<{ cssVariables: any }>`
           .flatMap((key: any) => {
             return otherValues[key];
           })
-          .map(({ path, value }: any) => `--${path}: ${value};`)
+          .map(({ path, value }: any) => {
+            if (path.includes('.') || path.includes('/')) {
+              return `--${path.replace('.', '__')}: ${value};`;
+            }
+            return `--${path}: ${value};`;
+          })
           .join('')}
       }
       .dark {

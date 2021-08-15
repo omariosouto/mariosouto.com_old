@@ -1,0 +1,49 @@
+import { defaultSpace } from "./index";
+
+<Meta title="Foundation/Space" />
+
+# Space
+
+Here are all the `space` definitions that we have avaiable through the `theme.space`.
+
+
+<table className="min-w-full divide-y divide-gray-200">
+  <thead className="bg-gray-50">
+    <tr>
+      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+        Key
+      </th>
+      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+        Value in [em] or %
+      </th>
+      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+        Value in [px] or %
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.keys(defaultSpace)
+    .sort((a, b) => {
+      if(a.includes('px')) return -1;
+      if(a.includes('/')) return 0;
+      if(Number(a) < Number(b))  return -1;
+      if(Number(a) > Number(b))  return 0;
+      return 0;
+    })
+    .map((key) => (
+      <tr key={key}>
+        <td>
+          {key}
+        </td>
+        <td>
+          {defaultSpace[key]}
+        </td>        
+        <td>
+          {defaultSpace[key].includes('rem')
+            ? `${Number(defaultSpace[key].replace('rem', '')) * 16}px`
+            : defaultSpace[key]}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

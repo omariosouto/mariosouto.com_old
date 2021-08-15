@@ -5,8 +5,10 @@ import { iconMapByName } from './iconMapByName';
 export { iconMapByName } from './iconMapByName';
 
 export const iconSizes: RecordOfThemeBasicSizes<ThemeSpaceNames> = {
-  xs: 'x4',
-  sm: 'x6',
+  xs: 'x3',
+  sm: 'x4',
+  md: 'x6',
+  lg: 'x8',
 };
 
 const Svg = styled.svg<Partial<IconProps>>`
@@ -21,7 +23,7 @@ const Svg = styled.svg<Partial<IconProps>>`
 
 type IconProps = {
   name: keyof typeof iconMapByName;
-  size?: 'xs' | 'sm' /* | 'md' | 'lg' | 'xl' */;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
 export default function Icon({ name, size, ...props }: IconProps): JSX.Element {

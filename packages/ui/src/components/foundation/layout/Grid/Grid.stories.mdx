@@ -1,0 +1,120 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import Grid from "./index";
+import GridCell from "./GridCell";
+
+<Meta title="Foundation/Layout/Grid" component={Grid} />
+
+# Grid
+
+All `<Box />` Properties are applied to `<Grid />` and `<GridCell />`.
+Strongly inspired by: https://styled-css-grid.js.org/
+
+## Component: Grid
+
+<ArgsTable of={Grid} />
+
+## Component: GridCell
+
+<ArgsTable of={GridCell} />
+
+# Examples:
+
+## Holy Grail Layout
+
+<Canvas>
+  <Story name="Holy Grail Layout">
+    {(args) => (
+      <Grid
+        gridGap="15px"
+        gridColumns={"100px 1fr 100px"}
+        gridRows={"45px 1fr 45px"}
+        gridAreas={[
+          "header header  header",
+          "menu   content ads   ",
+          "footer footer  footer",
+        ]}
+      >
+        <GridCell area="header" className="border border-red-300 p-3 bg-red-50">
+          Header
+        </GridCell>
+        <GridCell area="menu" className="border border-red-300 p-3 bg-red-50">
+          Menu
+        </GridCell>
+        <GridCell
+          area="content"
+          className="border border-red-300 p-3 bg-red-50"
+        >
+          Content
+        </GridCell>
+        <GridCell area="ads" className="border border-red-300 p-3 bg-red-50">
+          Ads
+        </GridCell>
+        <GridCell area="footer" className="border border-red-300 p-3 bg-red-50">
+          Footer
+        </GridCell>
+      </Grid>
+    )}
+  </Story>
+</Canvas>
+
+## Two Column
+
+<Canvas>
+  <Story name="Two Column">
+    {(args) => (
+      <Grid gridColumns={2} gridGap="x5" minRowHeight={{xs: 'x80', sm: 'x36'}}>
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+          <GridCell
+            className="border border-red-300 p-3 bg-red-50"
+            key={`TwoColumnExample_${item}`}
+            alignItems="center"
+            justifyContent="center"
+          >
+            Item {item}
+          </GridCell>
+        ))}
+      </Grid>
+    )}
+  </Story>
+</Canvas>
+
+## Responsive Layout: Simple
+
+> Change the screen resolution to see the changes
+
+<Canvas>
+  <Story name="Responsive Layout: Simple">
+    {(args) => (
+      <Grid gridColumns="repeat(auto-fit,minmax(120px,1fr))">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+          <GridCell
+            className="border border-red-300 p-3 bg-red-50"
+            key={`Responsivelayout:Simple_${item}`}
+          >
+            Item {item}
+          </GridCell>
+        ))}
+      </Grid>
+    )}
+  </Story>
+</Canvas>
+
+## Positioning Cells
+
+<Canvas>
+  <Story name="Positioning Cells">
+    {(args) => (
+      <Grid gridColumns={3} minRowHeight="x20">
+        <GridCell className="border border-red-300 p-3 bg-red-50">Top Left</GridCell>
+        <GridCell className="border border-red-300 p-3 bg-red-50" cellPositionLeft={3}>Top Right</GridCell>
+        <GridCell className="border border-red-300 p-3 bg-red-50" cellPositionLeft={2} cellPositionTop={2}>
+          Middle
+        </GridCell>
+        <GridCell className="border border-red-300 p-3 bg-red-50" cellPositionTop={3}>Bottom Left</GridCell>
+        <GridCell className="border border-red-300 p-3 bg-red-50" cellPositionTop={3} cellPositionLeft={3}>
+          Bottom Right
+        </GridCell>
+      </Grid>
+    )}
+  </Story>
+</Canvas>

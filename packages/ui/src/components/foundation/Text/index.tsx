@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import breakpointsMedia from '../../../theme/breakpointsMedia';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {

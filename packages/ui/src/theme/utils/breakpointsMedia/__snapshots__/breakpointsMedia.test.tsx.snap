@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component 1`] = `
+exports[`componento 1`] = `
 Array [
   .c0 {
   color: var(--colors_primary_main_color);
