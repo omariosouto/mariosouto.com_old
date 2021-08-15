@@ -63,11 +63,7 @@ const navigation = [
   },
 ];
 
-interface FooterProps {
-  /** Only override this if you really want to make this value static */
-  year: number;
-}
-export default function Footer({ year }: FooterProps): JSX.Element {
+export default function Footer(): JSX.Element {
   return (
     <footer className="bg-gray-800">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
@@ -85,15 +81,11 @@ export default function Footer({ year }: FooterProps): JSX.Element {
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
           <p className="text-center text-base text-gray-400">
-            &copy; {year} Mario Souto (DevSoutinho). Todos os direitos
-            reservados.
+            &copy; {new Date().getFullYear()} Mario Souto (DevSoutinho). Todos
+            os direitos reservados.
           </p>
         </div>
       </div>
     </footer>
   );
 }
-
-Footer.defaultProps = {
-  year: new Date().getFullYear(),
-};
