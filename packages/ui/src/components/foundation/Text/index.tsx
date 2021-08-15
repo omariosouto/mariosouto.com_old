@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
+import propToStyle from '../../../theme/utils/propToStyle';
+import { CSSProperties } from '../layout/Box/css/CSSProperties';
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -16,7 +18,8 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
 }
 
 const TextBase = styled.span<TextProps>`
-  ${({ theme, variant, bold }) =>
+  ${propToStyle('textAlign')}
+  ${({ theme, variant, bold, srOnly }) =>
     css`
       font-size: ${theme.typography[variant].xs.fontSize};
       line-height: ${theme.typography[variant].xs.lineHeight};
@@ -26,6 +29,18 @@ const TextBase = styled.span<TextProps>`
         variant,
         theme.typography[variant].xs.fontWeight
       )};
+      ${srOnly &&
+      css`
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      `}
 
       ${breakpointsMedia({
         md: css`
@@ -42,20 +57,35 @@ const TextBase = styled.span<TextProps>`
     `}
 `;
 
-type asText = 'span' | 'p' | 'li' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type asText =
+  | 'span'
+  | 'p'
+  | 'li'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'a';
 interface TextProps {
-  bold: boolean;
-  variant: TypographyVariantsName;
-  as: asText;
+  bold?: boolean;
+  variant?: TypographyVariantsName;
+  as?: asText;
   children: React.ReactNode;
+  className?: string;
+  srOnly?: boolean;
+  /** Never pass this prop directly, always use Link component instead */
+  href?: string;
 }
+type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
 export default function Text({
   children,
   variant,
   bold,
   as,
   ...props
-}: TextProps): JSX.Element {
+}: TextProps & TextDynamicProps): JSX.Element {
   return (
     <TextBase as={as} bold={bold} variant={variant} {...props}>
       {children}

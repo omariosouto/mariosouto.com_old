@@ -21,9 +21,11 @@ const Svg = styled.svg<Partial<IconProps>>`
   }}
 `;
 
+export type IconNames = keyof typeof iconMapByName;
+export type IconSizes = 'xs' | 'sm' | 'md' | 'lg';
 type IconProps = {
-  name: keyof typeof iconMapByName;
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  name: IconNames;
+  size?: IconSizes;
 };
 
 export default function Icon({ name, size, ...props }: IconProps): JSX.Element {
@@ -43,5 +45,5 @@ export default function Icon({ name, size, ...props }: IconProps): JSX.Element {
 }
 
 Icon.defaultProps = {
-  size: 'sm',
+  size: 'md',
 };
