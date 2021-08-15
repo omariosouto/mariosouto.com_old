@@ -1,30 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CSSProperties } from '../../../../infra/css/CSSProperties';
+import { CSSProperties } from './css/CSSProperties';
 import propToStyle from '../../../../theme/utils/propToStyle';
 
+const allPropToStyle = {
+  /* Box Model */
+  display: propToStyle('display'),
+  margin: propToStyle('margin'),
+  padding: propToStyle('padding'),
+  position: propToStyle('position'),
+  /* Box Decoration */
+  boxShadow: propToStyle('boxShadow'),
+  listStyleType: propToStyle('listStyleType'),
+  /* Text */
+  textAlign: propToStyle('textAlign'),
+  /* FlexBox/Grid */
+  flex: propToStyle('flex'),
+  alignItems: propToStyle('alignItems'),
+  justifyContent: propToStyle('justifyContent'),
+};
+
+type BoxStyleProps = keyof typeof allPropToStyle;
+
 const StyledBox = styled.div<BoxProps>`
-  ${propToStyle('textAlign')}
-  ${propToStyle('margin')}
+  ${Object.keys(allPropToStyle)
+    .map((key: BoxStyleProps) => allPropToStyle[key])
+    .join(';')}
 `;
 
 interface BoxPropsBase {
+  as: 'div' | 'section' | 'article' | 'ul' | 'header' | 'footer' | 'main';
   children: React.ReactNode;
 }
-type BoxProps = BoxPropsBase & CSSProperties;
+type BoxProps = BoxPropsBase & Pick<CSSProperties, BoxStyleProps>;
+
 export default function Box({ children, ...props }: BoxProps): JSX.Element {
   return <StyledBox {...props}>{children}</StyledBox>;
 }
 
 Box.defaultProps = {
-  margin: 'x1 x2 x3 x4',
+  display: 'flex',
 };
-
-// TODO: List: https://tailwindcss.com/docs/list-style-type
-// TODO: Divider: https://tailwindcss.com/docs/divide-style
-// TODO: Border-radius: https://tailwindcss.com/docs/border-radius
-// TODO: Box-shadow: https://tailwindcss.com/docs/box-shadow
-// TODO: Animation: https://tailwindcss.com/docs/animation
-// TODO: Screen header: https://tailwindcss.com/docs/screen-readers
-// TODO: Aspect Ratio: https://github.com/tailwindlabs/tailwindcss-aspect-ratio
-// TODO: Border: https://tailwindcss.com/docs/border-width

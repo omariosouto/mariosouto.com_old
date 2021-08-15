@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 import breakpointsMedia, { CSSByBreakpoints } from '../breakpointsMedia';
-import { CSSProperties } from '../../../infra/css/CSSProperties';
+import { CSSProperties } from '../../../components/foundation/layout/Box/css/CSSProperties';
+import { parseValue } from './parseValue';
 
 type PropName = keyof CSSProperties;
-type CSSPropValues = Partial<Record<PropName, CSSByBreakpoints | string>>;
+type CSSPropValues = { theme?: DefaultTheme } & Partial<
+  Record<PropName, CSSByBreakpoints | string>
+>;
 
 type Output =
   | (({
@@ -18,22 +21,38 @@ type Output =
 
 export default function propToStyle(propName: PropName) {
   return (props: CSSPropValues): Output => {
+    const { theme } = props;
     const propValue = props[propName];
 
     if (typeof propValue === 'string' || typeof propValue === 'number') {
       return {
-        [propName]: propValue,
+        [propName]: parseValue(theme, propName, propValue),
       };
     }
 
     if (typeof propValue === 'object') {
       const breakpoints: CSSByBreakpoints = {};
 
-      if (propValue.xs) breakpoints.xs = { [propName]: `${propValue.xs}` };
-      if (propValue.sm) breakpoints.sm = { [propName]: `${propValue.sm}` };
-      if (propValue.lg) breakpoints.lg = { [propName]: `${propValue.lg}` };
-      if (propValue.sm) breakpoints.sm = { [propName]: `${propValue.sm}` };
-      if (propValue.md) breakpoints.md = { [propName]: `${propValue.md}` };
+      if (propValue.xs)
+        breakpoints.xs = {
+          [propName]: parseValue(theme, propName, propValue.xs),
+        };
+      if (propValue.sm)
+        breakpoints.sm = {
+          [propName]: parseValue(theme, propName, propValue.sm),
+        };
+      if (propValue.lg)
+        breakpoints.lg = {
+          [propName]: parseValue(theme, propName, propValue.lg),
+        };
+      if (propValue.sm)
+        breakpoints.sm = {
+          [propName]: parseValue(theme, propName, propValue.sm),
+        };
+      if (propValue.md)
+        breakpoints.md = {
+          [propName]: parseValue(theme, propName, propValue.md),
+        };
 
       return breakpointsMedia(breakpoints);
     }
