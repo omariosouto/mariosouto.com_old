@@ -1,38 +1,40 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
-import Box from '../Box';
+import propToStyle from '../../../../theme/utils/propToStyle';
+import Box, { BoxProps } from '../Box';
+import { PropertyDefinition } from '../Box/css/CSSProperties';
 
-interface CellProps {
-  width?: number | string;
-  height?: number | string;
-  left?: boolean;
-  top?: boolean;
-  center?: boolean;
-  middle?: boolean;
-  area?: string;
+interface GridCellBaseProps {
   className?: string;
+  as?: string;
+  children: ReactNode;
+  cellWidth?: PropertyDefinition<number>;
+  cellHeight?: PropertyDefinition<number>;
+  area?: string;
+  cellPositionLeft?: PropertyDefinition<number>;
+  cellPositionTop?: PropertyDefinition<number>;
 }
-const GridCell = styled(Box)<CellProps>`
+
+type GridCellProps = GridCellBaseProps & BoxProps;
+
+const StyledGridCell = styled(Box)<GridCellProps>`
   height: 100%;
   min-width: 0;
-  grid-column-end: ${({ width }) => `span ${width}`};
-  grid-row-end: ${({ height = 1 }) => `span ${height}`};
-  ${({ left }) => left && `grid-column-start: ${left}`};
-  ${({ top }) => top && `grid-row-start: ${top}`};
-  ${({ center }) => center && `text-align: center`};
+  ${propToStyle('gridColumnEnd', 'cellWidth', (width) => `span ${width}`)}
+  ${propToStyle('gridRowEnd', 'cellHeight', (height) => `span ${height}`)}
   ${({ area }) => area && `grid-area: ${area}`};
-  ${
-    /* prettier-ignore */
-    ({ middle }) => middle && `
-    display: inline-flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    justify-self: stretch;
-  `
-  };
+  ${propToStyle('gridColumnStart', 'cellPositionLeft')}
+  ${propToStyle('gridRowStart', 'cellPositionTop')}
 `;
 
+function GridCell({ children, ...props }: GridCellProps): JSX.Element {
+  return <StyledGridCell {...props}>{children}</StyledGridCell>;
+}
+
 GridCell.defaultProps = {
-  width: 1,
+  cellWidth: 1,
+  cellHeight: 1,
+  area: '',
 };
 
 export default GridCell;

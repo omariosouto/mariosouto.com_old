@@ -23,16 +23,16 @@ const allPropToStyle = {
 type BoxStyleProps = keyof typeof allPropToStyle;
 
 const StyledBox = styled.div<BoxProps>`
-  ${Object.keys(allPropToStyle)
-    .map((key: BoxStyleProps) => allPropToStyle[key])
-    .join(';')}
+  ${Object.keys(allPropToStyle).map(
+    (key: keyof typeof allPropToStyle) => allPropToStyle[key]
+  )}
 `;
 
 interface BoxPropsBase {
   as: 'div' | 'section' | 'article' | 'ul' | 'header' | 'footer' | 'main';
   children: React.ReactNode;
 }
-type BoxProps = BoxPropsBase & Pick<CSSProperties, BoxStyleProps>;
+export type BoxProps = BoxPropsBase & Pick<CSSProperties, BoxStyleProps>;
 
 export default function Box({ children, ...props }: BoxProps): JSX.Element {
   return <StyledBox {...props}>{children}</StyledBox>;

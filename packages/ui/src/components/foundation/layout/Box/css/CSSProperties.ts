@@ -2,7 +2,7 @@ import { BreakpointNames } from '../../../../../theme/types/ThemeBreakpoints';
 
 type ResponsiveProperty<T> = Partial<Record<BreakpointNames, T>>;
 
-type PropertyDefinition<T> = T | ResponsiveProperty<T>;
+export type PropertyDefinition<T> = T | ResponsiveProperty<T>;
 
 export interface CSSProperties {
   // Box Model
@@ -35,15 +35,22 @@ export interface CSSProperties {
   // Text
   textAlign?: PropertyDefinition<'center' | 'left' | 'right' | 'justify'>;
   // FlexBox/Grid
+  /** https://developer.mozilla.org/en-US/docs/Web/CSS/flex */
   flex?: PropertyDefinition<string>;
   alignItems?: PropertyDefinition<
     'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
   >;
-  justifyContent?:
+  justifyContent?: PropertyDefinition<
     | 'flex-start'
     | 'flex-end'
     | 'center'
     | 'space-between'
     | 'space-around'
-    | 'space-evenly';
+    | 'space-evenly'
+  >;
+  // Grid
+  gridColumnEnd?: PropertyDefinition<string>;
+  gridRowEnd?: PropertyDefinition<string>;
+  gridRowStart?: PropertyDefinition<string>;
+  gridColumnStart?: PropertyDefinition<string>;
 }

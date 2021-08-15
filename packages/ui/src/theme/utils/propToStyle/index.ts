@@ -1,31 +1,27 @@
-import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 import breakpointsMedia, { CSSByBreakpoints } from '../breakpointsMedia';
 import { CSSProperties } from '../../../components/foundation/layout/Box/css/CSSProperties';
 import { parseValue } from './parseValue';
 
 type PropName = keyof CSSProperties;
 type CSSPropValues = { theme?: DefaultTheme } & Partial<
-  Record<PropName, CSSByBreakpoints | string>
+  Record<PropName | string, CSSByBreakpoints | string>
 >;
 
-type Output =
-  | (({
-      theme,
-    }: {
-      theme: DefaultTheme;
-    }) => FlattenSimpleInterpolation[] | string[])
-  | {
-      [x: string]: string;
-    };
-
-export default function propToStyle(propName: PropName) {
-  return (props: CSSPropValues): Output => {
+export default function propToStyle(
+  propName: PropName,
+  propNameAlias?: string,
+  valueAdapter: (receivedValue: unknown) => string = (value: undefined) => value
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (props: CSSPropValues): any => {
     const { theme } = props;
-    const propValue = props[propName];
+    const propValue = props[propName] || props[propNameAlias];
 
     if (typeof propValue === 'string' || typeof propValue === 'number') {
       return {
-        [propName]: parseValue(theme, propName, propValue),
+        [propName]: parseValue(theme, propName, valueAdapter(propValue)),
       };
     }
 
@@ -34,23 +30,23 @@ export default function propToStyle(propName: PropName) {
 
       if (propValue.xs)
         breakpoints.xs = {
-          [propName]: parseValue(theme, propName, propValue.xs),
+          [propName]: parseValue(theme, propName, valueAdapter(propValue.xs)),
         };
       if (propValue.sm)
         breakpoints.sm = {
-          [propName]: parseValue(theme, propName, propValue.sm),
-        };
-      if (propValue.lg)
-        breakpoints.lg = {
-          [propName]: parseValue(theme, propName, propValue.lg),
-        };
-      if (propValue.sm)
-        breakpoints.sm = {
-          [propName]: parseValue(theme, propName, propValue.sm),
+          [propName]: parseValue(theme, propName, valueAdapter(propValue.sm)),
         };
       if (propValue.md)
         breakpoints.md = {
-          [propName]: parseValue(theme, propName, propValue.md),
+          [propName]: parseValue(theme, propName, valueAdapter(propValue.md)),
+        };
+      if (propValue.lg)
+        breakpoints.lg = {
+          [propName]: parseValue(theme, propName, valueAdapter(propValue.lg)),
+        };
+      if (propValue.xl)
+        breakpoints.xl = {
+          [propName]: parseValue(theme, propName, valueAdapter(propValue.xl)),
         };
 
       return breakpointsMedia(breakpoints);
