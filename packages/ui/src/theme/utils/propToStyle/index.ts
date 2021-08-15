@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 import breakpointsMedia, { CSSByBreakpoints } from '../breakpointsMedia';
 import { CSSProperties } from '../../../components/foundation/layout/Box/css/CSSProperties';

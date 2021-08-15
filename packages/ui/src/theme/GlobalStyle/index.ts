@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { css, createGlobalStyle } from 'styled-components';
-// TODO: Preflight: https://tailwindcss.com/docs/preflight#images-are-block-level
+import { Preflight } from './Preflight';
+
 export const GlobalStyle = createGlobalStyle<{ cssVariables: any }>`
-  * {
-    box-sizing: border-box;
-  }
+  ${Preflight}
 
   ${({ cssVariables: { colorsLight, colorsDark, ...otherValues } }) => {
     return css`
