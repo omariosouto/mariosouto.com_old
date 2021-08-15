@@ -1,17 +1,24 @@
-// WIP
 import React from 'react';
 import styled from 'styled-components';
+import { CSSProperties } from '../../../../infra/css/CSSProperties';
+import propToStyle from '../../../../theme/utils/propToStyle';
 
-const StyledBox = styled.div<BoxProps>``;
+const StyledBox = styled.div<BoxProps>`
+  ${propToStyle('textAlign')}
+  ${propToStyle('margin')}
+`;
 
-interface BoxProps {
+interface BoxPropsBase {
   children: React.ReactNode;
 }
+type BoxProps = BoxPropsBase & CSSProperties;
 export default function Box({ children, ...props }: BoxProps): JSX.Element {
   return <StyledBox {...props}>{children}</StyledBox>;
 }
 
-Box.defaultProps = {};
+Box.defaultProps = {
+  margin: 'x1 x2 x3 x4',
+};
 
 // TODO: List: https://tailwindcss.com/docs/list-style-type
 // TODO: Divider: https://tailwindcss.com/docs/divide-style

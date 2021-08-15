@@ -1,19 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
-import breakpointsMedia, { CSSByBreakpoints } from '../../breakpointsMedia';
+import breakpointsMedia, { CSSByBreakpoints } from '../breakpointsMedia';
+import { CSSProperties } from '../../../infra/css/CSSProperties';
 
-const propNames = {
-  flex: 'flex',
-  textAlign: 'textAlign',
-  margin: 'margin',
-};
-type PropName = keyof typeof propNames;
-
-interface CSSPropValues {
-  flex?: CSSByBreakpoints | string;
-  textAlign?: CSSByBreakpoints | string;
-  margin?: CSSByBreakpoints | string;
-}
+type PropName = keyof CSSProperties;
+type CSSPropValues = Partial<Record<PropName, CSSByBreakpoints | string>>;
 
 type Output =
   | (({

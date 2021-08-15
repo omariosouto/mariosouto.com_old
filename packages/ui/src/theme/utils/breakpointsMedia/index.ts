@@ -3,8 +3,8 @@ import {
   DefaultTheme,
   FlattenSimpleInterpolation,
 } from 'styled-components';
-import { BreakpointNames } from '../types/ThemeBreakpoints';
-import { ThemeSpaceNames } from '../types/ThemeSpace';
+import { BreakpointNames } from '../../types/ThemeBreakpoints';
+import { ThemeSpaceNames } from '../../types/ThemeSpace';
 
 export type CSSByBreakpoints = Partial<
   Record<
