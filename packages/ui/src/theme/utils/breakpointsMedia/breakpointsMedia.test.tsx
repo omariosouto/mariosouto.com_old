@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { screen, render } from '../../infra/tests/testUtils';
+import { screen, render } from '../../../infra/tests/testUtils';
 
 test('to be or not be', () => {
   expect(true).toBe(true);
