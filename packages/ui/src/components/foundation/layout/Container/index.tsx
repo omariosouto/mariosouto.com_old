@@ -1,32 +1,77 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
+import { BreakpointNames } from '../../../../theme/types/ThemeBreakpoints';
+import { ThemeSpaceNames } from '../../../../theme/types/ThemeSpace';
+import breakpointsMedia from '../../../../theme/utils/breakpointsMedia';
 
-/*
-xs (default)
-sm (640px)	max-width: 640px;
-md (768px)	max-width: 768px;
-lg (1024px)	max-width: 1024px;
-xl (1280px)	max-width: 1280px;
-2xl (1536px)	max-width: 1536px;
-*/
+function handlePadded(
+  padded: Padded,
+  theme: DefaultTheme,
+  breakpointName: BreakpointNames
+): string {
+  const sizes: Record<BreakpointNames, ThemeSpaceNames> = {
+    xs: 'x4',
+    sm: 'x6',
+    md: 'x6',
+    lg: 'x8',
+    xl: 'x8',
+  };
+  const paddingValue = `0 ${theme.space[sizes[breakpointName]]}`;
+
+  if (padded && typeof padded === 'object') {
+    return padded[breakpointName] ? `padding: ${paddingValue};` : '';
+  }
+
+  if (padded && typeof padded === 'boolean') {
+    return `padding: ${paddingValue};`;
+  }
+
+  return '';
+}
+
 const ContainerWrapper = styled.div<ContainerProps>`
   margin: 0 auto;
   max-width: 100%;
-  padding: 15px;
+  ${({ theme, padded, fullWidth }) =>
+    breakpointsMedia({
+      xs: css`
+        ${handlePadded(padded, theme, 'xs')}
+      `,
+      sm: css`
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.sm};`}
+        ${handlePadded(padded, theme, 'sm')}
+      `,
+      md: css`
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.md};`}
+        ${handlePadded(padded, theme, 'md')}
+      `,
+      lg: css`
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.lg};`}
+        ${handlePadded(padded, theme, 'lg')}
+      `,
+      xl: css`
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.xl};`}
+        ${handlePadded(padded, theme, 'lg')}
+      `,
+    })}
 `;
 
+type Padded = Partial<Record<BreakpointNames, boolean>> | boolean;
 interface ContainerProps {
-  className: string;
   children: React.ReactNode;
+  fullWidth?: boolean;
+  padded?: Padded;
+  className?: string;
 }
-
-// TODO: FullWidth - Normal
-// TODO: Padded { xs: true, sm: true, md: true, lg: true, xl: true }
 export default function Container(props: ContainerProps): JSX.Element {
   return <ContainerWrapper {...props} />;
 }
 
+<Container padded={{ xs: true }} />;
+
 Container.defaultProps = {
   className: '',
   children: null,
+  padded: true,
+  fullWidth: false,
 };
