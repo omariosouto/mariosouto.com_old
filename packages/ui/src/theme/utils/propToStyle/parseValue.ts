@@ -4,7 +4,7 @@ import { ThemeSpace } from '../../types/ThemeSpace';
 const parseStrategies = {
   background: (value: string): string => value,
   default: (value: string, theme: DefaultTheme) => {
-    const MATCH_THEME_SPACE = /(x[\d.]+)/g;
+    const MATCH_THEME_SPACE = /(x[\d/.]+)/g;
     return value.replace(MATCH_THEME_SPACE, (...args) => {
       const currentValue = args[0] as keyof ThemeSpace;
       return `${theme.space[currentValue]}`;

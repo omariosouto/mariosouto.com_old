@@ -14,6 +14,8 @@ const allPropToStyle = {
   mx: [propToStyle('marginLeft', 'mx'), propToStyle('marginRight', 'mx')],
   my: [propToStyle('marginTop', 'my'), propToStyle('marginBottom', 'my')],
   padding: propToStyle('padding'),
+  paddingRight: propToStyle('paddingRight'),
+  paddingLeft: propToStyle('paddingLeft'),
   px: [propToStyle('paddingLeft', 'px'), propToStyle('paddingRight', 'px')],
   py: [propToStyle('paddingTop', 'py'), propToStyle('paddingBottom', 'py')],
   position: propToStyle('position'),
@@ -41,7 +43,7 @@ const StyledBox = styled.div<BoxProps>`
 interface BoxPropsBase {
   as?: 'div' | 'section' | 'article' | 'ul' | 'header' | 'footer' | 'main';
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 type BoxPropsExtensions = {
   mx?: PropertyDefinition<string>;
