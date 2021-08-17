@@ -13,6 +13,12 @@ export const iconSizes: RecordOfThemeBasicSizes<ThemeSpaceNames> = {
 
 const Svg = styled.svg<Partial<IconProps>>`
   ${({ theme, size }) => {
+    if (size === 'text') {
+      return css`
+        width: 1.5ch;
+        height: 1.5ch;
+      `;
+    }
     const spaceBySize = iconSizes[size];
     return css`
       width: ${theme.space[spaceBySize]};
@@ -22,7 +28,7 @@ const Svg = styled.svg<Partial<IconProps>>`
 `;
 
 export type IconNames = keyof typeof iconMapByName;
-export type IconSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type IconSizes = 'xs' | 'sm' | 'md' | 'lg' | 'text';
 type IconProps = {
   name: IconNames;
   size?: IconSizes;

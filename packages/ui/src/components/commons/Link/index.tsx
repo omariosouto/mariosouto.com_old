@@ -6,20 +6,6 @@ import Box from '../../foundation/layout/Box';
 const INTERNAL_LINK = 'internalLink';
 const EXTERNAL_LINK = 'externalLink';
 
-const iconSizeByTextVariant: Record<TypographyVariantsName, IconSizes> = {
-  body_1: 'sm',
-  body_2: 'sm',
-  body_3: 'sm',
-  body_4: 'sm',
-  display_1: 'sm',
-  heading_1: 'sm',
-  heading_2: 'sm',
-  heading_3: 'sm',
-  heading_4: 'sm',
-  heading_5: 'sm',
-  heading_6: 'sm',
-};
-
 const LinkIcon = ({
   name,
   iconSize,
@@ -43,9 +29,7 @@ const linkVariants = {
   }: LinkProps) => (
     <Text className={className} href={href} variant={variant} {...props}>
       {children}
-      {hasIcon && (
-        <LinkIcon name="arrowLeft" iconSize={iconSizeByTextVariant[variant]} />
-      )}
+      {hasIcon && <LinkIcon name="arrowLeft" iconSize="text" />}
     </Text>
   ),
   [EXTERNAL_LINK]: ({
@@ -58,12 +42,7 @@ const linkVariants = {
   }: LinkProps) => (
     <Text href={href} variant={variant} className={className} {...props}>
       {children}
-      {hasIcon && (
-        <LinkIcon
-          name="arrowUpLeft"
-          iconSize={iconSizeByTextVariant[variant]}
-        />
-      )}
+      {hasIcon && <LinkIcon name="arrowUpLeft" iconSize="text" />}
     </Text>
   ),
 };
@@ -101,5 +80,5 @@ export default function Link({
 
 Link.defaultProps = {
   hasIcon: true,
-  variant: 'body_2',
+  variant: 'inherit',
 };

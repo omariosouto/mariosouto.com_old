@@ -12,6 +12,8 @@ export const TypographyVariants = {
   body_2: 'body_2',
   body_3: 'body_3',
   body_4: 'body_4',
+
+  inherit: 'inherit',
 };
 
 export type TypographyVariantsName = keyof typeof TypographyVariants;
@@ -40,4 +42,5 @@ export interface ThemeTypography {
   body_2: Typography;
   body_3: Typography;
   body_4: Typography;
+  inherit: Typography;
 }

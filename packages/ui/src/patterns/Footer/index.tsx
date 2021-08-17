@@ -67,12 +67,14 @@ export default function Footer(): JSX.Element {
             ))}
           </Box>
           <Box marginTop={{ xs: 'x8', md: 'x0' }} order={{ md: '1' }}>
-            <Text className="text-gray-400" variant="body_2" textAlign="center">
+            <Text
+              className="text-gray-400"
+              variant="heading_1"
+              textAlign="center"
+            >
               &copy; {currentYear}{' '}
-              <Link href="/" variant="body_2">
-                Mario Souto (DevSoutinho)
-              </Link>
-              . Todos os direitos reservados.
+              <Link href="/">Mario Souto (DevSoutinho)</Link>. Todos os direitos
+              reservados.
             </Text>
           </Box>
         </Box>
