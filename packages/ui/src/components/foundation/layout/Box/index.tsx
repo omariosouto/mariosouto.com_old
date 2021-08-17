@@ -11,6 +11,7 @@ const allPropToStyle = {
   margin: propToStyle('margin'),
   marginTop: propToStyle('marginTop'),
   marginLeft: propToStyle('marginLeft'),
+  marginRight: propToStyle('marginRight'),
   mx: [propToStyle('marginLeft', 'mx'), propToStyle('marginRight', 'mx')],
   my: [propToStyle('marginTop', 'my'), propToStyle('marginBottom', 'my')],
   padding: propToStyle('padding'),
@@ -19,6 +20,7 @@ const allPropToStyle = {
   px: [propToStyle('paddingLeft', 'px'), propToStyle('paddingRight', 'px')],
   py: [propToStyle('paddingTop', 'py'), propToStyle('paddingBottom', 'py')],
   position: propToStyle('position'),
+  overflow: propToStyle('overflow'),
   /* Box Decoration */
   boxShadow: propToStyle('boxShadow'),
   listStyleType: propToStyle('listStyleType'),
@@ -27,6 +29,7 @@ const allPropToStyle = {
   verticalAlign: propToStyle('verticalAlign'),
   /* FlexBox/Grid */
   flex: propToStyle('flex'),
+  flexDirection: propToStyle('flexDirection'),
   order: propToStyle('order'),
   alignItems: propToStyle('alignItems'),
   justifyContent: propToStyle('justifyContent'),
@@ -40,8 +43,24 @@ const StyledBox = styled.div<BoxProps>`
   )}
 `;
 
+type BoxTags =
+  | 'div'
+  | 'section'
+  | 'article'
+  | 'ul'
+  | 'header'
+  | 'footer'
+  | 'main'
+  | 'dl'
+  | 'dt'
+  | 'dd'
+  | 'li'
+  | 'p'
+  | 'span';
+
 interface BoxPropsBase {
-  as?: 'div' | 'section' | 'article' | 'ul' | 'header' | 'footer' | 'main';
+  as?: BoxTags;
+  tag?: BoxTags;
   className?: string;
   children?: React.ReactNode;
 }
@@ -52,10 +71,14 @@ type BoxPropsExtensions = {
   py?: PropertyDefinition<string>;
 };
 export type BoxProps = BoxPropsBase &
-  Pick<CSSProperties & BoxPropsExtensions, BoxStyleProps>;
+  Pick<CSSProperties & BoxPropsExtensions, BoxStyleProps> & { role?: string };
 
 export default function Box({ children, ...props }: BoxProps): JSX.Element {
-  return <StyledBox {...props}>{children}</StyledBox>;
+  return (
+    <StyledBox as={props.as || props.tag} {...props}>
+      {children}
+    </StyledBox>
+  );
 }
 
 Box.defaultProps = {

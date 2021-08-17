@@ -48,8 +48,8 @@ const StyledGrid = styled(Box)<GridProps>`
   ${propToStyle('alignContent')}
 `;
 
-function Grid(props: GridProps): JSX.Element {
-  return <StyledGrid {...props} />;
+function Grid({ as, ...props }: GridProps): JSX.Element {
+  return <StyledGrid tag={as} {...props} />;
 }
 
 Grid.defaultProps = {

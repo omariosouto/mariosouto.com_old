@@ -38,6 +38,9 @@ export interface CSSProperties {
     | 'revert'
     | 'unset'
   >;
+  overflow?: PropertyDefinition<
+    'visible' | 'hidden' | 'scroll' | 'auto' | 'inherit' | 'initial' | 'revert'
+  >;
   // Box Decoration
   opacity?: PropertyDefinition<number | 'initial' | 'inherit'>;
   boxShadow?: PropertyDefinition<string>;
@@ -69,6 +72,9 @@ export interface CSSProperties {
     | 'space-between'
     | 'space-around'
     | 'space-evenly'
+  >;
+  flexDirection?: PropertyDefinition<
+    'row' | 'row-reverse' | 'column' | 'column-reverse' | 'inherit'
   >;
   // Grid
   gridColumnEnd?: PropertyDefinition<string>;

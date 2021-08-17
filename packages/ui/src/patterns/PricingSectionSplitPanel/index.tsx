@@ -89,29 +89,48 @@ export default function PricingSectionSplitPanel(): JSX.Element {
             }}
             className="max-w-lg"
           >
-            <h2 className="text-base font-semibold tracking-wide text-indigo-600 uppercase">
+            <Text
+              as="h2"
+              variant="body_2"
+              bold
+              uppercase
+              className="text-indigo-600"
+            >
               Full-featured
-            </h2>
-            <p className="mt-2 text-2xl font-extrabold text-gray-900 sm:text-3xl">
+            </Text>
+            <Text variant="heading_3" bold className="mt-2 text-gray-900">
               Everything you need to talk with your customers
-            </p>
-            <dl className="mt-12 space-y-10">
+            </Text>
+            <Box as="dl" className="mt-12 space-y-10">
               {features.map((feature) => (
                 <Box key={feature.name} position="relative">
-                  <dt>
-                    <div className="absolute h-12 w-12 flex items-center justify-center bg-indigo-500 rounded-md text-white">
+                  <Box as="dt">
+                    <Box
+                      display="flex"
+                      position="absolute"
+                      width="x12"
+                      height="x12"
+                      alignItems="center"
+                      justifyContent="center"
+                      className="bg-indigo-500 rounded-md text-white"
+                    >
                       <Icon name={feature.icon} aria-hidden="true" />
-                    </div>
-                    <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
+                    </Box>
+                    <Text variant="body_1" className="ml-16 text-gray-900">
                       {feature.name}
-                    </p>
-                  </dt>
-                  <dd className="mt-2 ml-16 text-base text-gray-500">
-                    {feature.description}
-                  </dd>
+                    </Text>
+                  </Box>
+                  <Box
+                    as="dd"
+                    marginTop="x2"
+                    marginLeft="x16"
+                    className="text-gray-500"
+                  >
+                    <Text variant="body_2">{feature.description}</Text>
+                  </Box>
                 </Box>
               ))}
-            </dl>
+            </Box>
           </Box>
         </GridCell>
         <GridCell
@@ -121,66 +140,104 @@ export default function PricingSectionSplitPanel(): JSX.Element {
           }}
           className="bg-indigo-700 py-16 px-4 sm:py-24 sm:px-6 lg:bg-none lg:px-0 lg:pl-8 lg:flex lg:items-center lg:justify-end"
         >
-          <div className="max-w-lg mx-auto w-full space-y-8 lg:mx-0">
-            <div>
-              <h2 className="sr-only">Price</h2>
-              <p className="relative grid grid-cols-2">
-                <span className="flex flex-col text-center">
-                  <span className="text-5xl font-extrabold text-white tracking-tight">
+          <Box mx={{ xs: 'auto', lg: 'x0' }} className="max-w-lg w-full">
+            <Box my="x8">
+              <Text as="h2" srOnly>
+                Price
+              </Text>
+              <Grid position="relative" gridColumns={2} as="p">
+                <GridCell
+                  display="flex"
+                  flexDirection="column"
+                  textAlign="center"
+                >
+                  <Text variant="heading_1" className="text-white">
                     $99
-                  </span>
-                  <span className="mt-2 text-base font-medium text-indigo-200">
+                  </Text>
+                  <Text as="span" className="mt-2 text-indigo-200">
                     Setup fee
-                  </span>
-                  <span className="sr-only">plus</span>
-                </span>
-                <span
-                  className="pointer-events-none absolute h-12 w-full flex items-center justify-center text-indigo-300"
+                  </Text>
+                  <Text as="span" srOnly>
+                    plus
+                  </Text>
+                </GridCell>
+                <GridCell
+                  position="absolute"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
                   aria-hidden="true"
+                  className="h-12 w-full text-indigo-300"
                 >
                   <Icon name="plus" size="md" aria-hidden="true" />
-                </span>
-                <span>
-                  <span className="flex flex-col text-center">
-                    <span className="text-5xl font-extrabold text-white tracking-tight">
+                </GridCell>
+                <GridCell>
+                  <Box
+                    as="span"
+                    display="flex"
+                    flexDirection="column"
+                    textAlign="center"
+                  >
+                    <Text variant="heading_1" className="text-white">
                       $4
-                    </span>
-                    <span className="mt-2 text-base font-medium text-indigo-200">
+                    </Text>
+                    <Text as="span" className="mt-2 text-indigo-200">
                       Per month
-                    </span>
-                  </span>
-                </span>
-              </p>
-            </div>
-            <ul
+                    </Text>
+                  </Box>
+                </GridCell>
+              </Grid>
+            </Box>
+            <Grid
+              as="ul"
               role="list"
-              className="rounded overflow-hidden grid gap-px sm:grid-cols-2"
+              gridGap="1px"
+              gridColumns={{
+                xs: 1,
+                sm: 2,
+              }}
+              overflow="hidden"
+              className="rounded"
+              my="x8"
             >
               {checklist.map((item) => (
-                <li
+                <GridCell
+                  display="flex"
                   key={item}
-                  className="bg-indigo-800 bg-opacity-50 py-4 px-4 flex items-center space-x-3 text-base text-white"
+                  as="li"
+                  px="x4"
+                  py="x4"
+                  alignItems="center"
+                  className="bg-indigo-800 bg-opacity-50 text-white"
                 >
-                  <span className="text-indigo-300">
+                  <Box className="text-indigo-300" marginRight="x3">
                     <Icon name="check" aria-hidden="true" />
-                  </span>
-                  <span>{item}</span>
-                </li>
+                  </Box>
+                  <Text as="span" variant="body_2">
+                    {item}
+                  </Text>
+                </GridCell>
               ))}
-            </ul>
-            <a
-              href="#"
-              className="bg-white border border-transparent rounded-md w-full px-8 py-4 flex items-center justify-center text-lg leading-6 font-medium text-indigo-600 hover:bg-indigo-50 md:px-10"
-            >
-              Get started today
-            </a>
-            <a
-              href="#"
-              className="block text-center text-base font-medium text-indigo-200 hover:text-white"
-            >
-              Try Workflow Lite for free
-            </a>
-          </div>
+            </Grid>
+            <Box my="x8">
+              {/* Button Link */}
+              <a
+                href="#"
+                className="bg-white border border-transparent rounded-md w-full px-8 py-4 flex items-center justify-center text-lg leading-6 font-medium text-indigo-600 hover:bg-indigo-50 md:px-10"
+              >
+                Get started today
+              </a>
+            </Box>
+            <Box my="x8">
+              <Link
+                href="/"
+                textAlign="center"
+                className="block text-indigo-200 hover:text-white"
+              >
+                Try Workflow Lite for free
+              </Link>
+            </Box>
+          </Box>
         </GridCell>
       </Grid>
     </Box>

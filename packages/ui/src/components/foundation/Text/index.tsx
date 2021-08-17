@@ -19,7 +19,7 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
 
 const TextBase = styled.span<TextProps>`
   ${propToStyle('textAlign')}
-  ${({ theme, variant, bold, srOnly }) =>
+  ${({ theme, variant, bold, srOnly, uppercase }) =>
     css`
       font-size: ${theme.typography[variant].xs.fontSize};
       line-height: ${theme.typography[variant].xs.lineHeight};
@@ -29,6 +29,7 @@ const TextBase = styled.span<TextProps>`
         variant,
         theme.typography[variant].xs.fontWeight
       )};
+      ${uppercase && `text-transform: uppercase;`}
       ${srOnly &&
       css`
         position: absolute;
@@ -68,7 +69,7 @@ type asText =
   | 'h5'
   | 'h6'
   | 'a';
-interface TextProps {
+interface TextPropsBase {
   bold?: boolean;
   variant?: TypographyVariantsName;
   as?: asText;
@@ -77,15 +78,17 @@ interface TextProps {
   srOnly?: boolean;
   /** Never pass this prop directly, always use Link component instead */
   href?: string;
+  uppercase?: boolean;
 }
 type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
+export type TextProps = TextPropsBase & TextDynamicProps;
 export default function Text({
   children,
   variant,
   bold,
   as,
   ...props
-}: TextProps & TextDynamicProps): JSX.Element {
+}: TextProps): JSX.Element {
   return (
     <TextBase as={as} bold={bold} variant={variant} {...props}>
       {children}

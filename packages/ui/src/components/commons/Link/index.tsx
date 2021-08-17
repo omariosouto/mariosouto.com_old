@@ -1,4 +1,4 @@
-import Text from '../../foundation/Text';
+import Text, { TextProps } from '../../foundation/Text';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 import Icon, { IconNames, IconSizes } from '../../foundation/Icon';
 import Box from '../../foundation/layout/Box';
@@ -47,13 +47,15 @@ const linkVariants = {
   ),
 };
 
-interface LinkProps {
+interface LinkPropsBase {
   href: string;
   children: React.ReactNode;
   hasIcon?: boolean;
   className?: string;
   variant?: TypographyVariantsName;
 }
+type LinkDynamicProps = Pick<TextProps, 'textAlign'>;
+type LinkProps = LinkPropsBase & LinkDynamicProps;
 export default function Link({
   href,
   children,
