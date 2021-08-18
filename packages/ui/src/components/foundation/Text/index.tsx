@@ -68,7 +68,8 @@ type asText =
   | 'h4'
   | 'h5'
   | 'h6'
-  | 'a';
+  | 'a'
+  | 'button';
 interface TextPropsBase {
   bold?: boolean;
   variant?: TypographyVariantsName;

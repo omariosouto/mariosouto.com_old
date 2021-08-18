@@ -4,27 +4,11 @@ import { ThemeBreakpoints } from '../theme/types/ThemeBreakpoints';
 import { ThemeSpace } from '../theme/types/ThemeSpace';
 import { ThemeContainer } from '../theme/types/ThemeContainer';
 
-// Color
-interface Color {
-  main: {
-    color: string;
-    contrastColor: string;
-  };
-  light?: {
-    color: string;
-    contrastColor: string;
-  };
-}
-export interface ThemeColor {
-  background: Color;
-  primary: Color;
-  secondary?: Color;
-}
-
 declare module 'styled-components' {
   export interface DefaultTheme {
     typography: ThemeTypography;
-    colors: ThemeColor;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    colors: any;
     space: ThemeSpace;
     breakpoints: ThemeBreakpoints;
     container: ThemeContainer;

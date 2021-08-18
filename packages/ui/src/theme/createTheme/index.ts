@@ -1,4 +1,3 @@
-import { ThemeColor } from '../../@types/styled.d';
 import { ThemeTypography } from '../types/ThemeTypography';
 import { ThemeBreakpoints } from '../types/ThemeBreakpoints';
 import { ThemeSpace } from '../types/ThemeSpace';
@@ -6,10 +5,11 @@ import { ThemeContainer } from '../types/ThemeContainer';
 import { defaultTypography } from './defaultTypography';
 import { defaultSpace } from './defaultSpace';
 import { defaultBreakpoints } from './defaultBreakpoints';
-
 export type Theme = {
-  colorsLight: ThemeColor;
-  colorsDark: ThemeColor;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  colorsLight: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  colorsDark: any;
   typography: ThemeTypography;
   breakpoints: ThemeBreakpoints;
   space: ThemeSpace;

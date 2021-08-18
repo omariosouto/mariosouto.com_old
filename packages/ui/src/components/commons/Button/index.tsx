@@ -39,13 +39,25 @@ const sizeVariants: Record<ThemeBasicSizes, TypographyVariant & SizeVariant> = {
 };
 
 const StyledButton = styled(Text)<ButtonProps>`
+  cursor: pointer;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  background: red;
-  ${({ theme, size, fullWidth }) => {
+  border-radius: 0.375rem;
+  color: white;
+  ${({ theme, size, fullWidth, action }) => {
     const { px, py } = sizeVariants[size];
     return css`
+      background-color: ${theme.colors.button[action].bg};
+      color: ${theme.colors.button[action].color};
+      border-color: ${theme.colors.button[action].border};
+      &:hover,
+      &:focus {
+        background-color: ${theme.colors.button[action].focus.bg};
+        color: ${theme.colors.button[action].focus.color};
+        border-color: ${theme.colors.button[action].focus.border};
+      }
+
       padding-top: ${theme.space[py as ThemeSpaceNames]};
       padding-bottom: ${theme.space[py as ThemeSpaceNames]};
       padding-left: ${theme.space[px as ThemeSpaceNames]};
@@ -55,9 +67,14 @@ const StyledButton = styled(Text)<ButtonProps>`
   }}
 `;
 
+StyledButton.defaultProps = {
+  as: 'button',
+};
+
 interface ButtonProps {
   children: ReactNode;
   type?: 'button' | 'reset' | 'submit';
+  action?: 'primary' | 'secondary' | 'tertiary';
   size: ThemeBasicSizes;
   fullWidth?: boolean;
 }
@@ -66,22 +83,45 @@ export default function Button({
   type,
   size,
   fullWidth,
+  action,
 }: ButtonProps): JSX.Element {
   const { typographyVariant } = sizeVariants[size];
 
   return (
-    <StyledButton
-      type={type}
-      size={size}
-      fullWidth={fullWidth}
-      variant={typographyVariant}
-    >
-      {children}
-    </StyledButton>
+    <>
+      <StyledButton
+        type={type}
+        size={size}
+        fullWidth={fullWidth}
+        variant={typographyVariant}
+        action={action}
+      >
+        {children}
+      </StyledButton>
+      <StyledButton
+        type={type}
+        size={size}
+        fullWidth={fullWidth}
+        variant={typographyVariant}
+        action="secondary"
+      >
+        {children}
+      </StyledButton>
+      <StyledButton
+        type={type}
+        size={size}
+        fullWidth={fullWidth}
+        variant={typographyVariant}
+        action="tertiary"
+      >
+        {children}
+      </StyledButton>
+    </>
   );
 }
 
 Button.defaultProps = {
+  action: 'primary',
   type: 'button',
   size: 'md',
   fullWidth: false,

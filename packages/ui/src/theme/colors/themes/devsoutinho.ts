@@ -126,21 +126,63 @@ export const devsoutinhoPalletes: ColorPallete = {
   },
 };
 
-export const theme = {
-  // [???]
-  // fillBaseReverse: {},
-  fillBase: {
-    bg: '',
-    colorContrast: '',
-    colorContrastStrong: '',
-    colorContrastLight: '',
-    colorHighlight: '',
-    colorHighlightStrong: '',
-    colorHighlightLight: '',
-  },
-  fillPrimary: {},
-  fillAccent: {},
-  fillPositive: {},
-  fillWarning: {},
-  fillNegative: {},
-};
+// ================================================================================================
+// ================================================================================================
+// ================================================================================================
+
+export function createDevSoutinhoColorTheme({
+  mode,
+}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+{
+  // TODO: Add support to this in future
+  colorPallete?: ColorPallete;
+  mode?: string;
+}): unknown {
+  const currentColorPallete =
+    devsoutinhoPalletes.modes[mode] || devsoutinhoPalletes;
+
+  return {
+    white: currentColorPallete.white,
+    black: currentColorPallete.black,
+    defaultBackground: currentColorPallete.defaultBackground,
+    defaultTextColor: currentColorPallete.defaultTextColor,
+    /// Patterns
+    fillBase: {
+      bg: currentColorPallete.neutral[100],
+      colorContrast: '',
+      colorContrastStrong: '',
+      colorContrastLight: '',
+      colorHighlight: '',
+      colorHighlightStrong: '',
+      colorHighlightLight: '',
+    },
+    fillBaseReverse: {
+      bg: currentColorPallete.neutral[900],
+    },
+    fillPrimary: {},
+    fillAccent: {},
+    fillPositive: {},
+    fillWarning: {},
+    fillNegative: {},
+    // [Button]
+    button: {
+      primary: {
+        bg: 'rgb(79, 70, 229)',
+        border: 'transparent',
+        color: '#ffffff',
+        focus: {
+          bg: 'red',
+          border: 'transparent',
+          color: '#ffffff',
+        },
+      },
+      secondary: {},
+      tertiary: {},
+      positive: {},
+      danger: {},
+      warning: {},
+    },
+    // Alert
+    // ...
+  };
+}
