@@ -19,6 +19,7 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
 
 const TextBase = styled.span<TextProps>`
   ${propToStyle('textAlign')}
+  ${propToStyle('color')}
   ${({ theme, variant, bold, srOnly, uppercase }) =>
     css`
       font-size: ${theme.typography[variant].xs.fontSize};
@@ -81,7 +82,7 @@ interface TextPropsBase {
   href?: string;
   uppercase?: boolean;
 }
-type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
+type TextDynamicProps = Pick<CSSProperties, 'textAlign' | 'color'>;
 export type TextProps = TextPropsBase & TextDynamicProps;
 export default function Text({
   children,

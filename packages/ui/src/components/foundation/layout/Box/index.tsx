@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { CSSProperties, PropertyDefinition } from './css/CSSProperties';
 import propToStyle from '../../../../theme/utils/propToStyle';
 
@@ -41,6 +41,23 @@ const StyledBox = styled.div<BoxProps>`
   ${Object.keys(allPropToStyle).flatMap(
     (key: keyof typeof allPropToStyle) => allPropToStyle[key]
   )}
+  ${({ theme, colorTheme }) => {
+    if (colorTheme) {
+      return css`
+        ${{
+          backgroundColor: theme.colors[colorTheme].bg,
+        }}
+        --bg: ${theme.colors[colorTheme].bg};
+        --colorContrast: ${theme.colors[colorTheme].colorContrast};
+        --colorContrastStrong: ${theme.colors[colorTheme].colorContrastStrong};
+        --colorContrastLight: ${theme.colors[colorTheme].colorContrastLight};
+        --colorHighlight: ${theme.colors[colorTheme].colorHighlight};
+        --colorHighlightStrong: ${theme.colors[colorTheme]
+          .colorHighlightStrong};
+        --colorHighlightLight: ${theme.colors[colorTheme].colorHighlightLight};
+      `;
+    }
+  }}
 `;
 
 type BoxTags =
@@ -63,6 +80,7 @@ interface BoxPropsBase {
   tag?: BoxTags;
   className?: string;
   children?: React.ReactNode;
+  colorTheme?: 'fillBase' | 'fillBaseReverse';
 }
 type BoxPropsExtensions = {
   mx?: PropertyDefinition<string>;
@@ -83,4 +101,5 @@ export default function Box({ children, ...props }: BoxProps): JSX.Element {
 
 Box.defaultProps = {
   display: 'block',
+  colorTheme: '',
 };

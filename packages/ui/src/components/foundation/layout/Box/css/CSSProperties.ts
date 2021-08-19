@@ -41,6 +41,7 @@ export interface CSSProperties {
   overflow?: PropertyDefinition<
     'visible' | 'hidden' | 'scroll' | 'auto' | 'inherit' | 'initial' | 'revert'
   >;
+  color?: string;
   // Box Decoration
   opacity?: PropertyDefinition<number | 'initial' | 'inherit'>;
   boxShadow?: PropertyDefinition<string>;

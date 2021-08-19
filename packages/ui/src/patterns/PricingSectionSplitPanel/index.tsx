@@ -1,9 +1,8 @@
 import Icon, { IconNames } from '../../components/foundation/Icon';
 import Grid, { GridCell } from '../../components/foundation/layout/Grid';
 import Box from '../../components/foundation/layout/Box';
-// import Container from '../../components/foundation/layout/Container';
 import Text from '../../components/foundation/Text';
-import Link from '../../components/commons/Link';
+import Button from '../../components/commons/Button';
 
 const features: Array<{
   name: string;
@@ -47,12 +46,13 @@ const checklist = [
 
 export default function PricingSectionSplitPanel(): JSX.Element {
   return (
-    <Box position="relative" className="bg-white">
+    <Box position="relative" colorTheme="fillBase">
       <Box position="absolute" className="inset-0" aria-hidden="true">
         <Box
           position="absolute"
           width="x8/12"
-          className="inset-y-0 right-0 bg-indigo-700"
+          colorTheme="fillBaseReverse"
+          className="inset-y-0 right-0"
         />
       </Box>
       <Grid
@@ -94,11 +94,16 @@ export default function PricingSectionSplitPanel(): JSX.Element {
               variant="body_2"
               bold
               uppercase
-              className="text-indigo-600"
+              color="var(--colorContrast)"
             >
               Full-featured
             </Text>
-            <Text variant="heading_3" bold className="mt-2 text-gray-900">
+            <Text
+              variant="heading_3"
+              bold
+              className="mt-2"
+              color="var(--colorContrast)"
+            >
               Everything you need to talk with your customers
             </Text>
             <Box as="dl" className="mt-12 space-y-10">
@@ -112,21 +117,23 @@ export default function PricingSectionSplitPanel(): JSX.Element {
                       height="x12"
                       alignItems="center"
                       justifyContent="center"
-                      className="bg-indigo-500 rounded-md text-white"
+                      colorTheme="fillBaseReverse"
+                      className="rounded-md text-white"
                     >
                       <Icon name={feature.icon} aria-hidden="true" />
                     </Box>
-                    <Text variant="body_1" className="ml-16 text-gray-900">
+                    <Text
+                      variant="body_1"
+                      className="ml-16"
+                      color="var(--colorContrast)"
+                    >
                       {feature.name}
                     </Text>
                   </Box>
-                  <Box
-                    as="dd"
-                    marginTop="x2"
-                    marginLeft="x16"
-                    className="text-gray-500"
-                  >
-                    <Text variant="body_2">{feature.description}</Text>
+                  <Box as="dd" marginTop="x2" marginLeft="x16">
+                    <Text variant="body_2" color="var(--colorContrast)">
+                      {feature.description}
+                    </Text>
                   </Box>
                 </Box>
               ))}
@@ -138,7 +145,8 @@ export default function PricingSectionSplitPanel(): JSX.Element {
             xs: 'block',
             lg: 'flex',
           }}
-          className="bg-indigo-700 py-16 px-4 sm:py-24 sm:px-6 lg:bg-none lg:px-0 lg:pl-8 lg:flex lg:items-center lg:justify-end"
+          colorTheme="fillBaseReverse"
+          className="py-16 px-4 sm:py-24 sm:px-6 lg:bg-none lg:px-0 lg:pl-8 lg:flex lg:items-center lg:justify-end"
         >
           <Box mx={{ xs: 'auto', lg: 'x0' }} className="max-w-lg w-full">
             <Box my="x8">
@@ -150,6 +158,7 @@ export default function PricingSectionSplitPanel(): JSX.Element {
                   display="flex"
                   flexDirection="column"
                   textAlign="center"
+                  as="span"
                 >
                   <Text variant="heading_1" className="text-white">
                     $99
@@ -167,11 +176,12 @@ export default function PricingSectionSplitPanel(): JSX.Element {
                   alignItems="center"
                   justifyContent="center"
                   aria-hidden="true"
+                  as="span"
                   className="h-12 w-full text-indigo-300"
                 >
                   <Icon name="plus" size="md" aria-hidden="true" />
                 </GridCell>
-                <GridCell>
+                <GridCell as="span">
                   <Box
                     as="span"
                     display="flex"
@@ -220,22 +230,26 @@ export default function PricingSectionSplitPanel(): JSX.Element {
               ))}
             </Grid>
             <Box my="x8">
-              {/* Button Link */}
-              <a
+              <Button
                 href="#"
-                className="bg-white border border-transparent rounded-md w-full px-8 py-4 flex items-center justify-center text-lg leading-6 font-medium text-indigo-600 hover:bg-indigo-50 md:px-10"
+                size="xl"
+                fullWidth
+                action="quartenary"
+                color="primary"
               >
                 Get started today
-              </a>
+              </Button>
             </Box>
             <Box my="x8">
-              <Link
+              <Button
                 href="/"
-                textAlign="center"
-                className="block text-indigo-200 hover:text-white"
+                size="xl"
+                fullWidth
+                action="tertiary"
+                color="accent"
               >
                 Try Workflow Lite for free
-              </Link>
+              </Button>
             </Box>
           </Box>
         </GridCell>
