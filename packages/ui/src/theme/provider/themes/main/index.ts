@@ -1,9 +1,9 @@
 import createTheme from '../../../createTheme';
-import { createDevSoutinhoColorTheme } from '../../../colors/themes/devsoutinho';
+import { devSoutinhoColorTheme } from '../../../colors/themes/devsoutinho';
 
 const mainTheme = createTheme({
-  colorsLight: createDevSoutinhoColorTheme({}),
-  colorsDark: createDevSoutinhoColorTheme({ mode: 'dark' }),
+  colorsLight: devSoutinhoColorTheme.light,
+  colorsDark: devSoutinhoColorTheme.dark,
 });
 
 export default mainTheme;

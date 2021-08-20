@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 import propToStyle from '../../../theme/utils/propToStyle';
-import { CSSProperties } from '../layout/Box/css/CSSProperties';
+import {
+  CSSProperties,
+  PropertyDefinition,
+} from '../layout/Box/css/CSSProperties';
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -19,7 +22,7 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
 
 const TextBase = styled.span<TextProps>`
   ${propToStyle('textAlign')}
-  ${propToStyle('color')}
+  ${propToStyle('color', 'patternColor', (color) => `var(--${color})`)}
   ${({ theme, variant, bold, srOnly, uppercase }) =>
     css`
       font-size: ${theme.typography[variant].xs.fontSize};
@@ -81,8 +84,16 @@ interface TextPropsBase {
   /** Never pass this prop directly, always use Link component instead */
   href?: string;
   uppercase?: boolean;
+  patternColor?: PropertyDefinition<
+    | 'colorContrast'
+    | 'colorContrastStrong'
+    | 'colorContrastLight'
+    | 'colorHighlight'
+    | 'colorHighlightStrong'
+    | 'colorHighlightLight'
+  >;
 }
-type TextDynamicProps = Pick<CSSProperties, 'textAlign' | 'color'>;
+type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
 export type TextProps = TextPropsBase & TextDynamicProps;
 export default function Text({
   children,

@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { CSSProperties, PropertyDefinition } from './css/CSSProperties';
 import propToStyle from '../../../../theme/utils/propToStyle';
+import { PatternColorSchemeNames } from '../../../../theme/types/ThemeColors';
 
 const allPropToStyle = {
   /* Box Model */
@@ -41,20 +42,21 @@ const StyledBox = styled.div<BoxProps>`
   ${Object.keys(allPropToStyle).flatMap(
     (key: keyof typeof allPropToStyle) => allPropToStyle[key]
   )}
-  ${({ theme, colorTheme }) => {
-    if (colorTheme) {
+  ${({ theme, patternFill, bg }) => {
+    if (patternFill) {
       return css`
         ${{
-          backgroundColor: theme.colors[colorTheme].bg,
+          backgroundColor: bg && theme.colors[patternFill].bg,
+          color: theme.colors[patternFill].colorContrast,
         }}
-        --bg: ${theme.colors[colorTheme].bg};
-        --colorContrast: ${theme.colors[colorTheme].colorContrast};
-        --colorContrastStrong: ${theme.colors[colorTheme].colorContrastStrong};
-        --colorContrastLight: ${theme.colors[colorTheme].colorContrastLight};
-        --colorHighlight: ${theme.colors[colorTheme].colorHighlight};
-        --colorHighlightStrong: ${theme.colors[colorTheme]
+        --bg: ${theme.colors[patternFill].bg};
+        --colorContrast: ${theme.colors[patternFill].colorContrast};
+        --colorContrastStrong: ${theme.colors[patternFill].colorContrastStrong};
+        --colorContrastLight: ${theme.colors[patternFill].colorContrastLight};
+        --colorHighlight: ${theme.colors[patternFill].colorHighlight};
+        --colorHighlightStrong: ${theme.colors[patternFill]
           .colorHighlightStrong};
-        --colorHighlightLight: ${theme.colors[colorTheme].colorHighlightLight};
+        --colorHighlightLight: ${theme.colors[patternFill].colorHighlightLight};
       `;
     }
   }}
@@ -80,7 +82,8 @@ interface BoxPropsBase {
   tag?: BoxTags;
   className?: string;
   children?: React.ReactNode;
-  colorTheme?: 'fillBase' | 'fillBaseReverse';
+  patternFill?: PatternColorSchemeNames;
+  bg?: boolean;
 }
 type BoxPropsExtensions = {
   mx?: PropertyDefinition<string>;
@@ -101,5 +104,5 @@ export default function Box({ children, ...props }: BoxProps): JSX.Element {
 
 Box.defaultProps = {
   display: 'block',
-  colorTheme: '',
+  bg: false,
 };
