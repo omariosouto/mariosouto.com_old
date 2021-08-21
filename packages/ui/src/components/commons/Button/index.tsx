@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import styled, { css, DefaultTheme } from 'styled-components';
 import { ThemeBasicSizes } from '../../../theme/types/ThemeBasicSizes';
+import { ComponentColorSchemeNames } from '../../../theme/types/ThemeColors';
 import { ThemeSpaceNames } from '../../../theme/types/ThemeSpace';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 import Text from '../../foundation/Text';
@@ -39,7 +40,13 @@ const sizeVariants: Record<ThemeBasicSizes, TypographyVariant & SizeVariant> = {
 };
 
 const actions = {
-  primary({ theme, color }: { theme: DefaultTheme; color: string }) {
+  primary({
+    theme,
+    color,
+  }: {
+    theme: DefaultTheme;
+    color: ComponentColorSchemeNames;
+  }) {
     return {
       backgroundColor: theme.colors.button[color].darkColor,
       color: theme.colors.button[color].darkColorContrastText,
@@ -49,7 +56,13 @@ const actions = {
       },
     };
   },
-  secondary({ theme, color }: { theme: DefaultTheme; color: string }) {
+  secondary({
+    theme,
+    color,
+  }: {
+    theme: DefaultTheme;
+    color: ComponentColorSchemeNames;
+  }) {
     return {
       backgroundColor: theme.colors.button[color].lightColor,
       color: theme.colors.button[color].lightColorContrastText,
@@ -59,7 +72,13 @@ const actions = {
       },
     };
   },
-  tertiary({ theme, color }: { theme: DefaultTheme; color: string }) {
+  quartenary({
+    theme,
+    color,
+  }: {
+    theme: DefaultTheme;
+    color: ComponentColorSchemeNames;
+  }) {
     return {
       backgroundColor: 'transparent',
       color: theme.colors.button[color].darkColor,
@@ -68,7 +87,13 @@ const actions = {
       },
     };
   },
-  quartenary({ theme, color }: { theme: DefaultTheme; color: string }) {
+  tertiary({
+    theme,
+    color,
+  }: {
+    theme: DefaultTheme;
+    color: ComponentColorSchemeNames;
+  }) {
     return {
       backgroundColor: theme.colors.white,
       color: theme.colors.button[color].darkColor,

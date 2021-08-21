@@ -1,4 +1,4 @@
-type ComponentColorSchemeNames =
+export type ComponentColorSchemeNames =
   | 'primary'
   | 'accent'
   | 'positive'
@@ -14,6 +14,16 @@ export type PatternColorSchemeNames =
   | 'fillWarning'
   | 'fillBase'
   | 'fillBaseReverse';
+
+export const patternColorSchemeNames: PatternColorSchemeNames[] = [
+  'fillBase',
+  'fillPrimary',
+  'fillAccent',
+  'fillPositive',
+  'fillNegative',
+  'fillWarning',
+  'fillBaseReverse',
+];
 
 export type ButtonColors = Record<
   ComponentColorSchemeNames,
@@ -34,7 +44,8 @@ export type ButtonColors = Record<
 
 export interface PatternColors {
   bg: string;
-  colorContrast: string;
+  colorBase: string;
+  colorContrastBase: string;
   colorContrastStrong: string;
   colorContrastLight: string;
   colorHighlight: string;

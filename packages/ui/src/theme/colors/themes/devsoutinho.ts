@@ -1,4 +1,4 @@
-import { ColorPallete, ColorPalleteColorSetNames } from './types';
+import { ColorPallete } from './types';
 import { pallete } from './pallete';
 import {
   ButtonColors,
@@ -58,44 +58,45 @@ function createColorTheme(currentPallete: ColorPallete): ThemeColors {
     {}
   ) as ButtonColors;
 
-  const patterns = patternColorSchemeNames.reduce(
-    (acc, item: typeof patternColorSchemeNames[number]) => {
-      const palleteColorByPatternColorName: Record<
-        typeof patternColorSchemeNames[number],
-        ColorPalleteColorSetNames
-      > = {
-        fillPrimary: 'primary',
-        fillAccent: 'accent',
-        fillPositive: 'positive',
-        fillNegative: 'negative',
-        fillWarning: 'neutral',
-        fillBase: 'neutral',
-        fillBaseReverse: 'primary',
-      };
-      const currentColor = palleteColorByPatternColorName[item];
-      return {
-        ...acc,
-        [item]: {
-          bg: currentPallete[currentColor]['600'],
-          colorContrast: new Set(['fillBase']).has(item)
-            ? currentPallete.neutral['900']
-            : currentPallete.neutral['100'],
-          colorContrastStrong: currentPallete.neutral['600'],
-          colorContrastLight: currentPallete.neutral['600'],
-          colorHighlightLight: currentPallete.primary['600'],
-          colorHighlight: currentPallete.primary['700'],
-          colorHighlightStrong: currentPallete.primary['900'],
-        },
-      };
+  const patterns: Record<
+    typeof patternColorSchemeNames[number],
+    PatternColors
+  > = {
+    fillBase: {
+      bg: globalDefinitions.defaultBackground,
+      colorBase: globalDefinitions.defaultTextColor,
+      colorContrastBase: currentPallete.neutral['600'],
+      colorContrastLight: currentPallete.neutral['600'],
+      colorContrastStrong: currentPallete.neutral['600'],
+      colorHighlightLight: currentPallete.primary['600'],
+      colorHighlight: currentPallete.primary['600'],
+      colorHighlightStrong: currentPallete.primary['600'],
     },
-    {}
-  ) as Record<typeof patternColorSchemeNames[number], PatternColors>;
+    fillPrimary: {
+      bg: currentPallete.primary['600'],
+      colorBase: globalDefinitions.white,
+      colorContrastBase: currentPallete.neutral['600'],
+      colorContrastLight: currentPallete.neutral['600'],
+      colorContrastStrong: currentPallete.neutral['600'],
+      colorHighlightLight: currentPallete.neutral['600'],
+      colorHighlight: currentPallete.neutral['600'],
+      colorHighlightStrong: currentPallete.neutral['600'],
+    },
+    fillAccent: {
+      bg: currentPallete.accent['600'],
+      colorBase: globalDefinitions.white,
+      colorContrastBase: currentPallete.neutral['600'],
+      colorContrastLight: currentPallete.neutral['600'],
+      colorContrastStrong: currentPallete.neutral['600'],
+      colorHighlightLight: currentPallete.neutral['600'],
+      colorHighlight: currentPallete.neutral['600'],
+      colorHighlightStrong: currentPallete.neutral['600'],
+    },
+  };
 
   return {
     ...globalDefinitions,
-    /// [Patterns]
     ...patterns,
-    // [Components]
     button: ButtonColors,
   };
 }

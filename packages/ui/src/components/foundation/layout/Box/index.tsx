@@ -47,10 +47,11 @@ const StyledBox = styled.div<BoxProps>`
       return css`
         ${{
           backgroundColor: bg && theme.colors[patternFill].bg,
-          color: theme.colors[patternFill].colorContrast,
+          color: theme.colors[patternFill].colorContrastBase,
         }}
         --bg: ${theme.colors[patternFill].bg};
-        --colorContrast: ${theme.colors[patternFill].colorContrast};
+        --colorBase: ${theme.colors[patternFill].colorBase};
+        --colorContrastBase: ${theme.colors[patternFill].colorContrastBase};
         --colorContrastStrong: ${theme.colors[patternFill].colorContrastStrong};
         --colorContrastLight: ${theme.colors[patternFill].colorContrastLight};
         --colorHighlight: ${theme.colors[patternFill].colorHighlight};

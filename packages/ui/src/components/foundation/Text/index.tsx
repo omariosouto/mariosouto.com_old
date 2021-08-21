@@ -85,7 +85,8 @@ interface TextPropsBase {
   href?: string;
   uppercase?: boolean;
   patternColor?: PropertyDefinition<
-    | 'colorContrast'
+    | 'colorBase'
+    | 'colorContrastBase'
     | 'colorContrastStrong'
     | 'colorContrastLight'
     | 'colorHighlight'
