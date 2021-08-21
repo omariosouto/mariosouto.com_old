@@ -27,8 +27,12 @@ const StyledGridCell = styled(Box)<GridCellProps>`
   ${propToStyle('gridRowStart', 'cellPositionTop')}
 `;
 
-function GridCell({ children, ...props }: GridCellProps): JSX.Element {
-  return <StyledGridCell {...props}>{children}</StyledGridCell>;
+function GridCell({ children, as, ...props }: GridCellProps): JSX.Element {
+  return (
+    <StyledGridCell tag={as} {...props}>
+      {children}
+    </StyledGridCell>
+  );
 }
 
 GridCell.defaultProps = {

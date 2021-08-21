@@ -5,6 +5,10 @@ type ResponsiveProperty<T> = Partial<Record<BreakpointNames, T>>;
 export type PropertyDefinition<T> = T | ResponsiveProperty<T>;
 
 export interface CSSProperties {
+  // ColorStyles
+  color?: PropertyDefinition<string>;
+  background?: PropertyDefinition<string>;
+  backgroundColor?: PropertyDefinition<string>;
   // Box Model
   width?: PropertyDefinition<string>;
   height?: PropertyDefinition<string>;

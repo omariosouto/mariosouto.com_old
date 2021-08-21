@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
+import propToStyle from '../../../theme/utils/propToStyle';
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -18,6 +19,7 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
 const TextBase = styled.span<TextProps>`
   ${({ theme, variant, bold }) =>
     css`
+      ${propToStyle('color')}
       font-size: ${theme.typography[variant].xs.fontSize};
       line-height: ${theme.typography[variant].xs.lineHeight};
       letter-spacing: ${theme.typography[variant].xs.letterSpacing};
@@ -48,6 +50,7 @@ interface TextProps {
   variant: TypographyVariantsName;
   as: asText;
   children: React.ReactNode;
+  color: string;
 }
 export default function Text({
   children,
@@ -67,4 +70,5 @@ Text.defaultProps = {
   variant: 'body_2',
   bold: false,
   as: 'span',
+  color: 'primary100',
 };

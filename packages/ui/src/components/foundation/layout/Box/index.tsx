@@ -4,6 +4,9 @@ import { CSSProperties } from './css/CSSProperties';
 import propToStyle from '../../../../theme/utils/propToStyle';
 
 const allPropToStyle = {
+  color: propToStyle('color'),
+  background: propToStyle('background'),
+  backgroundColor: propToStyle('backgroundColor'),
   /* Box Model */
   width: propToStyle('width'),
   height: propToStyle('height'),
@@ -30,16 +33,41 @@ const StyledBox = styled.div<BoxProps>`
   )}
 `;
 
+type BoxTags =
+  | 'div'
+  | 'section'
+  | 'article'
+  | 'ul'
+  | 'header'
+  | 'footer'
+  | 'main'
+  | 'dl'
+  | 'dt'
+  | 'dd'
+  | 'li'
+  | 'p'
+  | 'span';
+
 interface BoxPropsBase {
-  as: 'div' | 'section' | 'article' | 'ul' | 'header' | 'footer' | 'main';
   children: React.ReactNode;
+  as?: BoxTags;
+  tag?: BoxTags;
 }
 export type BoxProps = BoxPropsBase & Pick<CSSProperties, BoxStyleProps>;
 
-export default function Box({ children, ...props }: BoxProps): JSX.Element {
-  return <StyledBox {...props}>{children}</StyledBox>;
+export default function Box({
+  children,
+  color,
+  ...props
+}: BoxProps): JSX.Element {
+  return (
+    <StyledBox color={color} as={props.as || props.tag} {...props}>
+      {children}
+    </StyledBox>
+  );
 }
 
 Box.defaultProps = {
-  display: 'flex',
+  display: 'block',
+  as: 'div',
 };

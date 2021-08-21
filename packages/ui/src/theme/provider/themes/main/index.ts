@@ -1,9 +1,9 @@
 import createTheme from '../../../createTheme';
-import { pallete } from './pallete';
+import { devsoutinhoPallete } from '../../../createTheme/colors/palletes/devsoutinho';
 
 const mainTheme = createTheme({
-  colorsDark: pallete.dark,
-  colorsLight: pallete.light,
+  colorsLight: devsoutinhoPallete.light,
+  colorsDark: devsoutinhoPallete.dark,
 });
 
 export default mainTheme;

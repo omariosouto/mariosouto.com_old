@@ -20,7 +20,9 @@ export const GlobalStyle = createGlobalStyle<{ cssVariables: any }>`
           })
           .map(({ path, value }: any) => {
             if (path.includes('.') || path.includes('/')) {
-              return `--${path.replace('.', '__')}: ${value};`;
+              return `--${path
+                .replace('.', '__')
+                .replace('/', '___')}: ${value};`;
             }
             return `--${path}: ${value};`;
           })
