@@ -102,4 +102,5 @@ export default function Link({
 Link.defaultProps = {
   hasIcon: true,
   variant: 'inherit',
+  href: '',
 };

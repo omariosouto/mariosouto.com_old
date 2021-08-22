@@ -39,14 +39,62 @@ const sizeVariants: Record<ThemeBasicSizes, TypographyVariant & SizeVariant> = {
   },
 };
 
-const actions = {
-  primary({ theme }: { theme: DefaultTheme }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const actions: Record<any, any> = {
+  primary({ theme, color }: { theme: DefaultTheme } & ButtonProps) {
     return {
-      background: theme.colors.primary['600'],
+      background: theme.colors[color]['600'],
+      color: theme.colors.neutral['050'],
+      '&:hover, &:focus': {
+        background: theme.colors[color]['700'],
+      },
+      '&:focus': {
+        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+          0 0 0 4px ${theme.colors[color]['500']}`,
+      },
+    };
+  },
+  secondary({ theme, color }: { theme: DefaultTheme } & ButtonProps) {
+    return {
+      background: theme.colors[color]['100'],
+      color: theme.colors[color]['700'],
+      '&:hover, &:focus': {
+        background: theme.colors[color]['200'],
+      },
+      '&:focus': {
+        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+          0 0 0 4px ${theme.colors[color]['500']}`,
+      },
+    };
+  },
+  tertiary({ theme, color }: { theme: DefaultTheme } & ButtonProps) {
+    return {
+      background: 'white',
+      color: theme.colors[color]['700'],
+      '&:hover, &:focus': {
+        background: theme.colors[color]['100'],
+      },
+      '&:focus': {
+        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+          0 0 0 4px ${theme.colors[color]['500']}`,
+      },
+    };
+  },
+  quartenary({ theme, color }: { theme: DefaultTheme } & ButtonProps) {
+    return {
+      background: 'transparent',
+      color: theme.colors[color]['700'],
+      '&:hover, &:focus': {
+        background: theme.colors[color]['100'],
+      },
+      '&:focus': {
+        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+          0 0 0 4px ${theme.colors[color]['500']}`,
+      },
     };
   },
 };
-/* ${actions[action]} */
+
 const StyledButton = styled(Text)<ButtonProps>`
   cursor: pointer;
   display: inline-flex;
@@ -54,13 +102,10 @@ const StyledButton = styled(Text)<ButtonProps>`
   align-items: center;
   border-radius: 0.375rem;
   outline: 0;
-  ${({ theme, size, fullWidth, action, color }) => {
+  ${({ theme, size, fullWidth, action }) => {
     const { px, py } = sizeVariants[size];
     return css`
       ${actions[action]}
-      &:focus {
-        box-shadow: 0 0 0 0.25rem red;
-      }
       padding-top: ${theme.space[py as ThemeSpaceNames]};
       padding-bottom: ${theme.space[py as ThemeSpaceNames]};
       padding-left: ${theme.space[px as ThemeSpaceNames]};
@@ -124,5 +169,4 @@ Button.defaultProps = {
   size: 'md',
   color: 'primary',
   fullWidth: false,
-  href: '/',
 };

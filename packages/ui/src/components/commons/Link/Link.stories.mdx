@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import Link from './index';
+
+
+<Meta
+  title="Components/Link"
+  component={Link}
+  argTypes={{}}
+/>
+
+# Link
+
+Link component is the base for all kind of interactions.
+
+<ArgsTable story="Link Component" />
+
+<Canvas>
+  <Story
+    name="Link Component"
+    args={{
+      ...Link.defaultProps,
+      children: 'Example'
+    }}
+  >
+    {(args) => (
+      <Link {...args} />
+    )} 
+  </Story>
+</Canvas>
