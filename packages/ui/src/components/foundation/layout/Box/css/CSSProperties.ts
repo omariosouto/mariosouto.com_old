@@ -11,6 +11,7 @@ export interface CSSProperties {
   backgroundColor?: PropertyDefinition<string>;
   // Box Model
   width?: PropertyDefinition<string>;
+  maxWidth?: PropertyDefinition<string>;
   height?: PropertyDefinition<string>;
   display?: PropertyDefinition<
     | 'block'
@@ -22,7 +23,15 @@ export interface CSSProperties {
     | 'inline-grid'
   >;
   margin?: PropertyDefinition<string>;
+  marginLeft?: PropertyDefinition<string>;
+  marginRight?: PropertyDefinition<string>;
+  marginBottom?: PropertyDefinition<string>;
+  marginTop?: PropertyDefinition<string>;
   padding?: PropertyDefinition<string>;
+  paddingLeft?: PropertyDefinition<string>;
+  paddingRight?: PropertyDefinition<string>;
+  paddingBottom?: PropertyDefinition<string>;
+  paddingTop?: PropertyDefinition<string>;
   position?: PropertyDefinition<
     | 'static'
     | 'relative'
@@ -34,15 +43,33 @@ export interface CSSProperties {
     | 'revert'
     | 'unset'
   >;
+  overflow?: PropertyDefinition<
+    'visible' | 'hidden' | 'scroll' | 'auto' | 'inherit' | 'initial' | 'revert'
+  >;
   // Box Decoration
   opacity?: PropertyDefinition<number | 'initial' | 'inherit'>;
   boxShadow?: PropertyDefinition<string>;
   listStyleType?: PropertyDefinition<'none' | 'disc' | 'circle' | 'square'>;
   // Text
   textAlign?: PropertyDefinition<'center' | 'left' | 'right' | 'justify'>;
+  verticalAlign?: PropertyDefinition<
+    | 'baseline'
+    | 'top'
+    | 'bottom'
+    | 'middle'
+    | 'text-top'
+    | 'text-bottom'
+    | 'sub'
+    | 'super'
+    | 'length'
+  >;
   // FlexBox/Grid
   /** https://developer.mozilla.org/en-US/docs/Web/CSS/flex */
   flex?: PropertyDefinition<string>;
+  flexDirection?: PropertyDefinition<
+    'row' | 'row-reverse' | 'column' | 'column-reverse' | 'inherit'
+  >;
+  order?: PropertyDefinition<string>;
   alignItems?: PropertyDefinition<
     'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
   >;

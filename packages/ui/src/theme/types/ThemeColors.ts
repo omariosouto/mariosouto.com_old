@@ -10,8 +10,18 @@ export const colorSetKeys = [
   '800',
   '900',
 ] as const;
-
 export type ColorSetKeys = typeof colorSetKeys[number];
+
+export const colorPalleteKeys = [
+  'neutral',
+  'primary',
+  'accent',
+  'positive',
+  'negative',
+  'warning',
+] as const;
+export type ColorPalleteKeys = typeof colorPalleteKeys[number];
+
 export type ColorDeck = Record<ColorSetKeys, string>;
 
 export interface ColorPallete {

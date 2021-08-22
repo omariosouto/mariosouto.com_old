@@ -38,19 +38,19 @@ const ContainerWrapper = styled.div<ContainerProps>`
         ${handlePadded(padded, theme, 'xs')}
       `,
       sm: css`
-        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.sm};`}
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.space.xcontainer_sm};`}
         ${handlePadded(padded, theme, 'sm')}
       `,
       md: css`
-        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.md};`}
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.space.xcontainer_md};`}
         ${handlePadded(padded, theme, 'md')}
       `,
       lg: css`
-        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.lg};`}
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.space.xcontainer_lg};`}
         ${handlePadded(padded, theme, 'lg')}
       `,
       xl: css`
-        ${fullWidth ? 'width: 100%;' : `width: ${theme.container.xl};`}
+        ${fullWidth ? 'width: 100%;' : `width: ${theme.space.xcontainer_xl};`}
         ${handlePadded(padded, theme, 'lg')}
       `,
     })}

@@ -29,9 +29,18 @@ const partition = {
   'x11/12': '91.666667%',
 };
 
+const container = {
+  xcontainer_xs: '0' /* 0 */,
+  xcontainer_sm: '40rem' /* 640px */,
+  xcontainer_md: '48rem' /* 768px */,
+  xcontainer_lg: '64rem' /* 1024px */,
+  xcontainer_xl: '80rem' /* 1280px */,
+};
+
 // TOOD: Fix CSS Rendering for x/x and x.5 values
 export const defaultSpace: ThemeSpace = {
   ...partition,
+  ...container,
   x0: '0',
   'x0.5': '0.125rem',
   x1: '0.25rem',
