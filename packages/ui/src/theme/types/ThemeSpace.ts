@@ -27,6 +27,14 @@ const partition = {
   'x11/12': '11/12',
 };
 
+const container = {
+  xcontainer_xs: 'xcontainer_xs',
+  xcontainer_sm: 'xcontainer_sm',
+  xcontainer_md: 'xcontainer_md',
+  xcontainer_lg: 'xcontainer_lg',
+  xcontainer_xl: 'xcontainer_xl',
+};
+
 const space = {
   x0: '0',
   'x0.5': '0.5',
@@ -63,6 +71,7 @@ const space = {
   x80: '80',
   x96: '96',
   ...partition,
+  ...container,
 };
 
 export type ThemeSpaceNames = keyof typeof space;

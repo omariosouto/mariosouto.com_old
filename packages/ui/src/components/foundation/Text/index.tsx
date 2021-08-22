@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
+import propToStyle from '../../../theme/utils/propToStyle';
+import { CSSProperties } from '../layout/Box/css/CSSProperties';
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -16,8 +18,10 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
 }
 
 const TextBase = styled.span<TextProps>`
-  ${({ theme, variant, bold }) =>
+  ${({ theme, variant, bold, uppercase, srOnly }) =>
     css`
+      ${propToStyle('textAlign')}
+      ${propToStyle('color')}
       font-size: ${theme.typography[variant].xs.fontSize};
       line-height: ${theme.typography[variant].xs.lineHeight};
       letter-spacing: ${theme.typography[variant].xs.letterSpacing};
@@ -26,7 +30,19 @@ const TextBase = styled.span<TextProps>`
         variant,
         theme.typography[variant].xs.fontWeight
       )};
-
+      ${uppercase && `text-transform: uppercase;`}
+      ${srOnly &&
+      css`
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      `}
       ${breakpointsMedia({
         md: css`
           font-size: ${theme.typography[variant].md.fontSize};
@@ -43,12 +59,19 @@ const TextBase = styled.span<TextProps>`
 `;
 
 type asText = 'span' | 'p' | 'li' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-interface TextProps {
-  bold: boolean;
-  variant: TypographyVariantsName;
-  as: asText;
+interface TextPropsBase {
+  bold?: boolean;
+  variant?: TypographyVariantsName;
+  as?: asText;
   children: React.ReactNode;
+  color?: string;
+  uppercase?: string;
+  srOnly?: boolean;
+  className?: string;
+  href?: string;
 }
+type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
+export type TextProps = TextPropsBase & TextDynamicProps;
 export default function Text({
   children,
   variant,

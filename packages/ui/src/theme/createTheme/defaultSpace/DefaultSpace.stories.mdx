@@ -23,13 +23,6 @@ Here are all the `space` definitions that we have avaiable through the `theme.sp
   </thead>
   <tbody>
     {Object.keys(defaultSpace)
-    .sort((a, b) => {
-      if(a.includes('px')) return -1;
-      if(a.includes('/')) return 0;
-      if(Number(a) < Number(b))  return -1;
-      if(Number(a) > Number(b))  return 0;
-      return 0;
-    })
     .map((key) => (
       <tr key={key}>
         <td>

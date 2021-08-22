@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 import Box, { BoxProps } from '../Box';
 import propToStyle from '../../../../theme/utils/propToStyle';
+import { PropertyDefinition } from '../Box/css/CSSProperties';
+export { default as GridCell } from './GridCell';
 
 type GridProps = Omit<BoxProps, 'display'> & GridBaseProps;
 interface GridBaseProps {
-  gridFlow?: string;
-  gridRows?: string | number;
-  gridAreas?: string[];
-  gridColumns?: string | number;
-  columnGap?: string;
-  alignContent?: string;
-  justifyContent?: string;
-  rowGap?: string;
-  minRowHeight?: string;
-  gridGap?: string;
+  gridFlow?: PropertyDefinition<string>;
+  gridRows?: PropertyDefinition<string | number>;
+  gridAreas?: PropertyDefinition<string[]>;
+  gridColumns?: PropertyDefinition<number>;
+  columnGap?: PropertyDefinition<string>;
+  alignContent?: PropertyDefinition<string>;
+  rowGap?: PropertyDefinition<string>;
+  minRowHeight?: PropertyDefinition<string>;
+  gridGap?: PropertyDefinition<string>;
 }
 
 const frGetter = (value: string | number) =>
@@ -46,8 +47,8 @@ const StyledGrid = styled(Box)<GridProps>`
   ${propToStyle('alignContent')}
 `;
 
-function Grid(props: GridProps): JSX.Element {
-  return <StyledGrid {...props} />;
+function Grid({ as, ...props }: GridProps): JSX.Element {
+  return <StyledGrid tag={as} {...props} />;
 }
 
 Grid.defaultProps = {
@@ -56,7 +57,7 @@ Grid.defaultProps = {
   gridFlow: 'row',
   minRowHeight: 'x20',
   gridColumns: 12,
-  gridGap: 'x4',
+  gridGap: 'x0',
 };
 
 export default Grid;

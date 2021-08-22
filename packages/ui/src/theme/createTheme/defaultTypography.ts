@@ -132,4 +132,18 @@ export const defaultTypography: ThemeTypography = {
   ...display,
   ...heading,
   ...body,
+  inherit: {
+    md: {
+      fontSize: 'inherit',
+      fontWeight: 'inherit',
+      letterSpacing: 'inherit',
+      lineHeight: 'inherit',
+    },
+    xs: {
+      fontSize: 'inherit',
+      fontWeight: 'inherit',
+      letterSpacing: 'inherit',
+      lineHeight: 'inherit',
+    },
+  },
 };
