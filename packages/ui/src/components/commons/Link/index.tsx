@@ -32,7 +32,13 @@ const linkVariants = {
     variant,
     ...props
   }: LinkProps) => (
-    <StyledLink className={className} href={href} variant={variant} {...props}>
+    <StyledLink
+      tag="a"
+      href={href}
+      className={className}
+      variant={variant}
+      {...props}
+    >
       {children}
       {hasIcon && <LinkIcon name="arrowLeft" iconSize="text" />}
     </StyledLink>
@@ -45,7 +51,13 @@ const linkVariants = {
     variant,
     ...props
   }: LinkProps) => (
-    <StyledLink href={href} variant={variant} className={className} {...props}>
+    <StyledLink
+      tag="a"
+      href={href}
+      variant={variant}
+      className={className}
+      {...props}
+    >
       {children}
       {hasIcon && <LinkIcon name="arrowUpLeft" iconSize="text" />}
     </StyledLink>

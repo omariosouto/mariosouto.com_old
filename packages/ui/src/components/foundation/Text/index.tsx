@@ -58,11 +58,23 @@ const TextBase = styled.span<TextProps>`
     `}
 `;
 
-type asText = 'span' | 'p' | 'li' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type asText =
+  | 'span'
+  | 'p'
+  | 'li'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'button'
+  | 'a';
 interface TextPropsBase {
   bold?: boolean;
   variant?: TypographyVariantsName;
   as?: asText;
+  tag?: 'button' | 'a';
   children: React.ReactNode;
   color?: string;
   uppercase?: string;
@@ -77,10 +89,11 @@ export default function Text({
   variant,
   bold,
   as,
+  tag,
   ...props
 }: TextProps): JSX.Element {
   return (
-    <TextBase as={as} bold={bold} variant={variant} {...props}>
+    <TextBase as={tag || as} bold={bold} variant={variant} {...props}>
       {children}
     </TextBase>
   );
