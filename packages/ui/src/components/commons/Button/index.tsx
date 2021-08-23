@@ -72,7 +72,7 @@ const actions: Record<any, any> = {
       background: 'white',
       color: theme.colors[color]['700'],
       '&:hover, &:focus': {
-        background: theme.colors.neutral['050'],
+        background: theme.colors.neutral['100'],
       },
       '&:focus': {
         boxShadow: `0 0 0 2px ${theme.colors.white},
@@ -85,7 +85,7 @@ const actions: Record<any, any> = {
       background: 'transparent',
       color: theme.colors[color]['700'],
       '&:hover, &:focus': {
-        background: theme.colors.neutral['050'],
+        background: theme.colors.neutral['100'],
       },
       '&:focus': {
         boxShadow: `0 0 0 2px ${theme.colors.white},

@@ -98,14 +98,10 @@ export default function HomeHeroPattern(): JSX.Element {
               display={{ sm: 'flex' }}
               justifyContent={{ sm: 'center' }}
             >
-              <Button size="xl">Get Started</Button>
               <Button href="/" size="xl">
                 Get Started
               </Button>
               <Button href="/" size="xl" action="tertiary">
-                Live Demo
-              </Button>
-              <Button size="xl" action="tertiary">
                 Live Demo
               </Button>
             </Box>
