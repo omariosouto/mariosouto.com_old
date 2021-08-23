@@ -49,7 +49,7 @@ const actions: Record<any, any> = {
         background: theme.colors[color]['700'],
       },
       '&:focus': {
-        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+        boxShadow: `0 0 0 2px ${theme.colors.white},
           0 0 0 4px ${theme.colors[color]['500']}`,
       },
     };
@@ -62,7 +62,7 @@ const actions: Record<any, any> = {
         background: theme.colors[color]['200'],
       },
       '&:focus': {
-        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+        boxShadow: `0 0 0 2px ${theme.colors.white},
           0 0 0 4px ${theme.colors[color]['500']}`,
       },
     };
@@ -75,7 +75,7 @@ const actions: Record<any, any> = {
         background: theme.colors.neutral['050'],
       },
       '&:focus': {
-        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+        boxShadow: `0 0 0 2px ${theme.colors.white},
           0 0 0 4px ${theme.colors[color]['500']}`,
       },
     };
@@ -88,7 +88,7 @@ const actions: Record<any, any> = {
         background: theme.colors.neutral['050'],
       },
       '&:focus': {
-        boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
+        boxShadow: `0 0 0 2px ${theme.colors.white},
           0 0 0 4px ${theme.colors[color]['500']}`,
       },
     };
