@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    // Isso aqui viria de um BloC
     futurePokemons = getAllPokemons();
   }
 
@@ -41,12 +42,17 @@ class _HomeScreenState extends State<HomeScreen> {
             FutureBuilder<List<Pokemon>>(
                 future: futurePokemons,
                 builder: (context, snapshot) {
-                  if (snapshot.hasError) return Text('${snapshot.error}');
+                  if (snapshot.hasError)
+                    return Text('Não foi possível listar os pokémons agora :(');
+
+                  var loading =
+                      snapshot.connectionState == ConnectionState.waiting;
+                  List<Pokemon> pokemons =
+                      snapshot.hasData ? snapshot.requireData : [];
 
                   return PokemonList(
-                    loading:
-                        snapshot.connectionState == ConnectionState.waiting,
-                    pokemons: snapshot.data != null ? snapshot.data : [],
+                    loading: loading,
+                    pokemons: pokemons,
                   );
                 }),
           ],

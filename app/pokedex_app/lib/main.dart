@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_app/screens/pokemon_details/pokemon_details_screen.dart';
-import 'package:pokedex_app/screens/home/widgets/screen.dart';
+import 'package:pokedex_app/screens/pokemon_details/screen.dart';
+import 'package:pokedex_app/screens/home/screen.dart';
 
 void main() {
   runApp(MyApp());

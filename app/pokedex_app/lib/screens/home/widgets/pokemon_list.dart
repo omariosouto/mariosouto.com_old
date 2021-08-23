@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_app/models/pokemon.dart';
-import 'package:pokedex_app/screens/pokemon_details/pokemon_details_screen.dart';
+import 'package:pokedex_app/screens/pokemon_details/screen.dart';
 
 class PokemonListItem extends StatelessWidget {
   final Pokemon pokemon;
@@ -20,7 +20,7 @@ class PokemonListItem extends StatelessWidget {
         // Navigate back to first screen when tapped.
         Navigator.pushNamed(context, PokemonDetailsScreen.routeName,
             arguments: PokemonDetailsScreenArguments(
-              pokemon_id: pokemon.id,
+              pokemon: pokemon,
             ));
       },
       child: Container(
@@ -32,30 +32,48 @@ class PokemonListItem extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Container(
+                  // color: Colors.blue,
                   padding: EdgeInsets.only(top: 25, left: 90, bottom: 5),
                   child: Image.network(
                     pokemon.image.toString(),
                     width: 80,
                   ),
                 ),
-                Positioned(
-                  width: 200,
+                Expanded(
+                  flex: 1,
                   child: Container(
-                    padding: EdgeInsets.only(left: 15, top: 15),
+                    // color: Colors.red,
+                    padding: EdgeInsets.only(left: 0, top: 15),
+                    width: 200,
                     height: 130,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text("#" + pokemon.id.toString(),
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 14)),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            )),
                         Text(pokemon.name.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17)),
                         Container(
                           margin: EdgeInsets.only(top: 5),
-                          child:
-                              Text('Type 01', style: TextStyle(fontSize: 12)),
+                          child: Text('Type 01',
+                              style: TextStyle(
+                                  fontSize: 12, color: Colors.grey.shade800)),
+                          padding: EdgeInsets.only(
+                              top: 4, bottom: 4, left: 8, right: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: Text('Type 02',
+                              style: TextStyle(
+                                  fontSize: 12, color: Colors.grey.shade800)),
                           padding: EdgeInsets.only(
                               top: 4, bottom: 4, left: 8, right: 8),
                           decoration: BoxDecoration(
@@ -77,10 +95,10 @@ class PokemonListItem extends StatelessWidget {
 }
 
 class PokemonList extends StatelessWidget {
-  final List<Pokemon>? pokemons;
+  final List<Pokemon> pokemons;
   final bool loading;
 
-  PokemonList({Key? key, this.pokemons, required this.loading})
+  PokemonList({Key? key, required this.pokemons, required this.loading})
       : super(key: key);
 
   @override
@@ -92,8 +110,8 @@ class PokemonList extends StatelessWidget {
             ? GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 5.0,
-                  mainAxisSpacing: 5.0,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                   childAspectRatio: 1.4,
                 ),
                 itemCount: pokemons?.length,
