@@ -11,6 +11,7 @@ const allPropToStyle = {
   width: propToStyle('width'),
   maxWidth: propToStyle('maxWidth'),
   height: propToStyle('height'),
+  border: propToStyle('border'),
   display: propToStyle('display'),
   margin: propToStyle('margin'),
   marginTop: propToStyle('marginTop'),
@@ -63,10 +64,11 @@ type BoxTags =
   | 'span';
 
 interface BoxPropsBase {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   as?: BoxTags;
   tag?: BoxTags;
   colorProp?: PropertyDefinition<string>;
+  className?: string;
 }
 type BoxPropsExtensions = {
   mx?: PropertyDefinition<string>;

@@ -17,7 +17,9 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   return bold ? boldVariants.semibold : fontWeight;
 }
 
-const TextBase = styled.span<TextProps>`
+const TextBase = styled.span<
+  TextProps & { ref?: React.ForwardedRef<HTMLAnchorElement> }
+>`
   ${({ theme, variant, bold, uppercase, srOnly }) =>
     css`
       ${propToStyle('textAlign')}
@@ -84,23 +86,26 @@ interface TextPropsBase {
 }
 type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
 export type TextProps = TextPropsBase & TextDynamicProps;
-export default function Text({
-  children,
-  variant,
-  bold,
-  as,
-  tag,
-  ...props
-}: TextProps): JSX.Element {
-  return (
-    <TextBase as={tag || as} bold={bold} variant={variant} {...props}>
-      {children}
-    </TextBase>
-  );
-}
+const Text = React.forwardRef<HTMLAnchorElement, TextProps>(
+  ({ children, variant, bold, as, tag, ...props }, ref): JSX.Element => {
+    return (
+      <TextBase
+        as={tag || as}
+        bold={bold}
+        variant={variant}
+        {...props}
+        ref={ref}
+      >
+        {children}
+      </TextBase>
+    );
+  }
+);
 
 Text.defaultProps = {
-  variant: 'body_2',
   bold: false,
+  variant: 'body_2',
   as: 'span',
 };
+
+export default Text;

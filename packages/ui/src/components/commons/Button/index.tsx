@@ -44,7 +44,7 @@ const actions: Record<any, any> = {
   primary({ theme, color }: { theme: DefaultTheme } & ButtonProps) {
     return {
       background: theme.colors[color]['600'],
-      color: theme.colors.neutral['050'],
+      color: theme.colors.white,
       '&:hover, &:focus': {
         background: theme.colors[color]['700'],
       },
@@ -72,7 +72,7 @@ const actions: Record<any, any> = {
       background: 'white',
       color: theme.colors[color]['700'],
       '&:hover, &:focus': {
-        background: theme.colors[color]['100'],
+        background: theme.colors.neutral['050'],
       },
       '&:focus': {
         boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
@@ -85,7 +85,7 @@ const actions: Record<any, any> = {
       background: 'transparent',
       color: theme.colors[color]['700'],
       '&:hover, &:focus': {
-        background: theme.colors[color]['100'],
+        background: theme.colors.neutral['050'],
       },
       '&:focus': {
         boxShadow: `0 0 0 2px ${theme.colors.neutral['050']},
@@ -102,6 +102,7 @@ const StyledButton = styled(Text)<ButtonProps>`
   align-items: center;
   border-radius: 0.375rem;
   outline: 0;
+
   ${({ theme, size, fullWidth, action }) => {
     const { px, py } = sizeVariants[size];
     return css`
@@ -133,6 +134,7 @@ interface ButtonProps {
   size: ThemeBasicSizes;
   fullWidth?: boolean;
   href?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 export default function Button({
   children,
@@ -142,6 +144,7 @@ export default function Button({
   action,
   color,
   href,
+  onClick,
 }: ButtonProps): JSX.Element {
   const { typographyVariant } = sizeVariants[size];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -156,6 +159,7 @@ export default function Button({
       action={action}
       color={color}
       href={href}
+      onClick={onClick}
       as={as}
     >
       {children}

@@ -36,6 +36,14 @@ export const GlobalStyle = createGlobalStyle<{ cssVariables: any }>`
           )
           .join('')}
       }
+
+      /* Defaults */
+      body {
+        background-color: ${({ theme }) => theme.colors.white};
+      }
+      body.dark {
+        background-color: ${({ theme }) => theme.colors.neutral['900']};
+      }
     `;
   }}
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import "../src/theme/globals.css"
 import UIThemeProvider from '../src/theme/provider/UIThemeProvider';
@@ -18,9 +19,13 @@ export const parameters = {
   },
 }
 
+const NextJSLinkWrapper = React.forwardRef(({ children }) => {
+  return children;
+})
+
 export const decorators = [
   (Story) => (
-    <UIThemeProvider>
+    <UIThemeProvider NextJSLinkWrapper={NextJSLinkWrapper}>
       <div className={useDarkMode() ? 'dark' : ''}>
         <Story />
       </div>

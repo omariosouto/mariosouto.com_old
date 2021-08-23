@@ -18,25 +18,43 @@ export function ExampleDevSoutinhoPallete(): JSX.Element {
           <GridCell
             key={`devsoutinho_${themeName}`}
             className={themeName === 'Dark' && 'dark'}
+            padding="x4"
+            backgroundColor={themeName === 'Dark' && 'neutral900'}
+            color={themeName === 'Dark' && 'white'}
           >
             <h1>[{themeName}]</h1>
             {Object.keys(devsoutinhoPallete.light).map((colorDeckName) => (
               <Box key={colorDeckName}>
                 {colorDeckName}
-                {colorSetKeys.map((colorSetKey) => (
-                  <div key={`devsoutinho_${themeName}${colorSetKey}`}>
+                {colorDeckName === 'white' ? (
+                  <div key={`devsoutinho_${themeName}__`}>
                     <Box
                       display="inline-block"
-                      backgroundColor={colorDeckName + colorSetKey}
+                      backgroundColor={colorDeckName}
                       width="x6"
                       height="x6"
                       margin="x0 x4 x0 x0"
+                      border="x1 solid gray"
                     />
-                    <Text color={colorDeckName + colorSetKey}>
-                      {colorDeckName + colorSetKey}
-                    </Text>
+                    <Text color={colorDeckName}>{colorDeckName}</Text>
                   </div>
-                ))}
+                ) : (
+                  colorSetKeys.map((colorSetKey) => (
+                    <div key={`devsoutinho_${themeName}${colorSetKey}`}>
+                      <Box
+                        display="inline-block"
+                        backgroundColor={colorDeckName + colorSetKey}
+                        width="x6"
+                        height="x6"
+                        margin="x0 x4 x0 x0"
+                        border={`x1 solid ${colorDeckName + colorSetKey}`}
+                      />
+                      <Text color={colorDeckName + colorSetKey}>
+                        {colorDeckName + colorSetKey}
+                      </Text>
+                    </div>
+                  ))
+                )}
               </Box>
             ))}
           </GridCell>

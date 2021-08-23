@@ -13,6 +13,7 @@ export interface CSSProperties {
   width?: PropertyDefinition<string>;
   maxWidth?: PropertyDefinition<string>;
   height?: PropertyDefinition<string>;
+  border?: PropertyDefinition<string>;
   display?: PropertyDefinition<
     | 'block'
     | 'inline'
