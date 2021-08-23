@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         accentColor: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: HomeScreen.routeName,
       routes: {
-        '/': (context) => HomeScreen(),
-        '/pokemon_details': (context) => DetailsScreen(),
+        HomeScreen.routeName: (context) => HomeScreen(),
+        PokemonDetailsScreen.routeName: (context) => PokemonDetailsScreen(),
       },
     );
   }

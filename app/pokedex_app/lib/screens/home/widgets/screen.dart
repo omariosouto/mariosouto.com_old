@@ -7,6 +7,8 @@ import 'package:pokedex_app/screens/home/widgets/header.dart';
 import 'package:pokedex_app/screens/home/widgets/pokemon_list.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/';
+
   HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -44,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return PokemonList(
                     loading:
                         snapshot.connectionState == ConnectionState.waiting,
-                    pokemons: snapshot.data as List<Pokemon>,
+                    pokemons: snapshot.data != null ? snapshot.data : [],
                   );
                 }),
           ],
