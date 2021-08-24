@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 import propToStyle from '../../../theme/utils/propToStyle';
-import { CSSProperties } from '../layout/Box/css/CSSProperties';
+import {
+  CSSProperties,
+  PropertyDefinition,
+} from '../layout/Box/css/CSSProperties';
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -57,6 +60,18 @@ const TextBase = styled.span<
           letter-spacing: ${theme.typography[variant].md.letterSpacing};
         `,
       })}
+      ${propToStyle('maxWidth')}
+      ${propToStyle('color')}
+      ${propToStyle('padding')}
+      ${propToStyle('paddingTop')}
+      ${propToStyle('paddingLeft')}
+      ${propToStyle('paddingRight')}
+      ${propToStyle('paddingBottom')}
+      ${propToStyle('margin')}
+      ${propToStyle('marginTop')}
+      ${propToStyle('marginLeft')}
+      ${propToStyle('marginRight')}
+      ${propToStyle('marginBottom')}
     `}
 `;
 
@@ -78,11 +93,22 @@ interface TextPropsBase {
   as?: asText;
   tag?: 'button' | 'a';
   children: React.ReactNode;
-  color?: string;
   uppercase?: string;
   srOnly?: boolean;
   className?: string;
   href?: string;
+  maxWidth?: PropertyDefinition<string>;
+  color?: PropertyDefinition<string>;
+  padding?: PropertyDefinition<string>;
+  paddingTop?: PropertyDefinition<string>;
+  paddingLeft?: PropertyDefinition<string>;
+  paddingRight?: PropertyDefinition<string>;
+  paddingBottom?: PropertyDefinition<string>;
+  margin?: PropertyDefinition<string>;
+  marginTop?: PropertyDefinition<string>;
+  marginLeft?: PropertyDefinition<string>;
+  marginRight?: PropertyDefinition<string>;
+  marginBottom?: PropertyDefinition<string>;
 }
 type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
 export type TextProps = TextPropsBase & TextDynamicProps;

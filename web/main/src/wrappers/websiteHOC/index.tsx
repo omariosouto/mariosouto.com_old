@@ -1,4 +1,4 @@
-import Footer from '@devsoutinho/ui/src/patterns/static/Footer';
+import Footer from '@devsoutinho/ui/src/patterns/Footer';
 import Provider from '../Provider';
 
 export default function websiteHOC(Component: React.ComponentType) {

@@ -4,7 +4,7 @@ import { palleteDefaults } from '../palleteDefaults';
 
 const light: ColorPallete = {
   white: '#ffffff',
-  primary: getColorBySwatche('orange-vivid'),
+  primary: getColorBySwatche('devsoutinho'),
   accent: getColorBySwatche('pink'),
   ...palleteDefaults,
 };

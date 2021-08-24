@@ -1,8 +1,8 @@
-import Icon, { IconNames } from '../../../components/foundation/Icon';
-import Box from '../../../components/foundation/layout/Box';
+import Icon, { IconNames } from '../../components/foundation/Icon';
+import Box from '../../components/foundation/layout/Box';
 // import Container from '../../components/foundation/layout/Container';
-import Text from '../../../components/foundation/Text';
-import Link from '../../../components/commons/Link';
+import Text from '../../components/foundation/Text';
+import Link from '../../components/commons/Link';
 
 export const navigationLinks: Array<{
   name: string;

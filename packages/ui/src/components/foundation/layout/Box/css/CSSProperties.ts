@@ -15,6 +15,7 @@ export interface CSSProperties {
   height?: PropertyDefinition<string>;
   border?: PropertyDefinition<string>;
   display?: PropertyDefinition<
+    | 'none'
     | 'block'
     | 'inline'
     | 'inline-block'
@@ -44,9 +45,14 @@ export interface CSSProperties {
     | 'revert'
     | 'unset'
   >;
+  top?: PropertyDefinition<string>;
+  left?: PropertyDefinition<string>;
+  bottom?: PropertyDefinition<string>;
+  right?: PropertyDefinition<string>;
   overflow?: PropertyDefinition<
     'visible' | 'hidden' | 'scroll' | 'auto' | 'inherit' | 'initial' | 'revert'
   >;
+  transform?: PropertyDefinition<string>;
   // Box Decoration
   opacity?: PropertyDefinition<number | 'initial' | 'inherit'>;
   boxShadow?: PropertyDefinition<string>;
@@ -96,4 +102,6 @@ export interface CSSProperties {
   rowGap?: PropertyDefinition<string>;
   gridTemplateAreas?: PropertyDefinition<string>;
   alignContent?: PropertyDefinition<string>;
+  // SVG
+  fill?: PropertyDefinition<string>;
 }

@@ -3,6 +3,8 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { ThemeBasicSizes } from '../../../theme/types/ThemeBasicSizes';
 import { ThemeSpaceNames } from '../../../theme/types/ThemeSpace';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
+import propToStyle from '../../../theme/utils/propToStyle';
+import { PropertyDefinition } from '../../foundation/layout/Box/css/CSSProperties';
 import Text from '../../foundation/Text';
 import Link from '../Link';
 
@@ -33,7 +35,7 @@ const sizeVariants: Record<ThemeBasicSizes, TypographyVariant & SizeVariant> = {
     typographyVariant: 'body_2',
   },
   xl: {
-    px: 'x6',
+    px: 'x8',
     py: 'x3',
     typographyVariant: 'body_2',
   },
@@ -72,7 +74,7 @@ const actions: Record<any, any> = {
       background: 'white',
       color: theme.colors[color]['700'],
       '&:hover, &:focus': {
-        background: theme.colors.neutral['100'],
+        background: theme.colors.neutral['050'],
       },
       '&:focus': {
         boxShadow: `0 0 0 2px ${theme.colors.white},
@@ -103,7 +105,7 @@ const StyledButton = styled(Text)<ButtonProps>`
   border-radius: 0.375rem;
   outline: 0;
 
-  ${({ theme, size, fullWidth, action }) => {
+  ${({ theme, size, action }) => {
     const { px, py } = sizeVariants[size];
     return css`
       ${actions[action]}
@@ -111,7 +113,22 @@ const StyledButton = styled(Text)<ButtonProps>`
       padding-bottom: ${theme.space[py as ThemeSpaceNames]};
       padding-left: ${theme.space[px as ThemeSpaceNames]};
       padding-right: ${theme.space[px as ThemeSpaceNames]};
-      ${fullWidth && 'width: 100%;'};
+      ${propToStyle('padding')}
+      ${propToStyle('paddingTop')}
+      ${propToStyle('paddingLeft')}
+      ${propToStyle('paddingRight')}
+      ${propToStyle('paddingBottom')}
+      ${propToStyle('margin')}
+      ${propToStyle('marginTop')}
+      ${propToStyle('marginLeft')}
+      ${propToStyle('marginRight')}
+      ${propToStyle('marginBottom')}
+      ${propToStyle('width', 'fullWidth', (active: boolean) =>
+        active ? '100%' : ''
+      )}
+      ${propToStyle('justifyContent', 'fullWidth', (active: boolean) =>
+        active ? 'center' : ''
+      )}
     `;
   }}
 `;
@@ -132,8 +149,18 @@ interface ButtonProps {
     | 'warning'
     | 'neutral';
   size: ThemeBasicSizes;
-  fullWidth?: boolean;
+  fullWidth?: PropertyDefinition<boolean>;
   href?: string;
+  padding?: PropertyDefinition<string>;
+  paddingTop?: PropertyDefinition<string>;
+  paddingLeft?: PropertyDefinition<string>;
+  paddingRight?: PropertyDefinition<string>;
+  paddingBottom?: PropertyDefinition<string>;
+  margin?: PropertyDefinition<string>;
+  marginTop?: PropertyDefinition<string>;
+  marginLeft?: PropertyDefinition<string>;
+  marginRight?: PropertyDefinition<string>;
+  marginBottom?: PropertyDefinition<string>;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 export default function Button({

@@ -16,9 +16,13 @@ function themeColor(value: string, theme: DefaultTheme) {
 }
 
 function themeSpace(value: string, theme: DefaultTheme) {
-  const MATCH_THEME_SPACE = /(x[\d/.]+)|(xcontainer_(xs|sm|md|lg|xl))/g;
+  const MATCH_THEME_SPACE = /(-?x[\d/.]+)|(xcontainer_(xs|sm|md|lg|xl))/g;
   return value.replace(MATCH_THEME_SPACE, (...args) => {
     const currentValue = args[0] as keyof ThemeSpace;
+    if (currentValue.includes('-')) {
+      const adjustedValue = currentValue.replace('-', '') as keyof ThemeSpace;
+      return `calc(${theme.space[adjustedValue]} * -1)`;
+    }
     return `${theme.space[currentValue]}`;
   });
 }

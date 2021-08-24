@@ -20,12 +20,20 @@ const allPropToStyle = {
   mx: [propToStyle('marginLeft', 'mx'), propToStyle('marginRight', 'mx')],
   my: [propToStyle('marginTop', 'my'), propToStyle('marginBottom', 'my')],
   padding: propToStyle('padding'),
+  paddingTop: propToStyle('paddingTop'),
+  paddingBottom: propToStyle('paddingBottom'),
   paddingRight: propToStyle('paddingRight'),
   paddingLeft: propToStyle('paddingLeft'),
   px: [propToStyle('paddingLeft', 'px'), propToStyle('paddingRight', 'px')],
   py: [propToStyle('paddingTop', 'py'), propToStyle('paddingBottom', 'py')],
   position: propToStyle('position'),
+  top: propToStyle('top'),
+  left: propToStyle('left'),
+  right: propToStyle('right'),
+  bottom: propToStyle('bottom'),
   overflow: propToStyle('overflow'),
+  transform: propToStyle('transform'),
+  opacity: propToStyle('opacity'),
   /* Box Decoration */
   boxShadow: propToStyle('boxShadow'),
   listStyleType: propToStyle('listStyleType'),
@@ -38,6 +46,8 @@ const allPropToStyle = {
   order: propToStyle('order'),
   alignItems: propToStyle('alignItems'),
   justifyContent: propToStyle('justifyContent'),
+  // SVG
+  fill: propToStyle('fill'),
 };
 
 type BoxStyleProps = keyof typeof allPropToStyle;
@@ -61,7 +71,9 @@ type BoxTags =
   | 'dd'
   | 'li'
   | 'p'
-  | 'span';
+  | 'span'
+  | 'svg'
+  | 'rect';
 
 interface BoxPropsBase {
   children?: React.ReactNode;
@@ -69,6 +81,9 @@ interface BoxPropsBase {
   tag?: BoxTags;
   colorProp?: PropertyDefinition<string>;
   className?: string;
+  viewBox?: string;
+  y?: number;
+  x?: number;
 }
 type BoxPropsExtensions = {
   mx?: PropertyDefinition<string>;
