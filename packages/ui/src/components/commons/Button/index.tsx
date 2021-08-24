@@ -47,6 +47,7 @@ const actions: Record<any, any> = {
     return {
       background: theme.colors[color]['600'],
       color: theme.colors.white,
+      border: `1px solid ${theme.colors[color]['800']}`,
       '&:hover, &:focus': {
         background: theme.colors[color]['700'],
       },
@@ -60,6 +61,7 @@ const actions: Record<any, any> = {
     return {
       background: theme.colors[color]['100'],
       color: theme.colors[color]['700'],
+      border: `1px solid ${theme.colors[color]['300']}`,
       '&:hover, &:focus': {
         background: theme.colors[color]['200'],
       },
@@ -73,6 +75,7 @@ const actions: Record<any, any> = {
     return {
       background: 'white',
       color: theme.colors[color]['700'],
+      border: `1px solid ${theme.colors.neutral['100']}`,
       '&:hover, &:focus': {
         background: theme.colors.neutral['050'],
       },
@@ -86,8 +89,10 @@ const actions: Record<any, any> = {
     return {
       background: 'transparent',
       color: theme.colors[color]['700'],
+      border: `1px solid transparent`,
       '&:hover, &:focus': {
         background: theme.colors.neutral['100'],
+        border: `1px solid ${theme.colors.neutral['200']}`,
       },
       '&:focus': {
         boxShadow: `0 0 0 2px ${theme.colors.white},
