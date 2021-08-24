@@ -12,20 +12,21 @@ export default function QRCodeGeneratorScreen(): JSX.Element {
   React.useEffect(() => {
     const qrSVG = new QRCodeSVG(qrCodeText, {
       level: 'Q',
-      bgColor: 'red',
-      fgColor: 'white',
+      bgColor: 'white',
+      fgColor: 'black',
       size: {
         width: size,
         height: size,
       },
     });
-    setQrCodeSVG(qrSVG.toString());
+
+    setQrCodeSVG(qrSVG);
 
     setTimeout(() => {
       html2canvas(document.querySelector('#qrcode_svg_container')).then(
         (qrCanvas) => setQrCodePNG(qrCanvas.toDataURL())
       );
-    }, 100);
+    }, 1);
   }, [qrCodeText, size]);
 
   return (
@@ -64,6 +65,7 @@ export default function QRCodeGeneratorScreen(): JSX.Element {
             const element = document.createElement('a');
             element.download = 'w3c.svg';
             element.href = window.URL.createObjectURL(blob);
+
             element.click();
             element.remove();
           }}
