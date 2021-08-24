@@ -113,12 +113,13 @@ interface TextPropsBase {
 type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
 export type TextProps = TextPropsBase & TextDynamicProps;
 const Text = React.forwardRef<HTMLAnchorElement, TextProps>(
-  ({ children, variant, bold, as, tag, ...props }, ref): JSX.Element => {
+  ({ children, variant, bold, as, tag, color, ...props }, ref): JSX.Element => {
     return (
       <TextBase
         as={tag || as}
         bold={bold}
         variant={variant}
+        color={color as string}
         {...props}
         ref={ref}
       >
