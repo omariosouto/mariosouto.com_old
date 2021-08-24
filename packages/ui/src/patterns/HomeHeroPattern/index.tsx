@@ -1,6 +1,8 @@
 import Box from '@devsoutinho/ui/src/components/foundation/layout/Box';
 import Button from '@devsoutinho/ui/src/components/commons/Button';
 import Text from '@devsoutinho/ui/src/components/foundation/Text';
+import Link from '@devsoutinho/ui/src/components/commons/Link';
+import Icon from '@devsoutinho/ui/src/components/foundation/Icon';
 // import Icon from '@devsoutinho/ui/src/components/foundation/Icon';
 
 const BackgroundDetails = (): JSX.Element => (
@@ -177,6 +179,52 @@ export default function HomeHeroPattern(): JSX.Element {
                   Minhas contribuições
                 </Button>
               </Box>
+            </Box>
+            <Box marginTop="x16">
+              <Text color="neutral700" variant="heading_3">
+                Personal Project List
+              </Text>
+            </Box>
+            <Box
+              as="ul"
+              backgroundColor="neutral100"
+              border="1px solid neutral200"
+              maxWidth="x96"
+              marginTop="x4"
+              mx="auto"
+              padding="x3"
+              borderRadius="lg"
+            >
+              {[
+                {
+                  name: 'QRCode Generator',
+                  url: '/products/qr-code-generator/',
+                },
+              ].map(({ name, url }, index) => (
+                <Box
+                  key={index}
+                  as="li"
+                  display={{ xs: 'block', sm: 'inline-block' }}
+                  marginTop={{ xs: 'x3', sm: 'x0' }}
+                  alignItems="flex-start"
+                  width="x1/1"
+                  backgroundColor="neutral050"
+                  borderRadius="lg"
+                >
+                  <Link
+                    href={url}
+                    hasIcon={false}
+                    color="neutral900"
+                    display="block"
+                    padding="x4"
+                  >
+                    <Box display="flex">
+                      <Icon name="qrcode" marginRight="x4" />
+                      {name}
+                    </Box>
+                  </Link>
+                </Box>
+              ))}
             </Box>
           </Box>
         </Box>

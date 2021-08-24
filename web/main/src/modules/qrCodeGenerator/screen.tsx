@@ -3,14 +3,14 @@ import { QRCodeSVG } from '@cheprasov/qrcode';
 import html2canvas from 'html2canvas';
 
 export default function QRCodeGeneratorScreen(): JSX.Element {
-  const [size, setSize] = useState(50);
+  const [size, setSize] = useState(75);
 
   const [qrCodeText, setQrCode] = useState('mario');
   const [qrCodePNG, setQrCodePNG] = useState('');
   const [qrCodeSVG, setQrCodeSVG] = useState('');
 
   React.useEffect(() => {
-    const config = {
+    const qrSVG = new QRCodeSVG(qrCodeText, {
       level: 'Q',
       bgColor: 'red',
       fgColor: 'white',
@@ -18,18 +18,14 @@ export default function QRCodeGeneratorScreen(): JSX.Element {
         width: size,
         height: size,
       },
-    };
-    const qrSVG = new QRCodeSVG(qrCodeText, config);
+    });
     setQrCodeSVG(qrSVG.toString());
 
     setTimeout(() => {
       html2canvas(document.querySelector('#qrcode_svg_container')).then(
-        (qrCanvas) => {
-          setQrCodePNG(qrCanvas.toDataURL());
-          // setQrCodePNG(qrCanvas);
-        }
+        (qrCanvas) => setQrCodePNG(qrCanvas.toDataURL())
       );
-    }, 1000);
+    }, 100);
   }, [qrCodeText, size]);
 
   return (
@@ -81,13 +77,14 @@ export default function QRCodeGeneratorScreen(): JSX.Element {
         <h1>SVG</h1>
         <div
           id="qrcode_svg_container"
-          style={{ maxWidth: `${size}px` }}
+          style={{ maxWidth: `${size}px`, fontSize: 0 }}
           dangerouslySetInnerHTML={{ __html: qrCodeSVG }}
         />
 
         {qrCodePNG && (
           <>
             <h1>PNG</h1>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={qrCodePNG} alt="QR Code Generated" />
           </>
         )}

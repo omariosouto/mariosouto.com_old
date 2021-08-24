@@ -3,10 +3,23 @@ import styled from 'styled-components';
 import { CSSProperties, PropertyDefinition } from './css/CSSProperties';
 import propToStyle from '../../../../theme/utils/propToStyle';
 
+const borderRadiusDefinitions = {
+  none: '0',
+  sm: '.125rem',
+  md: '.25rem',
+  lg: '.5rem',
+  full: '9999px',
+};
+
 const allPropToStyle = {
   color: propToStyle('color', 'colorProp'),
   background: propToStyle('background'),
   backgroundColor: propToStyle('backgroundColor'),
+  borderRadius: propToStyle(
+    'borderRadius',
+    'borderRadius',
+    (key: keyof typeof borderRadiusDefinitions) => borderRadiusDefinitions[key]
+  ),
   /* Box Model */
   width: propToStyle('width'),
   maxWidth: propToStyle('maxWidth'),

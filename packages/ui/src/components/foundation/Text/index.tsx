@@ -60,6 +60,7 @@ const TextBase = styled.span<
           letter-spacing: ${theme.typography[variant].md.letterSpacing};
         `,
       })}
+      ${propToStyle('display')}
       ${propToStyle('maxWidth')}
       ${propToStyle('color')}
       ${propToStyle('padding')}
@@ -110,7 +111,7 @@ interface TextPropsBase {
   marginRight?: PropertyDefinition<string>;
   marginBottom?: PropertyDefinition<string>;
 }
-type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
+type TextDynamicProps = Pick<CSSProperties, 'textAlign' | 'display'>;
 export type TextProps = TextPropsBase & TextDynamicProps;
 const Text = React.forwardRef<HTMLAnchorElement, TextProps>(
   ({ children, variant, bold, as, tag, color, ...props }, ref): JSX.Element => {

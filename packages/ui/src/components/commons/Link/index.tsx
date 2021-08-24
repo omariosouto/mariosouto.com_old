@@ -5,6 +5,7 @@ import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 import Icon, { IconNames, IconSizes } from '../../foundation/Icon';
 import Box from '../../foundation/layout/Box';
 import { useGlobalContext } from '../../../theme/provider/GlobalProvider';
+import { PropertyDefinition } from '../../foundation/layout/Box/css/CSSProperties';
 
 const INTERNAL_LINK = 'internalLink';
 const EXTERNAL_LINK = 'externalLink';
@@ -72,8 +73,18 @@ interface LinkPropsBase {
   className?: string;
   variant?: TypographyVariantsName;
   target?: '' | '_blank';
+  padding?: PropertyDefinition<string>;
+  paddingTop?: PropertyDefinition<string>;
+  paddingLeft?: PropertyDefinition<string>;
+  paddingRight?: PropertyDefinition<string>;
+  paddingBottom?: PropertyDefinition<string>;
+  margin?: PropertyDefinition<string>;
+  marginTop?: PropertyDefinition<string>;
+  marginLeft?: PropertyDefinition<string>;
+  marginRight?: PropertyDefinition<string>;
+  marginBottom?: PropertyDefinition<string>;
 }
-type LinkDynamicProps = Pick<TextProps, 'textAlign' | 'color'>;
+type LinkDynamicProps = Pick<TextProps, 'textAlign' | 'color' | 'display'>;
 type LinkProps = LinkPropsBase & LinkDynamicProps;
 export default function Link({
   href,

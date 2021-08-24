@@ -18,6 +18,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "noImplicitAny": true,
+    "typeRoots": [
+      "./node_modules/",
+      "./node_modules/@types",
+      "./@types",
+    ]
   },
   "exclude": [
     "node_modules"
