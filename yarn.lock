@@ -1191,6 +1191,13 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@cheprasov/qrcode@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@cheprasov/qrcode/-/qrcode-0.1.0.tgz#9f0b302999c44be16d71be691624edbd5d0eff02"
+  integrity sha512-26//xIE/Vt+v9WBiSIEhdvbGJkrkVWFu6IAYRgB4zlg2h6wRVnfQLBsrakJJQhSVUhSSIDQ09Imhy0Jw5reVgQ==
+  dependencies:
+    qr.js "0.0.0"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -10691,6 +10698,11 @@ purgecss@^4.0.3:
     postcss "^8.2.1"
     postcss-selector-parser "^6.0.2"
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+  integrity sha1-ys6GOG9ZoNuAUPqQ2baw6IoeNk8=
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
@@ -12236,6 +12248,11 @@ supports-hyperlinks@^2.0.0:
   dependencies:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
+
+svgcanvas@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/svgcanvas/-/svgcanvas-2.0.4.tgz#117b8a139c691caef024cace8fb035a45f08f9d1"
+  integrity sha512-Lan1RKRzk9KybsQeqynTYMUFsQg2Ls7N9F/ARkfjXvjXKywH89lbSbzRfTUKQn4yBExA17ah/HA+K/smc3SeBw==
 
 symbol-observable@^1.0.4:
   version "1.2.0"
