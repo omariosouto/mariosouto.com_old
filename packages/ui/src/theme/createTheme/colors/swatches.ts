@@ -360,4 +360,17 @@ export const swatches = {
   'warm-grey-700': '#504A40',
   'warm-grey-800': '#423D33',
   'warm-grey-900': '#27241D',
+
+  // [Custom]
+  // DevSoutinho Orange
+  'devsoutinho-050': '#ffecb3',
+  'devsoutinho-100': '#ffecb3',
+  'devsoutinho-200': '#ffe082',
+  'devsoutinho-300': '#ffd54f',
+  'devsoutinho-400': '#ffca28',
+  'devsoutinho-500': '#ffc107',
+  'devsoutinho-600': '#ffb300',
+  'devsoutinho-700': '#ffa000',
+  'devsoutinho-800': '#ff8f00',
+  'devsoutinho-900': '#ff6f00',
 };

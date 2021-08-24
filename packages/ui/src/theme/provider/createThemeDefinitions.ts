@@ -112,6 +112,6 @@ export function createThemeDefinitions({
 
   return {
     cssVariables,
-    theme: new Proxy(appTheme, proxyHandler),
+    theme: new Proxy<DefaultTheme>(appTheme, proxyHandler),
   };
 }

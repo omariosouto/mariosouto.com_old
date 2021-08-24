@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import Button from './index';
+
+
+<Meta
+  title="Components/Button"
+  component={Button}
+  argTypes={{}}
+/>
+
+# Button
+
+Button component is the base for all kind of interactions.
+
+<ArgsTable story="Button Component" />
+
+<Canvas>
+  <Story
+    name="Button Component"
+    args={{
+      ...Button.defaultProps,
+      children: 'Example'
+    }}
+  >
+    {(args) => (
+      <div className="bg-gray-200 p-6">
+        <Button {...args} />
+      </div>
+    )} 
+  </Story>
+</Canvas>

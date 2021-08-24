@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { TypographyVariantsName } from '../../../theme/types/ThemeTypography';
 import propToStyle from '../../../theme/utils/propToStyle';
-import { CSSProperties } from '../layout/Box/css/CSSProperties';
+import {
+  CSSProperties,
+  PropertyDefinition,
+} from '../layout/Box/css/CSSProperties';
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -17,7 +20,9 @@ function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   return bold ? boldVariants.semibold : fontWeight;
 }
 
-const TextBase = styled.span<TextProps>`
+const TextBase = styled.span<
+  TextProps & { ref?: React.ForwardedRef<HTMLAnchorElement> }
+>`
   ${({ theme, variant, bold, uppercase, srOnly }) =>
     css`
       ${propToStyle('textAlign')}
@@ -55,39 +60,79 @@ const TextBase = styled.span<TextProps>`
           letter-spacing: ${theme.typography[variant].md.letterSpacing};
         `,
       })}
+      ${propToStyle('maxWidth')}
+      ${propToStyle('color')}
+      ${propToStyle('padding')}
+      ${propToStyle('paddingTop')}
+      ${propToStyle('paddingLeft')}
+      ${propToStyle('paddingRight')}
+      ${propToStyle('paddingBottom')}
+      ${propToStyle('margin')}
+      ${propToStyle('marginTop')}
+      ${propToStyle('marginLeft')}
+      ${propToStyle('marginRight')}
+      ${propToStyle('marginBottom')}
     `}
 `;
 
-type asText = 'span' | 'p' | 'li' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type asText =
+  | 'span'
+  | 'p'
+  | 'li'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'button'
+  | 'a';
 interface TextPropsBase {
   bold?: boolean;
   variant?: TypographyVariantsName;
   as?: asText;
+  tag?: 'button' | 'a';
   children: React.ReactNode;
-  color?: string;
   uppercase?: string;
   srOnly?: boolean;
   className?: string;
   href?: string;
+  maxWidth?: PropertyDefinition<string>;
+  color?: PropertyDefinition<string>;
+  padding?: PropertyDefinition<string>;
+  paddingTop?: PropertyDefinition<string>;
+  paddingLeft?: PropertyDefinition<string>;
+  paddingRight?: PropertyDefinition<string>;
+  paddingBottom?: PropertyDefinition<string>;
+  margin?: PropertyDefinition<string>;
+  marginTop?: PropertyDefinition<string>;
+  marginLeft?: PropertyDefinition<string>;
+  marginRight?: PropertyDefinition<string>;
+  marginBottom?: PropertyDefinition<string>;
 }
 type TextDynamicProps = Pick<CSSProperties, 'textAlign'>;
 export type TextProps = TextPropsBase & TextDynamicProps;
-export default function Text({
-  children,
-  variant,
-  bold,
-  as,
-  ...props
-}: TextProps): JSX.Element {
-  return (
-    <TextBase as={as} bold={bold} variant={variant} {...props}>
-      {children}
-    </TextBase>
-  );
-}
+const Text = React.forwardRef<HTMLAnchorElement, TextProps>(
+  ({ children, variant, bold, as, tag, color, ...props }, ref): JSX.Element => {
+    return (
+      <TextBase
+        as={tag || as}
+        bold={bold}
+        variant={variant}
+        color={color as string}
+        {...props}
+        ref={ref}
+      >
+        {children}
+      </TextBase>
+    );
+  }
+);
 
 Text.defaultProps = {
-  variant: 'body_2',
   bold: false,
+  variant: 'body_2',
   as: 'span',
 };
+
+export default Text;
