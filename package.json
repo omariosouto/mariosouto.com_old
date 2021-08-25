@@ -8,7 +8,8 @@
     "packages": [
       "packages/*",
       "web/*",
-      "server/*"
+      "server/*",
+      "app/*"
     ],
     "nohoist": [
       "**/tailwindcss",
@@ -29,9 +30,18 @@
     "dev:ui": "yarn ui dev",
     "build:ui": "yarn ui build",
     "lint:ui": "yarn ui lint",
-    "test:ui": "yarn ui test"
+    "test:ui": "yarn ui test",
+    "universalui": "yarn workspace @devsoutinho/universalui",
+    "dev:universalui": "yarn universalui dev",
+    "buniversaluild:universalui": "yarn universalui build",
+    "lint:universalui": "yarn universalui lint",
+    "test:universalui": "yarn universalui test",
+    "app:qrcode": "yarn workspace @devsoutinho/qrcodegenerator_app",
+    "dev:app:qrcode": "yarn app:qrcode start"
   },
   "dependencies": {
-    "tailwindcss": "^2.2.7"
+    "tailwindcss": "^2.2.7",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "metro-config": "0.59.0"
   }
 }
