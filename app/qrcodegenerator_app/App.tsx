@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Text from '@devsoutinho/universalui/src/components/Text'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>QRCode Generator App*</Text>
+      <Text>QRCode Generator App</Text>
       <StatusBar style="auto" />
     </View>
   );
