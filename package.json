@@ -8,8 +8,7 @@
     "packages": [
       "packages/*",
       "web/*",
-      "server/*",
-      "app/*"
+      "server/*"
     ],
     "nohoist": [
       "**/tailwindcss",
