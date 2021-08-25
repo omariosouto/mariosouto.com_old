@@ -8,7 +8,8 @@
     "packages": [
       "packages/*",
       "web/*",
-      "server/*"
+      "server/*",
+      "app/*"
     ],
     "nohoist": [
       "**/tailwindcss",
@@ -34,7 +35,9 @@
     "dev:universalui": "yarn universalui dev",
     "buniversaluild:universalui": "yarn universalui build",
     "lint:universalui": "yarn universalui lint",
-    "test:universalui": "yarn universalui test"
+    "test:universalui": "yarn universalui test",
+    "app:qrcode": "yarn workspace @devsoutinho/qrcodegenerator_app",
+    "dev:app:qrcode": "yarn app:qrcode start"
   },
   "dependencies": {
     "tailwindcss": "^2.2.7"
