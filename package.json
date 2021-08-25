@@ -29,7 +29,12 @@
     "dev:ui": "yarn ui dev",
     "build:ui": "yarn ui build",
     "lint:ui": "yarn ui lint",
-    "test:ui": "yarn ui test"
+    "test:ui": "yarn ui test",
+    "universalui": "yarn workspace @devsoutinho/universalui",
+    "dev:universalui": "yarn universalui dev",
+    "buniversaluild:universalui": "yarn universalui build",
+    "lint:universalui": "yarn universalui lint",
+    "test:universalui": "yarn universalui test"
   },
   "dependencies": {
     "tailwindcss": "^2.2.7"
