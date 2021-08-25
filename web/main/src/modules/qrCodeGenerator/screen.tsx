@@ -20,7 +20,7 @@ export default function QRCodeGeneratorScreen(): JSX.Element {
       },
     });
 
-    setQrCodeSVG(qrSVG);
+    setQrCodeSVG(qrSVG.toString());
 
     setTimeout(() => {
       html2canvas(document.querySelector('#qrcode_svg_container')).then(
