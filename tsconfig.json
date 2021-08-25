@@ -17,12 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "noImplicitAny": true,
-    "typeRoots": [
-      "./node_modules/",
-      "./node_modules/@types",
-      "./@types",
-    ]
+    "noImplicitAny": true
   },
   "exclude": [
     "node_modules"
