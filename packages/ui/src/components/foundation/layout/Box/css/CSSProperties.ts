@@ -14,6 +14,7 @@ export interface CSSProperties {
   maxWidth?: PropertyDefinition<string>;
   height?: PropertyDefinition<string>;
   border?: PropertyDefinition<string>;
+  borderRadius?: PropertyDefinition<'none' | 'sm' | 'md' | 'lg' | 'full'>;
   display?: PropertyDefinition<
     | 'none'
     | 'block'

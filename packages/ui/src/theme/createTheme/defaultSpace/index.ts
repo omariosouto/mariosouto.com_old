@@ -1,6 +1,7 @@
 import { ThemeSpace } from '../../types/ThemeSpace';
 
 const partition = {
+  'x1/1': '100%',
   'x1/2': '50%',
   'x1/3': '33.333333%',
   'x2/3': '66.666667%',
