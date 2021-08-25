@@ -1,9 +1,8 @@
 import { css } from 'styled-components';
 
 export const Styles = css`
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
-  color: #333;
+  color: ${({ theme }) => theme.colors.primary050};
   background-color: red;
-  max-width: 50%;
 `;

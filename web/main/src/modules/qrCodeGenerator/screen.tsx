@@ -1,33 +1,12 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import UIThemeProvider from '@devsoutinho/universalui/src/theme/provider/UIThemeProvider/web';
 import HomeScreen from '@devsoutinho/universalui/src/patterns/qrcode-generator/HomeScreen/web';
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: sans-serif;
-  }
-  #__next {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-`;
 
 export default function QRCodeGeneratorScreen(): JSX.Element {
   return (
-    <>
-      <GlobalStyle />
+    <UIThemeProvider>
       <HomeScreen />
-    </>
+    </UIThemeProvider>
   );
 }
 

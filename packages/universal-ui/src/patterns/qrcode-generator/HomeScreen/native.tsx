@@ -7,7 +7,7 @@ import Box from '@devsoutinho/universalui/src/components/Box/native';
 export default function HomeScreen() {
   return (
     <Box>
-      <Text>QRCode Generator Appa</Text>
+      <Text>[Native] QRCode Generator Appa</Text>
     </Box>
   )
 }

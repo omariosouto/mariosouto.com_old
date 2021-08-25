@@ -1,4 +1,4 @@
-import UIThemeProvider from '../../../provider/UIThemeProvider';
+import UIThemeProvider from '../../../provider/UIThemeProvider/web';
 import { colorSetKeys } from '../themeType';
 import { devsoutinhoPallete } from '../palletes/devsoutinho';
 

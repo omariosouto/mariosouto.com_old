@@ -3,6 +3,8 @@ import { Styles } from '../styles';
 
 
 const Box = styled.div`
+  display: flex;
+  flex-direction: column;
   ${Styles}
 `;
 
