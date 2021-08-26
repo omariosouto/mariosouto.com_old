@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'styled-components/native';
+import { css } from 'styled-components';
 import { CSSProperties } from '../../theme/types/CSSProperties';
 import propToStyle from '../../theme/utils/propToStyle';
 
