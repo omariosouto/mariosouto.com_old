@@ -7,7 +7,7 @@ interface UIThemeProviderWebProps {
 }
 export default function UIThemeProviderWeb({ children }: UIThemeProviderWebProps) {
   return (
-    <UIThemeProvider>
+    <UIThemeProvider platform="web">
       <GlobalStyle />
       {children}
     </UIThemeProvider>

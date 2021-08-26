@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@cheprasov/qrcode": "^0.1.0",
-    "@devsoutinho/ui": "*",
     "@devsoutinho/universalui": "*",
     "html2canvas": "^1.3.2",
     "next": "latest",

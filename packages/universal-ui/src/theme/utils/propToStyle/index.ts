@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components';
 import breakpointsMedia, { CSSByBreakpoints } from '../breakpointsMedia';
 import { CSSProperties } from '../../types/CSSProperties';
 import { parseValue } from './parseValue';
+import { PLATFORM_MOBILE } from '../../types/Platforms';
 
 type PropName = keyof CSSProperties;
 type CSSPropValues = { theme?: DefaultTheme } & Partial<
@@ -20,6 +21,14 @@ export default function propToStyle(
     const propValue = props[propName] || props[propNameAlias];
 
     if (typeof propValue === 'object' && !Array.isArray(propValue)) {
+
+      if(theme.platform === PLATFORM_MOBILE) {
+        const validValueInBreapointOrder = propValue.xs; 
+        return {
+          [propName]: parseValue(theme, propName, valueAdapter(validValueInBreapointOrder)),
+        }
+      }
+
       const breakpoints: CSSByBreakpoints = {};
 
       if (propValue.xs)
@@ -42,6 +51,7 @@ export default function propToStyle(
         breakpoints.xl = {
           [propName]: parseValue(theme, propName, valueAdapter(propValue.xl)),
         };
+
 
       return breakpointsMedia(breakpoints);
     }

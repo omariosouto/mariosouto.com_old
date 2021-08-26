@@ -33,21 +33,21 @@ const partition = {
 };
 
 const container = {
-  xcontainer_xs: '0' /* 0 */,
-  xcontainer_sm: '40rem' /* 640px */,
-  xcontainer_md: '48rem' /* 768px */,
-  xcontainer_lg: '64rem' /* 1024px */,
-  xcontainer_xl: '80rem' /* 1280px */,
+  xcontainer_xs: '0'      /* 0 */,
+  xcontainer_sm: '640px'  /* 40rem */,
+  xcontainer_md: '768px'  /* 48rem */,
+  xcontainer_lg: '1024px' /* 64rem */,
+  xcontainer_xl: '1280px' /* 80rem */,
 };
 
 const defaultSpace: SpaceTheme = {
   ...partition,
   ...container,
   x0: '0',
-  'x0.5': '0.125rem',
+  'x0.5': '2px', // 0.125rem
   x1: '0.25rem',
   'x1.5': '0.375rem',
-  x2: '0.5rem',
+  x2: '8px', // 0.5rem
   'x2.5': '0.625rem',
   x3: '0.75rem',
   'x3.5': '0.875rem',
@@ -62,8 +62,8 @@ const defaultSpace: SpaceTheme = {
   x12: '3rem',
   x14: '3.5rem',
   x16: '4rem',
-  x20: '5rem',
-  x24: '6rem',
+  x20: '80px', // 5rem
+  x24: '96px', // 6rem
   x28: '7rem',
   x32: '8rem',
   x36: '9rem',
@@ -76,7 +76,7 @@ const defaultSpace: SpaceTheme = {
   x64: '16rem',
   x72: '18rem',
   x80: '20rem',
-  x96: '24rem',
+  x96: '384px', // 24rem
 };
 
 export default defaultSpace;

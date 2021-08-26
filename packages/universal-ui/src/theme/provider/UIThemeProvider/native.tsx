@@ -7,7 +7,7 @@ interface UIThemeProviderNativeProps {
 }
 export default function UIThemeProviderNative({ children }: UIThemeProviderNativeProps) {
   return (
-    <UIThemeProvider>
+    <UIThemeProvider platform="mobile">
       {children}
     </UIThemeProvider>
   );

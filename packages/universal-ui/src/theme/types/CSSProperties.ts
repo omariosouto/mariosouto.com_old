@@ -15,16 +15,6 @@ export interface CSSProperties {
   height?: PropertyDefinition<string>;
   border?: PropertyDefinition<string>;
   borderRadius?: PropertyDefinition<'none' | 'sm' | 'md' | 'lg' | 'full'>;
-  display?: PropertyDefinition<
-    | 'none'
-    | 'block'
-    | 'inline'
-    | 'inline-block'
-    | 'flex'
-    | 'inline-flex'
-    | 'grid'
-    | 'inline-grid'
-  >;
   margin?: PropertyDefinition<string>;
   marginLeft?: PropertyDefinition<string>;
   marginRight?: PropertyDefinition<string>;
