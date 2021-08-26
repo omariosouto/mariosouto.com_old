@@ -24,7 +24,7 @@ export type ColorPalleteKeys = typeof colorPalleteKeys[number];
 
 export type ColorDeck = Record<ColorSetKeys, string>;
 
-export interface ColorPallete {
+export interface ColorPalleteTheme {
   white: string;
   neutral: ColorDeck;
   primary: ColorDeck;

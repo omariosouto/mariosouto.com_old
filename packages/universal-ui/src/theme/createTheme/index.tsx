@@ -1,24 +1,16 @@
 import { DefaultTheme } from 'styled-components';
+import breakpoints from '../foundation/breakpoints';
+import typography from '../foundation/typography';
+import space from '../foundation/space';
+import colors from '../foundation/colors';
 
-export default function createTheme(): DefaultTheme {
+type ColorModes = 'light' | 'dark';
+
+export default function createTheme(colorMode: ColorModes = 'light'): DefaultTheme {
   return {
-    breakpoints: {
-      xs: '0px',
-      sm: '480px',
-      md: '768px',
-      lg: '992px',
-      xl: '1200px',
-    },
-    typography: {},
-    colors: {
-      'primary050': 'white',
-      'primary100': 'blue',
-      'primary200': 'yellow',
-    },
-    space: {
-      'xpx': '1px',
-      'x1': '2px',
-      'x2': '4px',
-    }
+    colors: colors[colorMode],
+    breakpoints,
+    typography,
+    space,
   }
 }

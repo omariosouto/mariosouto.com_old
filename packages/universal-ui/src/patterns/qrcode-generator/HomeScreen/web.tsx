@@ -7,7 +7,7 @@ import Box from '@devsoutinho/universalui/src/components/Box/web';
 export default function HomeScreen() {
   return (
     <Box>
-      <Text>[Web] QRCode Generator Appa</Text>
+      <Text>Oi amor na web</Text>
     </Box>
   )
 }

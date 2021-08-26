@@ -1,4 +1,4 @@
-import { ColorDeck, colorSetKeys } from './themeType';
+import { ColorDeck, colorSetKeys } from '../types';
 import { swatches, SwatchKey } from './swatches';
 
 export function getColorBySwatche(colorKey: string): ColorDeck {
