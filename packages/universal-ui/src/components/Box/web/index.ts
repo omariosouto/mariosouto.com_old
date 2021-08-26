@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Styles } from '../styles';
+import { BoxPropsBase, Styles } from '../styles';
 
-
-const Box = styled.div`
+type BoxProps = BoxPropsBase;
+const Box = styled.div<BoxProps>`
   display: flex;
   flex-direction: column;
   ${Styles}

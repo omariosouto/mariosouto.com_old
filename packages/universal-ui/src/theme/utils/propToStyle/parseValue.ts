@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DefaultTheme } from 'styled-components';
-import { ThemeSpace } from '../../types/ThemeSpace';
-import { ColorPalleteKeys, ColorSetKeys } from '../../types/ThemeColors';
+import { SpaceTheme } from '../../foundation/space';
+import { ColorPalleteKeys, ColorSetKeys } from '../../foundation/colors/types';
 
 function themeColor(value: string, theme: DefaultTheme) {
   const MATCH_THEME_COLORS =
@@ -18,9 +18,9 @@ function themeColor(value: string, theme: DefaultTheme) {
 function themeSpace(value: string, theme: DefaultTheme) {
   const MATCH_THEME_SPACE = /(-?x[\d/.]+)|(xcontainer_(xs|sm|md|lg|xl))/g;
   return value.replace(MATCH_THEME_SPACE, (...args) => {
-    const currentValue = args[0] as keyof ThemeSpace;
+    const currentValue = args[0] as keyof SpaceTheme;
     if (currentValue.includes('-')) {
-      const adjustedValue = currentValue.replace('-', '') as keyof ThemeSpace;
+      const adjustedValue = currentValue.replace('-', '') as keyof SpaceTheme;
       return `calc(${theme.space[adjustedValue]} * -1)`;
     }
     return `${theme.space[currentValue]}`;
@@ -35,7 +35,7 @@ const parseStrategies = {
   background: themeColor,
   backgroundColor: themeColor,
   border: themeReplacer,
-  default: themeSpace,
+  default: themeReplacer,
 };
 
 type parserName = keyof typeof parseStrategies;

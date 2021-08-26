@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
-import { Styles } from '../styles';
+import { Styles, BoxPropsBase } from '../styles';
 
-const Box = styled.View`
+type BoxProps = BoxPropsBase;
+const Box = styled.View<BoxProps>`
   ${Styles}
 `;
 

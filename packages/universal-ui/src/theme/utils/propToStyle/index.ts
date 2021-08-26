@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 import breakpointsMedia, { CSSByBreakpoints } from '../breakpointsMedia';
-import { CSSProperties } from '../../../components/foundation/layout/Box/css/CSSProperties';
+import { CSSProperties } from '../../types/CSSProperties';
 import { parseValue } from './parseValue';
 
 type PropName = keyof CSSProperties;

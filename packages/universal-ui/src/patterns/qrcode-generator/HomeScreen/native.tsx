@@ -6,8 +6,8 @@ import Box from '@devsoutinho/universalui/src/components/Box/native';
 
 export default function HomeScreen() {
   return (
-    <Box>
-      <Text>Oi amor</Text>
+    <Box background="positive500" flex="1" padding="70px">
+      <Text>Testing</Text>
     </Box>
   )
 }
