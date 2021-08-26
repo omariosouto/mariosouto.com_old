@@ -3,15 +3,15 @@ import {
   DefaultTheme,
   FlattenSimpleInterpolation,
 } from 'styled-components';
-import { BreakpointNames } from '../../types/ThemeBreakpoints';
-import { ThemeSpaceNames } from '../../types/ThemeSpace';
+import { BreakpointsNames } from '../../foundation/breakpoints';
+import { SpaceThemeNames } from '../../foundation/space';
 
 export type CSSByBreakpoints = Partial<
   Record<
-    BreakpointNames,
+    BreakpointsNames,
     | string
     | FlattenSimpleInterpolation
-    | ThemeSpaceNames
+    | SpaceThemeNames
     | Record<string, string>
   >
 >;
@@ -23,8 +23,9 @@ export default function breakpointsMedia(cssByBreakpoints: CSSByBreakpoints) {
     theme: DefaultTheme;
   }): FlattenSimpleInterpolation[] | string[] => {
     const breakpointsNames = Object.keys(cssByBreakpoints);
+    console.log('breakpointsNames', cssByBreakpoints.md);
     return breakpointsNames.map(
-      (breakpointName: BreakpointNames) => css`
+      (breakpointName: BreakpointsNames) => css`
         @media screen and (min-width: ${theme.breakpoints[breakpointName]}) {
           ${cssByBreakpoints[breakpointName]}
         }

@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Styles, TextPropsBase } from '../styles';
+import { Styles, TextPropsBase, defaultProps } from '../styles';
 import propToMobile from '../../../theme/utils/propToMobile';
 
-type TextProps = TextPropsBase;
-
-const StyledComponents = styled.Text<TextProps>`
+const StyledComponents = styled.Text<TextPropsBase>`
   ${Styles}
 `;
-
 function Text(props: TextPropsBase) {
   return (
     <StyledComponents {...propToMobile<TextPropsBase>(props)} />
   );
 }
+
+Text.defaultProps = {
+  ...defaultProps,
+};
 
 export default Text;

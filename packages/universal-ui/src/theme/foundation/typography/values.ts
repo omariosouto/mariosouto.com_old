@@ -1,6 +1,6 @@
 // https://tailwindcss.com/docs/letter-spacing#class-reference
 export const tracking = {
-  tight: '-0.025em',
+  tight: '-0.4px',
 };
 
 // https://tailwindcss.com/docs/font-weight#class-reference
@@ -13,55 +13,55 @@ export const fontWeight = {
 // https://tailwindcss.com/docs/font-size
 export const fontSize = {
   text_xs: {
-    fontSize: '0.75rem',
-    lineHeight: '1rem',
+    fontSize: '12px',
+    lineHeight: '16px',
   },
   text_sm: {
-    fontSize: '0.875rem',
-    lineHeight: '1.25rem',
+    fontSize: '14px',
+    lineHeight: '20px',
   },
   text_base: {
-    fontSize: '1rem',
-    lineHeight: '1.5rem',
+    fontSize: '16px',
+    lineHeight: '24px',
   },
   text_lg: {
-    fontSize: '1.125rem',
-    lineHeight: '1.75rem',
+    fontSize: '18px',
+    lineHeight: '28px',
   },
   text_xl: {
-    fontSize: '1.25rem',
-    lineHeight: '1.75rem',
+    fontSize: '20px',
+    lineHeight: '28px',
   },
   text_2xl: {
-    fontSize: '1.5rem',
-    lineHeight: '2rem',
+    fontSize: '24px',
+    lineHeight: '32px',
   },
   text_3xl: {
-    fontSize: '1.875rem',
-    lineHeight: '2.25rem',
+    fontSize: '30px',
+    lineHeight: '36px',
   },
   text_4xl: {
-    fontSize: '2.25rem',
-    lineHeight: '2.5rem',
+    fontSize: '36px',
+    lineHeight: '40px',
   },
   text_5xl: {
-    fontSize: '3rem',
+    fontSize: '48px',
     lineHeight: '1',
   },
   text_6xl: {
-    fontSize: '3.75rem',
+    fontSize: '60px',
     lineHeight: '1',
   },
   text_7xl: {
-    fontSize: '4.5rem',
+    fontSize: '72px',
     lineHeight: '1',
   },
   text_8xl: {
-    fontSize: '6rem',
+    fontSize: '96px',
     lineHeight: '1',
   },
   text_9xl: {
-    fontSize: '8rem',
+    fontSize: '128px',
     lineHeight: '1',
   },
 };

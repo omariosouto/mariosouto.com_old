@@ -25,11 +25,11 @@ export interface CSSProperties {
   marginRight?: PropertyDefinition<string>;
   marginBottom?: PropertyDefinition<string>;
   marginTop?: PropertyDefinition<string>;
-  padding?: PropertyDefinition<string>;
-  paddingLeft?: PropertyDefinition<SpaceThemeNames | string>;
-  paddingRight?: PropertyDefinition<SpaceThemeNames | string>;
-  paddingBottom?: PropertyDefinition<SpaceThemeNames | string>;
-  paddingTop?: PropertyDefinition<SpaceThemeNames | string>;
+  padding?: PropertyDefinition<SpaceThemeNames | string>;
+  paddingLeft?: PropertyDefinition<SpaceThemeNames>;
+  paddingRight?: PropertyDefinition<SpaceThemeNames>;
+  paddingBottom?: PropertyDefinition<SpaceThemeNames>;
+  paddingTop?: PropertyDefinition<SpaceThemeNames>;
   // Flex
   flex?: PropertyDefinition<string>;
   // Standards
