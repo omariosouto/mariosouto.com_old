@@ -1,9 +1,9 @@
 // TODO: Add support to it
 const borderRadius = {
   none: '0',
-  sm: '.125rem',
-  md: '.25rem',
-  lg: '.5rem',
+  sm: '2px', // .125rem
+  md: '4px', // .25rem
+  lg: '8px', // .5rem
   full: '9999px',
 } as const;
 

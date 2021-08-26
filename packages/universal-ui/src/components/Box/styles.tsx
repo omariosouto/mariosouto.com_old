@@ -1,9 +1,11 @@
 import React from 'react';
 import { css } from 'styled-components';
-import { CSSProperties } from '../../theme/types/CSSProperties';
+import boxShadow, { BoxShadowNames } from '../../theme/foundation/basics/boxShadow';
+import borderRadius, { BorderRadiusNames } from '../../theme/foundation/basics/borderRadius';
+import { CSSProperties, CSSPropertiesNames } from '../../theme/types/CSSProperties';
 import propToStyle from '../../theme/utils/propToStyle';
 
-export const commonDynamicProps = {
+export const commonDynamicProps: Partial<Record<CSSPropertiesNames, () => unknown>> = {
   // [Common Props]
   flex: propToStyle('flex'),
   margin: propToStyle('margin'),
@@ -18,9 +20,12 @@ export const commonDynamicProps = {
   paddingRight: propToStyle('paddingRight'),
   background: propToStyle('background'),
   backgroundColor: propToStyle('backgroundColor'),
+  overflow: propToStyle('overflow'),
   // [Text Specific Props]
   textColor: propToStyle('color', 'textColor'),
   fontSize: propToStyle('fontSize'),
+  boxShadow: propToStyle('boxShadow', 'boxShadow', (value: BoxShadowNames) => boxShadow[value]),
+  borderRadius: propToStyle('borderRadius', 'borderRadius', (value: BorderRadiusNames) => borderRadius[value]),
 } as const;
 export type CommonDynamicProps = keyof typeof commonDynamicProps;
 

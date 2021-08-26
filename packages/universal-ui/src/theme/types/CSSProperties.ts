@@ -1,3 +1,5 @@
+import { BorderRadiusNames } from '../foundation/basics/borderRadius';
+import { BoxShadowNames } from '../foundation/basics/boxShadow';
 import { BreakpointsNames } from '../foundation/breakpoints';
 import { SpaceThemeNames } from '../foundation/space';
 
@@ -11,7 +13,6 @@ export interface CSSProperties {
   textColor?: PropertyDefinition<string>;
   fontSize?: PropertyDefinition<string>;
   // ColorStyles
-
   background?: PropertyDefinition<string>;
   backgroundColor?: PropertyDefinition<string>;
   // Box Model
@@ -19,7 +20,6 @@ export interface CSSProperties {
   maxWidth?: PropertyDefinition<string>;
   height?: PropertyDefinition<string>;
   border?: PropertyDefinition<string>;
-  borderRadius?: PropertyDefinition<'none' | 'sm' | 'md' | 'lg' | 'full'>;
   margin?: PropertyDefinition<string>;
   marginLeft?: PropertyDefinition<string>;
   marginRight?: PropertyDefinition<string>;
@@ -32,4 +32,12 @@ export interface CSSProperties {
   paddingTop?: PropertyDefinition<SpaceThemeNames | string>;
   // Flex
   flex?: PropertyDefinition<string>;
+  // Standards
+  overflow?: PropertyDefinition<
+  'visible' | 'hidden' | 'scroll' | 'auto' | 'inherit' | 'initial' | 'revert'
+  >;
+  boxShadow?: PropertyDefinition<BoxShadowNames>;
+  borderRadius?: PropertyDefinition<BorderRadiusNames>;
 }
+
+export type CSSPropertiesNames = keyof CSSProperties;

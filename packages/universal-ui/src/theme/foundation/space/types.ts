@@ -38,6 +38,7 @@ const container = {
 
 const space = {
   x0: '0',
+  xpx: '1',
   'x0.5': '0.5',
   x1: '1',
   'x1.5': '1.5',
