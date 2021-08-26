@@ -3,7 +3,8 @@ import { css } from 'styled-components';
 import { CSSProperties } from '../../theme/types/CSSProperties';
 import propToStyle from '../../theme/utils/propToStyle';
 
-const commonProps = {
+export const commonDynamicProps = {
+  // [Common Props]
   flex: propToStyle('flex'),
   margin: propToStyle('margin'),
   marginTop: propToStyle('marginTop'),
@@ -17,16 +18,25 @@ const commonProps = {
   paddingRight: propToStyle('paddingRight'),
   background: propToStyle('background'),
   backgroundColor: propToStyle('backgroundColor'),
+  // [Text Specific Props]
+  textColor: propToStyle('color', 'textColor'),
+  fontSize: propToStyle('fontSize'),
 } as const;
+export type CommonDynamicProps = keyof typeof commonDynamicProps;
+
+export function renderDynamicProps(dynamicProps: any) {
+  return Object.keys(dynamicProps)
+    .map((dynamicPropKey: DynamicProps) => dynamicProps[dynamicPropKey])
+}
+
 
 const dynamicProps = {
-  ...commonProps,
+  ...commonDynamicProps,
 } as const;
 type DynamicProps = keyof typeof dynamicProps;
 
-type BoxStyleProps = keyof typeof dynamicProps;
+type BoxStyleProps = DynamicProps;
 export type BoxPropsBase = { children: React.ReactNode } & Pick<CSSProperties, BoxStyleProps>;
 export const Styles = css`
-  ${Object.keys(dynamicProps)
-    .map((dynamicPropKey: DynamicProps) => dynamicProps[dynamicPropKey])}
+  ${renderDynamicProps(dynamicProps)}
 `;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Styles } from '../styles';
+import { Styles, TextPropsBase } from '../styles';
 
-export default styled.span`
+export default styled.span<TextPropsBase>`
   ${Styles}
 `;;
