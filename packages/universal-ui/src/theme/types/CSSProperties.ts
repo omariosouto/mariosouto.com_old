@@ -21,17 +21,36 @@ export interface CSSProperties {
   height?: PropertyDefinition<string>;
   border?: PropertyDefinition<string>;
   margin?: PropertyDefinition<string>;
+  marginX?: PropertyDefinition<SpaceThemeNames>;
+  marginY?: PropertyDefinition<SpaceThemeNames>;
   marginLeft?: PropertyDefinition<string>;
   marginRight?: PropertyDefinition<string>;
   marginBottom?: PropertyDefinition<string>;
   marginTop?: PropertyDefinition<string>;
   padding?: PropertyDefinition<SpaceThemeNames | string>;
+  paddingX?: PropertyDefinition<SpaceThemeNames>;
+  paddingY?: PropertyDefinition<SpaceThemeNames>;
   paddingLeft?: PropertyDefinition<SpaceThemeNames>;
   paddingRight?: PropertyDefinition<SpaceThemeNames>;
   paddingBottom?: PropertyDefinition<SpaceThemeNames>;
   paddingTop?: PropertyDefinition<SpaceThemeNames>;
   // Flex
   flex?: PropertyDefinition<string>;
+  flexDirection?: PropertyDefinition<
+    'row' | 'row-reverse' | 'column' | 'column-reverse' | 'inherit'
+  >;
+  order?: PropertyDefinition<string>;
+  alignItems?: PropertyDefinition<
+    'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
+  >;
+  justifyContent?: PropertyDefinition<
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+  >;
   // Standards
   overflow?: PropertyDefinition<
   'visible' | 'hidden' | 'scroll' | 'auto' | 'inherit' | 'initial' | 'revert'

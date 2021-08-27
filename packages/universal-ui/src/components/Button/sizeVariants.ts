@@ -1,5 +1,16 @@
-// Next TODO
-export const sizeVariants: Record<ThemeBasicSizes, TypographyVariant & SizeVariant> = {
+import { RecordOfThemeBasicSizes } from '../../theme/types/ThemeBasicSizes';
+import { SpaceThemeNames } from '../../theme/foundation/space';
+import { TypographyVariantsName } from '../../theme/foundation/typography/types';
+
+export type SizeVariantName = keyof typeof sizeVariants;
+
+interface SizeVariant {
+  px: SpaceThemeNames;
+  py: SpaceThemeNames;
+  typographyVariant: TypographyVariantsName;
+}
+
+export const sizeVariants: RecordOfThemeBasicSizes<SizeVariant> = {
   xs: {
     px: 'x2.5',
     py: 'x1.5',

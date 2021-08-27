@@ -5,15 +5,23 @@ import borderRadius, { BorderRadiusNames } from '../../theme/foundation/basics/b
 import { CSSProperties, CSSPropertiesNames } from '../../theme/types/CSSProperties';
 import propToStyle from '../../theme/utils/propToStyle';
 
-export const commonDynamicProps: Partial<Record<CSSPropertiesNames, () => unknown>> = {
+export const commonDynamicProps: Partial<Record<CSSPropertiesNames, any>> = {
   // [Common Props]
   flex: propToStyle('flex'),
-  margin: propToStyle('margin'),
+  flexDirection: propToStyle('flexDirection'),
+  order: propToStyle('order'),
+  alignItems: propToStyle('alignItems'),
+  justifyContent: propToStyle('justifyContent'),
+  margin: propToStyle('margin'), // TODO: Deprecate this?
+  marginX: [propToStyle('marginLeft', 'marginX'), propToStyle('marginRight', 'marginX')],
+  marginY: [propToStyle('marginTop', 'marginY'), propToStyle('marginBottom', 'marginY')],
   marginTop: propToStyle('marginTop'),
   marginBottom: propToStyle('marginBottom'),
   marginLeft: propToStyle('marginLeft'),
   marginRight: propToStyle('marginRight'),
-  padding: propToStyle('padding'),
+  padding: propToStyle('padding'), // TODO: Deprecate this?
+  paddingX: [propToStyle('paddingLeft', 'paddingX'), propToStyle('paddingRight', 'paddingX')],
+  paddingY: [propToStyle('paddingTop', 'paddingY'), propToStyle('paddingBottom', 'paddingY')],
   paddingTop: propToStyle('paddingTop'),
   paddingBottom: propToStyle('paddingBottom'),
   paddingLeft: propToStyle('paddingLeft'),
@@ -25,13 +33,13 @@ export const commonDynamicProps: Partial<Record<CSSPropertiesNames, () => unknow
   textColor: propToStyle('color', 'textColor'),
   fontSize: propToStyle('fontSize'),
   boxShadow: propToStyle('boxShadow', 'boxShadow', (value: BoxShadowNames) => boxShadow[value]),
-  borderRadius: propToStyle('borderRadius', 'borderRadius', (value: BorderRadiusNames) => borderRadius[value]),
+  borderRadius: propToStyle('borderRadius', 'borderRadius', (value: BorderRadiusNames) => borderRadius[value])
 } as const;
 export type CommonDynamicProps = keyof typeof commonDynamicProps;
 
 export function renderDynamicProps(dynamicProps: any) {
   return Object.keys(dynamicProps)
-    .map((dynamicPropKey: DynamicProps) => dynamicProps[dynamicPropKey])
+    .flatMap((dynamicPropKey: DynamicProps) => dynamicProps[dynamicPropKey])
 }
 
 

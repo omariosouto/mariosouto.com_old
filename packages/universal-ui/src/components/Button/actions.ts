@@ -6,7 +6,7 @@ export const actions: Record<any, any> = {
     return {
       background: theme.colors[baseColor]['600'],
       color: theme.colors.white,
-      border: `1px solid ${theme.colors[baseColor]['800']}`,
+      borderColor: `${theme.colors[baseColor]['800']}`,
       hoverfocus: {
         background: theme.colors[baseColor]['700'],
       },
@@ -20,7 +20,7 @@ export const actions: Record<any, any> = {
     return {
       background: theme.colors[baseColor]['100'],
       color: theme.colors[baseColor]['700'],
-      border: `1px solid ${theme.colors[baseColor]['300']}`,
+      borderColor: `${theme.colors[baseColor]['300']}`,
       hoverfocus: {
         background: theme.colors[baseColor]['200'],
       },
@@ -34,7 +34,7 @@ export const actions: Record<any, any> = {
     return {
       background: 'white',
       color: theme.colors[baseColor]['700'],
-      border: `1px solid ${theme.colors.neutral['100']}`,
+      borderColor: `${theme.colors.neutral['100']}`,
       hoverfocus: {
         background: theme.colors.neutral['050'],
       },
@@ -48,10 +48,10 @@ export const actions: Record<any, any> = {
     return {
       background: 'transparent',
       color: theme.colors[baseColor]['700'],
-      border: `1px solid transparent`,
+      borderColor: `transparent`,
       hoverfocus: {
         background: theme.colors.neutral['100'],
-        border: `1px solid ${theme.colors.neutral['200']}`,
+        borderColor: `${theme.colors.neutral['200']}`,
       },
       focus: {
         // boxShadow: `0 0 0 2px ${theme.colors.white},

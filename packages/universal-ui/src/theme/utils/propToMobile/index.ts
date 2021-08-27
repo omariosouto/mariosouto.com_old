@@ -3,7 +3,7 @@ function propToMobile<T>(props: any): T {
     const currentProp = props[item];
     return {
       ...acc,
-      [item]: Boolean(currentProp.xs) ? currentProp.xs : currentProp,
+      [item]: typeof currentProp.xs !== 'undefined' ? currentProp.xs : currentProp,
     };
   }, {} as T);
   return result;

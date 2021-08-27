@@ -19,7 +19,6 @@ export default function propToStyle(
   return (props: CSSPropValues): any => {
     const { theme } = props;
     const propValue = props[propName] || props[propNameAlias];
-
     if (typeof propValue === 'object' && !Array.isArray(propValue)) {
 
       if(theme.platform === PLATFORM_MOBILE) {
@@ -31,34 +30,35 @@ export default function propToStyle(
 
       const breakpoints: CSSByBreakpoints = {};
 
-      if (propValue.xs)
+      if (typeof propValue.xs !== 'undefined')
         breakpoints.xs = {
           [propName]: parseValue(theme, propName, valueAdapter(propValue.xs)),
         };
-      if (propValue.sm)
+      if (typeof propValue.sm !== 'undefined')
         breakpoints.sm = {
           [propName]: parseValue(theme, propName, valueAdapter(propValue.sm)),
         };
-      if (propValue.md)
+      if (typeof propValue.md !== 'undefined')
         breakpoints.md = {
           [propName]: parseValue(theme, propName, valueAdapter(propValue.md)),
         };
-      if (propValue.lg)
+      if (typeof propValue.lg !== 'undefined')
         breakpoints.lg = {
           [propName]: parseValue(theme, propName, valueAdapter(propValue.lg)),
         };
-      if (propValue.xl)
+      if (typeof propValue.xl !== 'undefined')
         breakpoints.xl = {
           [propName]: parseValue(theme, propName, valueAdapter(propValue.xl)),
         };
 
-
+      console.log(breakpoints);
       return breakpointsMedia(breakpoints);
     }
 
     if (
       typeof propValue === 'string' ||
       typeof propValue === 'number' ||
+      typeof propValue === 'boolean' ||
       Array.isArray(propValue)
     ) {
       return {

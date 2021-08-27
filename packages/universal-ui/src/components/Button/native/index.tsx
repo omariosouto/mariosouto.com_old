@@ -4,6 +4,7 @@ import Text from '../../Text/native';
 import { Styles, ButtonPropsBase, defaultProps } from '../styles';
 import propToMobile from '../../../theme/utils/propToMobile';
 import { actions } from '../actions';
+import { sizeVariants } from '../sizeVariants';
 
 const StyledComponents = styled.TouchableOpacity<ButtonPropsBase>`
   ${Styles}
@@ -19,7 +20,10 @@ function Component({children, ...props}: ButtonPropsBase) {
       onPressOut={() => setFocusIn(() => !isFocusIn)}
       onPressIn={() => setFocusIn(() => !isFocusIn)}
       {...propToMobile<ButtonPropsBase>(props)}>
-      <Text textColor={textColor}>{children}</Text>
+        
+      <Text textColor={textColor} variant={sizeVariants[props.size].typographyVariant}>
+        {children}
+      </Text>
     </StyledComponents>
   );
 }

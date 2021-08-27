@@ -25,9 +25,15 @@ export default function breakpointsMedia(cssByBreakpoints: CSSByBreakpoints) {
     const breakpointsNames = Object.keys(cssByBreakpoints);
     return breakpointsNames.map(
       (breakpointName: BreakpointsNames) => css`
-        @media screen and (min-width: ${theme.breakpoints[breakpointName]}) {
-          ${cssByBreakpoints[breakpointName]}
-        }
+        ${breakpointName === 'xs'
+          ? (css`
+            ${cssByBreakpoints[breakpointName]}
+          `)
+         : (css`
+            @media screen and (min-width: ${theme.breakpoints[breakpointName]}) {
+              ${cssByBreakpoints[breakpointName]}
+            }
+         `)}
       `
     );
   };
