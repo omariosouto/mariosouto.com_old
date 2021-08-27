@@ -10,7 +10,7 @@ export default function HomeScreen() {
     <Box background="primary500" flex="1" paddingY="x20" paddingX="x2">
       <Box overflow="hidden" borderRadius="sm">
         {['display_1', 'heading_1', 'heading_2', 'heading_3', 'heading_4', 'heading_5', 'heading_6', 'body_1', 'body_2', 'body_3', 'body_4']
-          .map((variant) => <Text as="h1" key={variant} background="primary200" variant={variant as any} textColor="primary900" uppercase bold>{variant}</Text>)}
+          .map((variant) => <Text as="h1" key={variant} background="primary200" variant={variant as any} textColor="primary900" bold>{variant}</Text>)}
       </Box>
       <Box flexDirection="row" marginTop="x4">
         {/* 5 - Add Ripple support

@@ -22,7 +22,7 @@ function Component({children, ...props}: ButtonPropsBase) {
       onPressIn={() => setFocusIn(() => !isFocusIn)}
       {...propToMobile<ButtonPropsBase>(props)}>
         
-      <Text textColor={textColor} variant={sizeVariants[props.size].typographyVariant}>
+      <Text textColor={textColor} variant={sizeVariants[props.size].typographyVariant} uppercase bold>
         {children}
       </Text>
     </StyledComponents>
