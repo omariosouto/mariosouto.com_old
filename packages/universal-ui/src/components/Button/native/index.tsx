@@ -1,12 +1,13 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components/native';
+import Ripple from 'react-native-material-ripple';
 import Text from '../../Text/native';
 import { Styles, ButtonPropsBase, defaultProps } from '../styles';
 import propToMobile from '../../../theme/utils/propToMobile';
 import { actions } from '../actions';
 import { sizeVariants } from '../sizeVariants';
 
-const StyledComponents = styled.TouchableOpacity<ButtonPropsBase>`
+const StyledComponents = styled(Ripple)<ButtonPropsBase & { activeOpacity?: number }>`
   ${Styles}
 `;
 function Component({children, ...props}: ButtonPropsBase) {

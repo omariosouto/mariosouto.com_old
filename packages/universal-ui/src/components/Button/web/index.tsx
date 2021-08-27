@@ -1,4 +1,5 @@
 import React from 'react';
+import Ripples from './ripples'
 import styled, { useTheme } from 'styled-components';
 import Text from '../../Text/web';
 import { actions } from '../actions';
@@ -6,7 +7,7 @@ import { Styles, ButtonPropsBase, defaultProps } from '../styles';
 import { sizeVariants } from '../sizeVariants';
 
 
-const StyledComponents = styled.button<ButtonPropsBase>`
+const StyledComponents = styled(Ripples)<ButtonPropsBase>`
   display: flex;
   cursor: pointer;
   ${Styles}

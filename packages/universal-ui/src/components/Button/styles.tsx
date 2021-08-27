@@ -39,6 +39,7 @@ export const defaultProps = {
 };
 
 export const Styles = css<ButtonPropsBase>`
+  overflow: hidden;
   border-color: transparent;
   border-style: solid;
   border-width: 1px;

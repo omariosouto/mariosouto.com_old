@@ -14,11 +14,14 @@ export default function HomeScreen() {
       <Box flexDirection="row" marginTop="x4">
         {/* 3 - Add Icon support */}
         {/* 4 - Add link support */}
-        {/* 5 - Add Ripple support */}
         {/* 5 - Add TextField support */}
         {/* 6 - Create Form Manager (Inside react commons) */}
         {/* 7 - Create the API for generate the QR Code */}
         {/* ? - Dark Mode support (backgroundColorDark="" textColorDark="") */}
+        <Button action="primary" baseColor="accent" marginRight="x4">Click here!</Button>
+        <Button action="primary" disabled>Click here!</Button>
+      </Box>
+      <Box flexDirection="column" marginTop="x4">
         <Button action="primary" baseColor="accent" marginRight="x4">Click here!</Button>
         <Button action="primary" disabled>Click here!</Button>
       </Box>
