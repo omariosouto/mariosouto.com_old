@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 import { CSSProperties } from '../../theme/types/CSSProperties';
+import { PLATFORM_WEB } from '../../theme/types/Platforms';
 import { renderDynamicProps, commonDynamicProps, CommonDynamicProps } from '../Box/styles';
 import { actions } from './actions';
 
@@ -10,6 +11,7 @@ const dynamicProps = {
 type DynamicProps = keyof typeof dynamicProps;
 
 export type ButtonPropsBase = {
+  isFocusIn?: boolean;
   children: React.ReactNode;
   baseColor?: 
     | 'primary'
@@ -27,12 +29,18 @@ export const defaultProps = {
 };
 
 export const Styles = css<ButtonPropsBase>`
-  ${({ action }) => css`
+  ${({ theme, action, isFocusIn }) => css`
     ${(props) => {
-      const { background, border } = actions[action](props);
+      const { background, border, hoverfocus } = actions[action](props);
+
       return {
-        background,
-        border,
+        background: isFocusIn ? hoverfocus.background : background,
+        border: isFocusIn ? hoverfocus.border : border,
+        ...(theme.platform === PLATFORM_WEB && {
+          '&:hover, &:focus': {
+            ...hoverfocus
+          }
+        })
       }
     }}
     padding: 40px;

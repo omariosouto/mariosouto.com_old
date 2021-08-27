@@ -9,11 +9,16 @@ const StyledComponents = styled.TouchableOpacity<ButtonPropsBase>`
   ${Styles}
 `;
 function Component({children, ...props}: ButtonPropsBase) {
+  const [isFocusIn, setFocusIn] = React.useState(false);  
   const theme = useTheme();
   const { color: textColor } = actions[props.action]({theme, ...props});
-
   return (
-    <StyledComponents {...propToMobile<ButtonPropsBase>(props)}>
+    <StyledComponents
+      activeOpacity={1}
+      isFocusIn={isFocusIn}
+      onPressOut={() => setFocusIn(() => !isFocusIn)}
+      onPressIn={() => setFocusIn(() => !isFocusIn)}
+      {...propToMobile<ButtonPropsBase>(props)}>
       <Text textColor={textColor}>{children}</Text>
     </StyledComponents>
   );
