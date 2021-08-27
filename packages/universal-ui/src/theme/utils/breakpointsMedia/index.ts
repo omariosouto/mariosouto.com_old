@@ -23,7 +23,6 @@ export default function breakpointsMedia(cssByBreakpoints: CSSByBreakpoints) {
     theme: DefaultTheme;
   }): FlattenSimpleInterpolation[] | string[] => {
     const breakpointsNames = Object.keys(cssByBreakpoints);
-    console.log('breakpointsNames', cssByBreakpoints.md);
     return breakpointsNames.map(
       (breakpointName: BreakpointsNames) => css`
         @media screen and (min-width: ${theme.breakpoints[breakpointName]}) {
