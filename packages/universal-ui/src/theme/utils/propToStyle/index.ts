@@ -51,7 +51,6 @@ export default function propToStyle(
           [propName]: parseValue(theme, propName, valueAdapter(propValue.xl)),
         };
 
-      console.log(breakpoints);
       return breakpointsMedia(breakpoints);
     }
 

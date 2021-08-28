@@ -2,26 +2,24 @@ import React from 'react';
 
 import Text from '@devsoutinho/universalui/src/components/Text/web';
 import Box from '@devsoutinho/universalui/src/components/Box/web';
+import Icon from '@devsoutinho/universalui/src/components/Icon/web';
 import Button from '@devsoutinho/universalui/src/components/Button/web';
 
 
 export default function HomeScreen() {
   return (
     <Box background="primary500" flex="1" paddingY="x20" paddingX="x2">
+      <Box background="white">
+        <Icon textColor="warning900" name="github" size="xl" />
+        <Icon textColor="positive500" name="youtube" />
+        <Icon textColor="negative500" name="check" />
+      </Box>
       <Box overflow="hidden" borderRadius="sm">
         {['display_1', 'heading_1', 'heading_2', 'heading_3', 'heading_4', 'heading_5', 'heading_6', 'body_1', 'body_2', 'body_3', 'body_4']
-          .map((variant) => <Text as="h1" key={variant} background="primary200" variant={variant as any} textColor="primary900" bold>{variant}</Text>)}
+          .map((variant) => <Text key={variant} background="primary200" variant={variant as any} textColor="primary900" bold>{variant}</Text>)}
       </Box>
       <Box flexDirection="row" marginTop="x4">
-        {/* 5 - Add Ripple support
-        - react: https://rwu823.github.io/react-ripples/
-        https://rwu823.github.io/react-ripples/
-        - react native: 
-          - https://github.com/n4kz/react-native-material-ripple
-          - https://www.youtube.com/watch?v=OZBjHv-Rlt0
-        */}
-        {/* 3 - Add Icon support */}
-        {/* 4 - Add link support */}
+        {/* 4 - Add Link support */}
         {/* 5 - Add TextField support */}
         {/* 6 - Create Form Manager (Inside react commons) */}
         {/* 7 - Create the API for generate the QR Code */}
@@ -30,7 +28,7 @@ export default function HomeScreen() {
         <Button action="primary" disabled>Click here!</Button>
       </Box>
       <Box flexDirection="column" marginTop="x4">
-        <Button action="primary" baseColor="accent" marginRight="x4">Click here!</Button>
+        <Button action="primary" baseColor="accent">Click here!</Button>
         <Button action="primary" disabled>Click here!</Button>
       </Box>
     </Box>

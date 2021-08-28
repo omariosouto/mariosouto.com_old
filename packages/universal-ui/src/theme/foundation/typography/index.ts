@@ -6,7 +6,7 @@ export type { TypographyTheme } from './types';
 const display = {
   display_1: {
     xs: {
-      ...fontSize.text_4xl,
+      ...fontSize.text_5xl,
       fontWeight: fontWeight.extrabold,
       letterSpacing: tracking.tight,
     },

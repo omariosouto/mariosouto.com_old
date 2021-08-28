@@ -8,6 +8,7 @@ type ResponsiveProperty<T> = Partial<Record<BreakpointsNames, T>>;
 export type PropertyDefinition<T> = T | ResponsiveProperty<T>;
 
 export interface CSSProperties {
+  display?: PropertyDefinition<'none' | 'flex'>;
   // Text Props
   color?: PropertyDefinition<string>;
   textColor?: PropertyDefinition<string>;

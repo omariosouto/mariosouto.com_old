@@ -7,6 +7,7 @@ import propToStyle from '../../theme/utils/propToStyle';
 
 export const commonDynamicProps: Partial<Record<CSSPropertiesNames, any>> = {
   // [Common Props]
+  display: propToStyle('display'),
   flex: propToStyle('flex'),
   flexDirection: propToStyle('flexDirection'),
   order: propToStyle('order'),

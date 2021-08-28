@@ -1,9 +1,21 @@
 import { css } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 import { TypographyVariantsName } from '../../theme/foundation/typography/types';
 import { CSSProperties } from '../../theme/types/CSSProperties';
 import { PLATFORM_WEB } from '../../theme/types/Platforms';
 import breakpointsMedia from '../../theme/utils/breakpointsMedia';
 import { renderDynamicProps, commonDynamicProps, CommonDynamicProps } from '../Box/styles';
+
+
+function lineHeightHandler(lineHeight: string, fontSize:string, theme: DefaultTheme) {
+
+  if(!lineHeight.includes('px')) {
+    if(theme.platform === PLATFORM_WEB) return lineHeight;
+    return (+lineHeight.replace('px', '')) * (+fontSize.replace('px', '')) + 'px';
+  }
+
+  return lineHeight;
+}
 
 function fontWeightHandler(bold: boolean, variant: string, fontWeight: string) {
   const boldVariants = {
@@ -39,7 +51,11 @@ export const defaultProps = {
 export const Styles = css<TextPropsBase>`
   ${({ theme, bold, variant, uppercase }) => css`
     font-size: ${theme.typography[variant].xs.fontSize};
-    line-height: ${theme.typography[variant].xs.lineHeight};
+    line-height: ${lineHeightHandler(
+      theme.typography[variant].xs.lineHeight,
+      theme.typography[variant].xs.fontSize,
+      theme
+    )};
     font-weight: ${fontWeightHandler(
       bold,
       variant,
@@ -58,7 +74,11 @@ export const Styles = css<TextPropsBase>`
             variant,
             theme.typography[variant].md.fontWeight
           )};
-          line-height: ${theme.typography[variant].md.lineHeight};
+          line-height: ${lineHeightHandler(
+            theme.typography[variant].md.lineHeight,
+            theme.typography[variant].md.fontSize,
+            theme
+          )};
           letter-spacing: ${theme.typography[variant].md.letterSpacing};
         `,
       })
