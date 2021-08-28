@@ -4,6 +4,7 @@ import { CSSProperties, PropertyDefinition } from '../../theme/types/CSSProperti
 import { PLATFORM_WEB } from '../../theme/types/Platforms';
 import propToStyle from '../../theme/utils/propToStyle';
 import { renderDynamicProps, commonDynamicProps, CommonDynamicProps } from '../Box/styles';
+import { IconButton } from '../Icon/styles';
 import { actions } from './actions';
 import { sizeVariants, SizeVariantName } from './sizeVariants';
 
@@ -28,7 +29,7 @@ export type ButtonPropsBase = {
     | 'neutral';
   action?: 'primary' | 'secondary' | 'tertiary' | 'quartenary';
   disabled?: boolean;
-} & Pick<CSSProperties, DynamicProps>;
+} & IconButton & Pick<CSSProperties, DynamicProps>;
 
 export const defaultProps = {
   action: 'primary',
@@ -36,9 +37,12 @@ export const defaultProps = {
   fullWidth: false,
   disabled: false,
   size: 'sm',
+  iconPosition: 'right',
 };
 
 export const Styles = css<ButtonPropsBase>`
+  flex: none;
+  flex-direction: row;
   overflow: hidden;
   border-color: transparent;
   border-style: solid;

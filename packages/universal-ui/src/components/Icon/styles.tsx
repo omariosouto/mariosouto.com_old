@@ -1,8 +1,9 @@
 import { css } from 'styled-components';
 import { SpaceThemeNames } from '../../theme/foundation/space';
+import { TypographyVariantsName } from '../../theme/foundation/typography/types';
 import { CSSProperties } from '../../theme/types/CSSProperties';
 import { RecordOfThemeBasicSizes } from '../../theme/types/ThemeBasicSizes';
-import { renderDynamicProps, commonDynamicProps, CommonDynamicProps } from '../Box/styles';
+import { renderDynamicProps, commonDynamicProps } from '../Box/styles';
 import { iconMapByName } from './iconMapByName';
 
 export const iconSizes: RecordOfThemeBasicSizes<SpaceThemeNames> = {
@@ -24,26 +25,37 @@ export const defaultProps = {
   textColor: 'blue',
 };
 
+type IconName = keyof typeof iconMapByName;
 type Sizes = keyof typeof iconSizes;
 export type IconPropsBase = {
-  size: Sizes | 'text';
+  size: Sizes | TypographyVariantsName;
   name: keyof typeof iconMapByName;
   xmlns?: string;
 } & Pick<CSSProperties, DynamicProps>;
 
 export const Styles = css<IconPropsBase>`
-  ${({ theme, size }) => css`
-      ${size === 'text'
-      ? css`
-        /* TODO: Make it better */
-        width: 40px;
-        height: 40px;
+  ${({ theme, size }) => {
+    if(size.includes('body') || size.includes('display') || size.includes('heading')) {
+      const baseValue = theme.typography[size as TypographyVariantsName];
+      return css`
+        width: ${4 + Number(baseValue.xs.fontSize.replace('px', ''))}px;
+        height: ${4 + Number(baseValue.xs.fontSize.replace('px', ''))}px;
       `
-      : css`
-        width: ${theme.space[(iconSizes[size])]};
-        height: ${theme.space[iconSizes[size]]};
-      `}
-  `}
+    }
+
+    const value = theme.space[iconSizes[size as Sizes]];
+    return css`
+        width: ${value};
+        height: ${value};
+    `
+  }}
 
   ${renderDynamicProps(commonDynamicProps)}
 `;
+
+
+export type IconButton = {
+  iconName?: IconName;
+  iconColor?: string;
+  iconPosition?: 'left' | 'right';
+};
