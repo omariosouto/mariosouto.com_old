@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Link from '@devsoutinho/universalui/src/components/Link/native';
 import Text from '@devsoutinho/universalui/src/components/Text/native';
 import Box from '@devsoutinho/universalui/src/components/Box/native';
 import Icon from '@devsoutinho/universalui/src/components/Icon/native';
@@ -7,7 +8,11 @@ import Button from '@devsoutinho/universalui/src/components/Button/native';
 
 export default function HomeScreen() {
   return (
-    <Box background="primary500" flex="1" paddingY="x20" paddingX="x2">
+    <Box background="primary200" flex="1" paddingY="x20" paddingX="x2">
+    <Text variant="heading_1" textColor="white">
+      Olá pessoas <Link href="https://google.com/" variant="heading_1">Hi</Link>
+      {' '}<Link href="https://google.com/" variant="heading_1" hasIcon={false}>Roi</Link>
+    </Text>
       <Box background="white">
         <Icon textColor="warning900" name="github" size="xl" />
         <Icon textColor="positive500" name="youtube" />
@@ -15,10 +20,9 @@ export default function HomeScreen() {
       </Box>
       <Box overflow="hidden" borderRadius="sm">
         {['display_1', 'heading_1', 'heading_2', 'heading_3', 'heading_4', 'heading_5', 'heading_6', 'body_1', 'body_2', 'body_3', 'body_4']
-          .map((variant) => <Text key={variant} background="primary200" variant={variant as any} textColor="primary900" bold>{variant}</Text>)}
+          .map((variant) => <Text key={variant} background="primary050" variant={variant as any} textColor="primary900" bold>{variant}</Text>)}
       </Box>
       <Box flexDirection="row" alignItems="flex-start" marginTop="x4">
-        {/* 4 - Add Link support */}
         {/* 5 - Add TextField support */}
         {/* 6 - Create Form Manager (Inside react commons) */}
         {/* 7 - Create the API for generate the QR Code */}
@@ -28,7 +32,7 @@ export default function HomeScreen() {
           action="primary"
           baseColor="accent"
           marginRight="x4"
-          iconName="arrowLeft"
+          iconName="github"
           iconColor="white"
           size="xl"
         >
@@ -38,7 +42,7 @@ export default function HomeScreen() {
           action="primary"
           baseColor="accent"
           marginRight="x4"
-          iconName="arrowLeft"
+          iconName="github"
           iconColor="white"
           iconPosition="left"
           size="xl"

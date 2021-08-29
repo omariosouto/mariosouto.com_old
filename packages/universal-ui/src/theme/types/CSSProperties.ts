@@ -10,6 +10,7 @@ export type PropertyDefinition<T> = T | ResponsiveProperty<T>;
 export interface CSSProperties {
   display?: PropertyDefinition<'none' | 'flex'>;
   // Text Props
+  /** @deprecated please use textColor instead */
   color?: PropertyDefinition<string>;
   textColor?: PropertyDefinition<string>;
   fontSize?: PropertyDefinition<string>;

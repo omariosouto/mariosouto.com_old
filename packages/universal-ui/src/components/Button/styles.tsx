@@ -80,10 +80,10 @@ export const Styles = css<ButtonPropsBase>`
   ${renderDynamicProps(commonDynamicProps)}
   
   ${({ theme, disabled }) => (disabled && css`
-      opacity: .5;
+      opacity: .4;
       ${theme.platform === PLATFORM_WEB && css`
         &:hover, &:focus {
-          opacity: .5;
+          opacity: .4;
         }
       `}
       

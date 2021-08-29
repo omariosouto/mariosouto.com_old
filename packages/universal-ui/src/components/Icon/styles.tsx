@@ -31,6 +31,7 @@ export type IconPropsBase = {
   size: Sizes | TypographyVariantsName;
   name: keyof typeof iconMapByName;
   xmlns?: string;
+  style?: any;
 } & Pick<CSSProperties, DynamicProps>;
 
 export const Styles = css<IconPropsBase>`
