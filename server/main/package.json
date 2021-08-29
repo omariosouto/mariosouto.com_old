@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "vercel-build": "yum install libuuid-devel libmount-devel zlib && ls -la ./node_modules && cp /lib64/{libuuid,libmount,libblkid,libz}.so.1 node_modules/canvas/build/Release/",
+    "vercel-build": "yum install libuuid-devel libmount-devel zlib && cd ./node_modules && ls -la && cp /lib64/{libuuid,libmount,libblkid,libz}.so.1 node_modules/canvas/build/Release/",
     "export": "next export",
     "start": "next start"
   },
