@@ -16,7 +16,7 @@ function themeColor(value: string, theme: DefaultTheme) {
 }
 
 function themeSpace(value: string, theme: DefaultTheme) {
-  const MATCH_THEME_SPACE = /(-?x[\d/.]+)|(xcontainer_(xs|sm|md|lg|xl))/g;
+  const MATCH_THEME_SPACE = /(-?x[\d/.]+)|(xcontainer_(xs|sm|md|lg|xl)|(xpx))/g;
   return value.replace(MATCH_THEME_SPACE, (...args) => {
     const currentValue = args[0] as keyof SpaceTheme;
     if (currentValue.includes('-')) {
