@@ -1,14 +1,17 @@
 import 'styled-components';
-import { ThemeTypography } from '../theme/types/ThemeTypography';
-import { ThemeBreakpoints } from '../theme/types/ThemeBreakpoints';
-import { ThemeSpace } from '../theme/types/ThemeSpace';
-import { ColorPallete } from '../theme/types/ThemeColors';
+import { BreakpointsTheme } from '../theme/foundation/breakpoints';
+import { TypographyTheme } from '../theme/foundation/typography';
+import { SpaceTheme } from '../theme/foundation/space';
+import { ColorPalleteTheme } from '../theme/foundation/colors';
+import { Platforms } from '../types/Platforms';
+import { Platforms } from '../theme/types/Platforms';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    typography: ThemeTypography;
-    colors: ColorPallete;
-    space: ThemeSpace;
-    breakpoints: ThemeBreakpoints;
+    platform: Platforms;
+    colors: ColorPalleteTheme;
+    space: SpaceTheme;
+    typography: TypographyTheme;
+    breakpoints: BreakpointsTheme;
   }
 }

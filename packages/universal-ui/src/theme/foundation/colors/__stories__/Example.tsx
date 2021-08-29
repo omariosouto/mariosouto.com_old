@@ -1,6 +1,6 @@
-import UIThemeProvider from '../../../provider/UIThemeProvider';
-import { colorSetKeys } from '../themeType';
-import { devsoutinhoPallete } from '../palletes/devsoutinho';
+import UIThemeProvider from '../../../provider/UIThemeProvider/web';
+import { colorSetKeys } from '../types';
+import defaultPallete from '../index';
 
 export function ExampleDevSoutinhoPallete(): JSX.Element {
   return (
@@ -13,7 +13,7 @@ export function ExampleDevSoutinhoPallete(): JSX.Element {
             color={themeName === 'Dark' && 'white'}
           >
             <h1>[{themeName}]</h1>
-            {Object.keys(devsoutinhoPallete.light).map((colorDeckName) => (
+            {Object.keys(defaultPallete.light).map((colorDeckName) => (
               <div key={colorDeckName}>
                 {colorDeckName}
                 {colorDeckName === 'white' ? (
