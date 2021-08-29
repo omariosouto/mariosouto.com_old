@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Link from '@devsoutinho/universalui/src/components/Link/native';
 import Text from '@devsoutinho/universalui/src/components/Text/native';
 import Box from '@devsoutinho/universalui/src/components/Box/native';

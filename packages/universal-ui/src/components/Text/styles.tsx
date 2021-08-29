@@ -49,6 +49,8 @@ export const defaultProps = {
 };
 
 export const Styles = css<TextPropsBase>`
+  /* TODO: create a strategy for handling fonts for web and native */
+  font-family: sans-serif;
   ${({ theme, bold, variant, uppercase }) => css`
     font-size: ${theme.typography[variant].xs.fontSize};
     line-height: ${lineHeightHandler(
