@@ -5,20 +5,18 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "vercel-build": "yum install libuuid-devel libmount-devel zlib && cd ./node_modules && ls -la && cp /lib64/{libuuid,libmount,libblkid,libz}.so.1 node_modules/canvas/build/Release/",
     "export": "next export",
     "start": "next start"
   },
   "dependencies": {
-    "@cheprasov/qrcode": "^0.1.0",
     "apollo-server-micro": "2.13.1",
     "graphql": "15.5.1",
     "micro": "9.3.4",
     "micro-cors": "0.1.1",
     "next": "latest",
+    "qr-image": "^3.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "svg-png-converter": "^0.0.9"
+    "react-dom": "^17.0.2"
   },
   "license": "MIT",
   "devDependencies": {
