@@ -44,7 +44,6 @@ export const defaultProps: Partial<ButtonPropsBase> = {
 
 export type StylesProps = {
   [K in keyof ButtonPropsBase as `$${K}`]: ButtonPropsBase[K];
-
 };
 export const Styles = css<StylesProps>`
   flex: none;
