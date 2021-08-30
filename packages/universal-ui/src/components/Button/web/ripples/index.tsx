@@ -88,7 +88,7 @@ export const createRipples = (defaultProps: Partial<RipplesProps> = {}) =>
           }
         },
         () => {
-          this.timer = setTimeout(() => {
+          this.timer = (setTimeout(() => {
             this.setState(state => ({
               rippleStyle: {
                 ...state.rippleStyle,
@@ -97,11 +97,11 @@ export const createRipples = (defaultProps: Partial<RipplesProps> = {}) =>
                 transition: `all ${during}ms`,
               },
             }))
-          }, 50)
+          }, 50)) as unknown as number;
         },
       )
 
-      if (onClick) onClick(ev)
+      if (onClick) onClick(ev as any)
     }
 
     render() {
@@ -120,7 +120,7 @@ export const createRipples = (defaultProps: Partial<RipplesProps> = {}) =>
           {...props}
           className={`react-ripples ${className}`.trim()}
           style={boxStyle}
-          onClick={this.onClick}
+          onClick={this.onClick as any}
         >
           {children}
           <s style={rippleStyle} />

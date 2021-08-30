@@ -1,4 +1,5 @@
-import HomeScreen from '../src/screens/HomeScreen';
-import websiteHOC from '../src/wrappers/websiteHOC';
+import React from 'react';
 
-export default websiteHOC(HomeScreen);
+export default function Screen(): JSX.Element {
+  return <a href="/products/qr-code-generator/">Go to that page</a>;
+}
