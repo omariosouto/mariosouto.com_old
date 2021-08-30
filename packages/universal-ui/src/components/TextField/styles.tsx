@@ -12,10 +12,11 @@ type DynamicProps = keyof typeof dynamicProps;
 export const defaultProps = {};
 
 export type TextFieldPropsBase = {
-  name?: string;
-  value?: string;
-  label?: string;
-  placeholder?: string;
+  $name?: string;
+  $value?: string;
+  $label?: string;
+  $placeholder?: string;
+  $onChange?: (args: { value: string, name: string }) => void;
 } & Pick<CSSProperties, DynamicProps>;
 
 export const Styles = css<TextFieldPropsBase>`

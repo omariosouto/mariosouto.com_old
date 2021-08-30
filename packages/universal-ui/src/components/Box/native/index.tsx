@@ -9,9 +9,12 @@ const StyledComponentsBox = styled.View<BoxProps>`
   ${Styles}
 `;
 
-function Box(props: BoxPropsBase) {
+function Box(mobileProps: BoxPropsBase) {
+  const props = propToMobile<BoxPropsBase>(mobileProps);
   return (
-    <StyledComponentsBox {...propToMobile<BoxPropsBase>(props)} />
+    <StyledComponentsBox
+      {...props}
+    />
   );
 }
 

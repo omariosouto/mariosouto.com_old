@@ -2,52 +2,52 @@ import { DefaultTheme } from 'styled-components';
 import { ButtonPropsBase } from './styles';
 
 export const actions: Record<any, any> = {
-  primary({ theme, baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  primary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
     return {
-      background: theme.colors[baseColor]['600'],
+      background: theme.colors[$baseColor]['600'],
       color: theme.colors.white,
-      borderColor: `${theme.colors[baseColor]['800']}`,
+      borderColor: `${theme.colors[$baseColor]['800']}`,
       hoverfocus: {
-        background: theme.colors[baseColor]['700'],
+        background: theme.colors[$baseColor]['700'],
       },
       focus: {
         // boxShadow: `0 0 0 2px ${theme.colors.white},
-        //   0 0 0 4px ${theme.colors[baseColor]['500']}`,
+        //   0 0 0 4px ${theme.colors[$baseColor]['500']}`,
       },
     };
   },
-  secondary({ theme, baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  secondary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
     return {
-      background: theme.colors[baseColor]['100'],
-      color: theme.colors[baseColor]['700'],
-      borderColor: `${theme.colors[baseColor]['300']}`,
+      background: theme.colors[$baseColor]['100'],
+      color: theme.colors[$baseColor]['700'],
+      borderColor: `${theme.colors[$baseColor]['300']}`,
       hoverfocus: {
-        background: theme.colors[baseColor]['200'],
+        background: theme.colors[$baseColor]['200'],
       },
       focus: {
         // boxShadow: `0 0 0 2px ${theme.colors.white},
-        //   0 0 0 4px ${theme.colors[baseColor]['500']}`,
+        //   0 0 0 4px ${theme.colors[$baseColor]['500']}`,
       },
     };
   },
-  tertiary({ theme, baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  tertiary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
     return {
       background: 'white',
-      color: theme.colors[baseColor]['700'],
+      color: theme.colors[$baseColor]['700'],
       borderColor: `${theme.colors.neutral['100']}`,
       hoverfocus: {
         background: theme.colors.neutral['050'],
       },
       focus: {
         // boxShadow: `0 0 0 2px ${theme.colors.white},
-        //   0 0 0 4px ${theme.colors[baseColor]['500']}`,
+        //   0 0 0 4px ${theme.colors[$baseColor]['500']}`,
       },
     };
   },
-  quartenary({ theme, baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  quartenary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
     return {
       background: 'transparent',
-      color: theme.colors[baseColor]['700'],
+      color: theme.colors[$baseColor]['700'],
       borderColor: `transparent`,
       hoverfocus: {
         background: theme.colors.neutral['100'],
@@ -55,7 +55,7 @@ export const actions: Record<any, any> = {
       },
       focus: {
         // boxShadow: `0 0 0 2px ${theme.colors.white},
-        //   0 0 0 4px ${theme.colors[baseColor]['500']}`,
+        //   0 0 0 4px ${theme.colors[$baseColor]['500']}`,
       },
     };
   },
