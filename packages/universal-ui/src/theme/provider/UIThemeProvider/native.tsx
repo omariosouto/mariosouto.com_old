@@ -1,7 +1,6 @@
 import React from 'react';
 import UIThemeProvider from './base';
 // TODO: https://docs.expo.dev/guides/using-custom-fonts/#using-a-google-font
-import { useFonts, OpenSans_300Light, OpenSans_400Regular } from '@expo-google-fonts/open-sans';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 
 

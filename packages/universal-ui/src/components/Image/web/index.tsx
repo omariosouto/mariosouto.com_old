@@ -12,10 +12,10 @@ const StyledImage = styled.img<ImagePropsBase>`
   height: 100%;
 `;
 
-export default function Image({src, ...props}: ImagePropsBase): JSX.Element {
+export default function Image({$src, ...props}: ImagePropsBase): JSX.Element {
   return (
     <Box {...props as any}>
-      <StyledImage src={src} />
+      <StyledImage src={$src} />
     </Box>
   );
 }

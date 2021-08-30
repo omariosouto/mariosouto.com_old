@@ -11,14 +11,14 @@ const ImageStyled = styled.Image<ImagePropsBase>`
 `;
 
 export default function Image({...mobileProps}: ImagePropsBase): JSX.Element {
-  const {src, ...props} = propToMobile<ImagePropsBase>(mobileProps);
+  const {$src, ...props} = propToMobile<ImagePropsBase>(mobileProps);
 
   return (
     <Box {...props as any}>
       <ImageStyled
-        flex="1"
+        $flex="1"
         source={{
-          uri: src,
+          uri: $src,
         }}
       />
     </Box>

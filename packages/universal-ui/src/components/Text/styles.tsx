@@ -37,51 +37,51 @@ type DynamicProps = keyof typeof dynamicProps;
 
 export type TextPropsBase = {
   children: React.ReactNode;
-  bold?: boolean;
-  uppercase?: boolean;
-  variant?: TypographyVariantsName;
+  $bold?: boolean;
+  $uppercase?: boolean;
+  $variant?: TypographyVariantsName;
  } & Pick<CSSProperties, DynamicProps>;
 
-export const defaultProps = {
-  bold: false,
-  uppercase: false,
-  variant: 'body_2',
+export const defaultProps: Partial<TextPropsBase> = {
+  $bold: false,
+  $uppercase: false,
+  $variant: 'body_2',
 };
 
 export const Styles = css<TextPropsBase>`
   /* TODO: create a strategy for handling fonts for web and native */
   /* font-family: sans-serif; */
-  ${({ theme, bold, variant, uppercase }) => css`
-    font-size: ${theme.typography[variant].xs.fontSize};
+  ${({ theme, $bold, $variant, $uppercase }) => css`
+    font-size: ${theme.typography[$variant].xs.fontSize};
     line-height: ${lineHeightHandler(
-      theme.typography[variant].xs.lineHeight,
-      theme.typography[variant].xs.fontSize,
+      theme.typography[$variant].xs.lineHeight,
+      theme.typography[$variant].xs.fontSize,
       theme
     )};
     font-weight: ${fontWeightHandler(
-      bold,
-      variant,
-      theme.typography[variant].xs.fontWeight
+      $bold,
+      $variant,
+      theme.typography[$variant].xs.fontWeight
     )};
-    letter-spacing: ${theme.typography[variant].xs.letterSpacing ? theme.typography[variant].xs.letterSpacing : '0px'};
+    letter-spacing: ${theme.typography[$variant].xs.letterSpacing ? theme.typography[$variant].xs.letterSpacing : '0px'};
 
-    ${uppercase && `text-transform: uppercase;`}
+    ${$uppercase && `text-transform: uppercase;`}
 
     ${theme.platform === PLATFORM_WEB
       ? breakpointsMedia({
         md: css`
-          font-size: ${theme.typography[variant].md.fontSize};
+          font-size: ${theme.typography[$variant].md.fontSize};
           font-weight: ${fontWeightHandler(
-            bold,
-            variant,
-            theme.typography[variant].md.fontWeight
+            $bold,
+            $variant,
+            theme.typography[$variant].md.fontWeight
           )};
           line-height: ${lineHeightHandler(
-            theme.typography[variant].md.lineHeight,
-            theme.typography[variant].md.fontSize,
+            theme.typography[$variant].md.lineHeight,
+            theme.typography[$variant].md.fontSize,
             theme
           )};
-          letter-spacing: ${theme.typography[variant].md.letterSpacing};
+          letter-spacing: ${theme.typography[$variant].md.letterSpacing};
         `,
       })
       : ''

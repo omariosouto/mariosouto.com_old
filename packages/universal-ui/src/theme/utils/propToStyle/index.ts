@@ -9,22 +9,24 @@ type CSSPropValues = { theme?: DefaultTheme } & Partial<
   Record<PropName | string, CSSByBreakpoints | string>
 >;
 
-export default function propToStyle(
-  propName: PropName,
+
+export default function propToStyleBase(
+  propNameReceived: PropName,
   propNameAlias?: string,
   valueAdapter: (receivedValue: unknown) => string = (value: undefined) => value
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any {
+  const propNameFormated = propNameReceived.replace('$', '');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (props: CSSPropValues): any => {
     const { theme } = props;
-    const propValue = props[propName] || props[propNameAlias];
+    const propValue = props[propNameReceived] || props[propNameAlias];
     if (typeof propValue === 'object' && !Array.isArray(propValue)) {
 
       if(theme.platform === PLATFORM_MOBILE) {
         const validValueInBreapointOrder = propValue.xs; 
         return {
-          [propName]: parseValue(theme, propName, valueAdapter(validValueInBreapointOrder)),
+          [propNameFormated]: parseValue(theme, propNameReceived, valueAdapter(validValueInBreapointOrder)),
         }
       }
 
@@ -32,23 +34,23 @@ export default function propToStyle(
 
       if (typeof propValue.xs !== 'undefined')
         breakpoints.xs = {
-          [propName]: parseValue(theme, propName, valueAdapter(propValue.xs)),
+          [propNameFormated]: parseValue(theme, propNameReceived, valueAdapter(propValue.xs)),
         };
       if (typeof propValue.sm !== 'undefined')
         breakpoints.sm = {
-          [propName]: parseValue(theme, propName, valueAdapter(propValue.sm)),
+          [propNameFormated]: parseValue(theme, propNameReceived, valueAdapter(propValue.sm)),
         };
       if (typeof propValue.md !== 'undefined')
         breakpoints.md = {
-          [propName]: parseValue(theme, propName, valueAdapter(propValue.md)),
+          [propNameFormated]: parseValue(theme, propNameReceived, valueAdapter(propValue.md)),
         };
       if (typeof propValue.lg !== 'undefined')
         breakpoints.lg = {
-          [propName]: parseValue(theme, propName, valueAdapter(propValue.lg)),
+          [propNameFormated]: parseValue(theme, propNameReceived, valueAdapter(propValue.lg)),
         };
       if (typeof propValue.xl !== 'undefined')
         breakpoints.xl = {
-          [propName]: parseValue(theme, propName, valueAdapter(propValue.xl)),
+          [propNameFormated]: parseValue(theme, propNameReceived, valueAdapter(propValue.xl)),
         };
 
       return breakpointsMedia(breakpoints);
@@ -61,7 +63,7 @@ export default function propToStyle(
       Array.isArray(propValue)
     ) {
       return {
-        [propName]: parseValue(theme, propName, valueAdapter(propValue)),
+        [propNameFormated]: parseValue(theme, propNameReceived, valueAdapter(propValue)),
       };
     }
 
