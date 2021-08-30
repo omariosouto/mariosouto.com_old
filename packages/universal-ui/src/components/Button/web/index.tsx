@@ -42,7 +42,7 @@ function Button({ children, $fullWidth, ...props}: ButtonWebProps) {
   return (
     <StyledComponents $fullWidth={$fullWidth} {...props}>
       {props.$iconName && props.$iconPosition === 'left' && iconFormated }
-      <Text $textColor={textColor} $variant={sizeVariants[props.$size].typographyVariant} uppercase bold>
+      <Text $textColor={textColor} $variant={sizeVariants[props.$size].typographyVariant} $uppercase $bold>
         {children}
       </Text>
       {props.$iconName && props.$iconPosition === 'right' && iconFormated }

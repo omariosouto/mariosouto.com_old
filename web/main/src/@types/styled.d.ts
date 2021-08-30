@@ -1,14 +1,16 @@
 import 'styled-components';
-import { ThemeTypography } from '@devsoutinho/ui/src/theme/types/ThemeTypography';
-import { ThemeBreakpoints } from '../theme/types/ThemeBreakpoints';
-import { ThemeSpace } from '../theme/types/ThemeSpace';
-import { ColorPallete } from '../theme/types/ThemeColors';
+import { BreakpointsTheme } from '@devsoutinho/universalui/src/theme/foundation/breakpoints';
+import { TypographyTheme } from '@devsoutinho/universalui/src/theme/foundation/typography';
+import { SpaceTheme } from '@devsoutinho/universalui/src/theme/foundation/space';
+import { ColorPalleteTheme } from '@devsoutinho/universalui/src/theme/foundation/colors';
+import { Platforms } from '@devsoutinho/universalui/src/theme/types/Platforms';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    typography: ThemeTypography;
-    colors: ColorPallete;
-    space: ThemeSpace;
-    breakpoints: ThemeBreakpoints;
+    platform: Platforms;
+    colors: ColorPalleteTheme;
+    space: SpaceTheme;
+    typography: TypographyTheme;
+    breakpoints: BreakpointsTheme;
   }
 }
