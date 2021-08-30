@@ -1,8 +1,8 @@
 import { DefaultTheme } from 'styled-components';
-import { ButtonPropsBase } from './styles';
+import { StylesProps } from './styles';
 
 export const actions: Record<any, any> = {
-  primary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  primary({ theme, $baseColor }: { theme: DefaultTheme } & StylesProps) {
     return {
       background: theme.colors[$baseColor]['600'],
       color: theme.colors.white,
@@ -16,7 +16,7 @@ export const actions: Record<any, any> = {
       },
     };
   },
-  secondary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  secondary({ theme, $baseColor }: { theme: DefaultTheme } & StylesProps) {
     return {
       background: theme.colors[$baseColor]['100'],
       color: theme.colors[$baseColor]['700'],
@@ -30,7 +30,7 @@ export const actions: Record<any, any> = {
       },
     };
   },
-  tertiary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  tertiary({ theme, $baseColor }: { theme: DefaultTheme } & StylesProps) {
     return {
       background: 'white',
       color: theme.colors[$baseColor]['700'],
@@ -44,7 +44,7 @@ export const actions: Record<any, any> = {
       },
     };
   },
-  quartenary({ theme, $baseColor }: { theme: DefaultTheme } & ButtonPropsBase) {
+  quartenary({ theme, $baseColor }: { theme: DefaultTheme } & StylesProps) {
     return {
       background: 'transparent',
       color: theme.colors[$baseColor]['700'],
