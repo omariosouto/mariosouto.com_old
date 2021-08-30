@@ -13,23 +13,24 @@ const TextFieldStyled = styled(Text)<TextFieldPropsBase>`
 export default function TextField({...props}: TextFieldPropsBase): JSX.Element {
   return (
     <Box
-      background="white"
-      border="xpx solid neutral300"
-      borderRadius="lg"
-      overflow="hidden"
-      paddingX="x3"
-      paddingY="x2"
-      boxShadow="sm"
+      $background="white"
+      $border="xpx solid neutral300"
+      $borderRadius="lg"
+      $overflow="hidden"
+      $paddingX="x3"
+      $paddingY="x2"
+      $boxShadow="sm"
     >
-      <Text variant="body_2" textColor="neutral900" bold>{props.label}</Text>
+      <Text $variant="body_2" $textColor="neutral900" $bold>{props.$label}</Text>
       <TextFieldStyled
-        textColor="neutral900"
-        variant="body_2"
-        value={props.value}
+        $textColor="neutral900"
+        $variant="body_2"
+        value={props.$value}
+        placeholder={props.$placeholder}
         {...props as any}
-        onChange={(event) => {
-          const target = (event as any).target;
-          props.onChange && props.onChange({ name: props.name, value: target.value });
+        onChange={(event: any) => {
+          const target = event.target;
+          props.$onChange && props.$onChange({ name: props.$name, value: target.value });
         }}
       />
     </Box>

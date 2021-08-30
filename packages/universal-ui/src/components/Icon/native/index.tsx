@@ -16,8 +16,8 @@ const StyledSVG = styled(Svg)<IconPropsBase>`
 export default function Icon(props: IconPropsBase): JSX.Element {
   const mobileProps = propToMobile<IconPropsBase>(props)
   const theme = useTheme();
-  const { color: textColor } = propToStyle('color', 'textColor')({...mobileProps, theme});
-  const defaultIcon = iconMapByName[mobileProps.name]({ Path, G, textColor });
+  const { color: textColor } = propToStyle('$color', '$textColor')({...mobileProps, theme});
+  const defaultIcon = iconMapByName[mobileProps.$name]({ Path, G, textColor });
 
   return (
     <StyledSVG

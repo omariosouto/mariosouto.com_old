@@ -19,33 +19,33 @@ const StyledComponents = styled(Ripples)<ButtonPropsBase>`
 `;
 
 type ButtonWebProps = ButtonPropsBase;
-function Button({ color:_, children, fullWidth, ...props}: ButtonWebProps) {
+function Button({ children, $fullWidth, ...props}: ButtonWebProps) {
   const theme = useTheme();
-  const { color: textColor } = actions[props.action]({theme, ...props});
+  const { color: textColor } = actions[props.$action]({theme, ...props});
 
   const iconFormated = (
     <Icon
       {...{
-        ...(props.iconPosition === 'left' && {
-          marginRight: "x2"
+        ...(props.$iconPosition === 'left' && {
+          $marginRight: "x2"
         }),
-        ...(props.iconPosition === 'right' && {
-          marginLeft: "x2"
+        ...(props.$iconPosition === 'right' && {
+          $marginLeft: "x2"
         })
       }}
-      name={props.iconName}
-      color={props.iconColor}
-      size={sizeVariants[props.size].typographyVariant}
+      $name={props.$iconName}
+      $color={props.$iconColor}
+      $size={sizeVariants[props.$size].typographyVariant}
     />
   );
 
   return (
-    <StyledComponents fullWidth={fullWidth} {...props}>
-      {props.iconName && props.iconPosition === 'left' && iconFormated }
-      <Text textColor={textColor} variant={sizeVariants[props.size].typographyVariant} uppercase bold>
+    <StyledComponents $fullWidth={$fullWidth} {...props}>
+      {props.$iconName && props.$iconPosition === 'left' && iconFormated }
+      <Text $textColor={textColor} $variant={sizeVariants[props.$size].typographyVariant} uppercase bold>
         {children}
       </Text>
-      {props.iconName && props.iconPosition === 'right' && iconFormated }
+      {props.$iconName && props.$iconPosition === 'right' && iconFormated }
     </StyledComponents>
   );
 }

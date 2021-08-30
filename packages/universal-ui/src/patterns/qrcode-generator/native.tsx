@@ -1,4 +1,6 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
+
 
 import Form from '@devsoutinho/universalui/src/libs/Form';
 import Text from '@devsoutinho/universalui/src/components/Text/native';
@@ -17,7 +19,7 @@ export default function HomeScreen() {
       $paddingX="x4"
       $paddingY="x4"
     >
-      <Form initialValues={{ qrcode_value: 'QRCode Initial Value' }}>
+      <Form initialValues={{ qrcode_value: '' }}>
         {({ values, handleChange }) => (
           <Box $maxWidth="xcontainer_xs">
             <Box $maxWidth={{ xs: "x9/12", sm: "x1/2" }} $alignSelf="center">
@@ -28,19 +30,19 @@ export default function HomeScreen() {
                 $border="x2 solid primary900"
                 $src={`https://skntech-api.vercel.app/api/qrcode-generator?text=${values.qrcode_value}&size=400&type=png`}
               />
-              <Text $variant="heading_2" $alignSelf="center" $textColor="primary900" $marginBottom="x2">{values.qrcode_value}</Text>
-              {/* <Button $marginTop="x2" iconName="qrcode" iconColor="white">
+              <Text $variant="heading_3" $alignSelf="center" $textColor="primary900" $marginBottom="x2">{values.qrcode_value}</Text>
+              <Button $marginTop="x2" $iconName="qrcode" $iconColor="white">
                 Download PNG
-              </Button> */}
+              </Button>
             </Box>
             <Box $marginTop="x10">
-              {/* <TextField
-                label="QRCode"
-                name="qrcode_value"
-                onChange={({ name, value }) => handleChange(name, value)}
-                value={values.qrcode_value}
-                placeholder="Type the value of your code"
-              /> */}
+              <TextField
+                $label="QRCode"
+                $name="qrcode_value"
+                $onChange={({ name, value }) => handleChange(name, value)}
+                $value={values.qrcode_value}
+                $placeholder="Type the value of your code"
+              />
             </Box>
           </Box>
         )}

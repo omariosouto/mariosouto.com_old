@@ -13,6 +13,7 @@ export default function UIThemeProviderNative({ children }: UIThemeProviderNativ
     <UIThemeProvider platform="mobile">
       <KeyboardAvoidingView
           behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+          // keyboardVerticalOffset={Platform.OS == 'ios' ? 30 : 200}
           style={{ flex: 1 }}
       >
       {children}
