@@ -10,6 +10,10 @@ import Button from '@devsoutinho/universalui/src/components/Button/web';
 export default function HomeScreen() {
   return (
     <Box
+      as={{
+        web: 'main',
+        mobile: 'View',
+      }}
       flex="1"
       alignItems="center"
       justifyContent="center"
