@@ -11,9 +11,7 @@ const TextFieldStyled = styled(Text)<TextFieldPropsBase>`
   ${Styles}
 `;
 
-export default function TextField({...mobileProps}: TextFieldPropsBase): JSX.Element {
-  const props = propToMobile<TextFieldPropsBase>(mobileProps);
-
+export default function TextField({...props}: TextFieldPropsBase): JSX.Element {
   return (
     <Box
       background="white"
@@ -30,6 +28,11 @@ export default function TextField({...mobileProps}: TextFieldPropsBase): JSX.Ele
         variant="body_2"
         value={props.value}
         {...props as any}
+        onChange={(event) => {
+          console.log('oi')
+          const target = (event as any).target;
+          props.onChange && props.onChange({ name: props.name, value: target.value });
+        }}
       />
     </Box>
   );

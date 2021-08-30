@@ -7,6 +7,8 @@ import propToStyle from '../../theme/utils/propToStyle';
 
 export const commonDynamicProps: Partial<Record<CSSPropertiesNames, any>> = {
   // [Common Props]
+  alignSelf: propToStyle('alignSelf'),
+  maxWidth: propToStyle('maxWidth'),
   display: propToStyle('display'),
   flex: propToStyle('flex'),
   border: propToStyle('border'),
@@ -53,5 +55,6 @@ type DynamicProps = keyof typeof dynamicProps;
 type BoxStyleProps = DynamicProps;
 export type BoxPropsBase = { children: React.ReactNode } & Pick<CSSProperties, BoxStyleProps>;
 export const Styles = css`
+  width: 100%;
   ${renderDynamicProps(dynamicProps)}
 `;

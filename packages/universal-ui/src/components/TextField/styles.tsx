@@ -16,6 +16,7 @@ export type TextFieldPropsBase = {
   value?: string;
   label?: string;
   placeholder?: string;
+  onChange?: (args: { value: string, name: string }) => void;
 } & Pick<CSSProperties, DynamicProps>;
 
 export const Styles = css<TextFieldPropsBase>`

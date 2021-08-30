@@ -19,7 +19,7 @@ export interface CSSProperties {
   backgroundColor?: PropertyDefinition<string>;
   // Box Model
   width?: PropertyDefinition<string>;
-  maxWidth?: PropertyDefinition<string>;
+  maxWidth?: PropertyDefinition<SpaceThemeNames>;
   height?: PropertyDefinition<string>;
   border?: PropertyDefinition<string>;
   margin?: PropertyDefinition<string>;
@@ -38,6 +38,9 @@ export interface CSSProperties {
   paddingTop?: PropertyDefinition<SpaceThemeNames>;
   // Flex
   flex?: PropertyDefinition<string>;
+  alignSelf?: PropertyDefinition<
+    'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
+  >;
   flexDirection?: PropertyDefinition<
     'row' | 'row-reverse' | 'column' | 'column-reverse' | 'inherit'
   >;
