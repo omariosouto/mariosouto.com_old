@@ -59,7 +59,13 @@ const dynamicProps = {
 type DynamicProps = keyof typeof dynamicProps;
 
 type BoxStyleProps = DynamicProps;
-export type BoxPropsBase = { children: React.ReactNode } & Pick<CSSProperties, BoxStyleProps>;
+export type BoxPropsBase = {
+  as?: {
+    web?: 'div' | 'section' | 'main',
+    mobile?: 'View' | 'ScrollView',
+  };
+  children: React.ReactNode;
+} & Pick<CSSProperties, BoxStyleProps>;
 export const Styles = css`
   width: 100%;
   ${renderDynamicProps(dynamicProps)}

@@ -9,10 +9,11 @@ const StyledComponentsBox = styled.div<BoxProps>`
   ${Styles}
 `;
 
-function Box({children, ...webProps}: BoxPropsBase) {
+function Box({children, as, ...webProps}: BoxPropsBase) {
   const props = withStyledInternalProps(webProps) as any;
   return (
     <StyledComponentsBox
+      as={as?.web}
       {...props as any}
     >
       {children}
