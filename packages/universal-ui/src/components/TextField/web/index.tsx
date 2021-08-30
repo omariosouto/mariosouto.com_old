@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import propToMobile from '../../../theme/utils/propToMobile';
 import Box from '../../Box/web';
 import Text from '../../Text/web';
 
@@ -29,7 +28,6 @@ export default function TextField({...props}: TextFieldPropsBase): JSX.Element {
         value={props.value}
         {...props as any}
         onChange={(event) => {
-          console.log('oi')
           const target = (event as any).target;
           props.onChange && props.onChange({ name: props.name, value: target.value });
         }}

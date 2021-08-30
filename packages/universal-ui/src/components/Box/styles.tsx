@@ -7,8 +7,14 @@ import propToStyle from '../../theme/utils/propToStyle';
 
 export const commonDynamicProps: Partial<Record<CSSPropertiesNames, any>> = {
   // [Common Props]
+  aspectRatio: propToStyle('aspectRatio'),
   alignSelf: propToStyle('alignSelf'),
+  width: propToStyle('width'),
   maxWidth: propToStyle('maxWidth'),
+  minWidth: propToStyle('minWidth'),
+  height: propToStyle('height'),
+  maxHeight: propToStyle('maxHeight'),
+  minHeight: propToStyle('minHeight'),
   display: propToStyle('display'),
   flex: propToStyle('flex'),
   border: propToStyle('border'),

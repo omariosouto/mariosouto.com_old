@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Form from '@devsoutinho/universalui/src/libs/Form';
-import Text from '@devsoutinho/universalui/src/components/Text/web';
-import TextField from '@devsoutinho/universalui/src/components/TextField/web';
-import Image from '@devsoutinho/universalui/src/components/Image/web';
-import Box from '@devsoutinho/universalui/src/components/Box/web';
-import Button from '@devsoutinho/universalui/src/components/Button/web';
+import Text from '@devsoutinho/universalui/src/components/Text/native';
+import TextField from '@devsoutinho/universalui/src/components/TextField/native';
+import Image from '@devsoutinho/universalui/src/components/Image/native';
+import Box from '@devsoutinho/universalui/src/components/Box/native';
+import Button from '@devsoutinho/universalui/src/components/Button/native';
 
 export default function HomeScreen() {
   return (

@@ -18,9 +18,13 @@ export interface CSSProperties {
   background?: PropertyDefinition<string>;
   backgroundColor?: PropertyDefinition<string>;
   // Box Model
+  aspectRatio?: PropertyDefinition<string>;
   width?: PropertyDefinition<string>;
   maxWidth?: PropertyDefinition<SpaceThemeNames>;
+  minWidth?: PropertyDefinition<SpaceThemeNames>;
   height?: PropertyDefinition<string>;
+  maxHeight?: PropertyDefinition<SpaceThemeNames>;
+  minHeight?: PropertyDefinition<SpaceThemeNames>;
   border?: PropertyDefinition<string>;
   margin?: PropertyDefinition<string>;
   marginX?: PropertyDefinition<SpaceThemeNames>;

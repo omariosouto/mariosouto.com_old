@@ -73,7 +73,7 @@ export const Styles = css<ButtonPropsBase>`
       padding-left: ${theme.space[sizeVariants[size].px]};
       padding-right: ${theme.space[sizeVariants[size].px]};
     `}}
-    border-radius: ${borderRadius.full};
+    border-radius: ${borderRadius.lg};
     align-items: center;
     justify-content: center;
   `}

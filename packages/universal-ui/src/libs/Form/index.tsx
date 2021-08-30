@@ -9,7 +9,6 @@ function useForm<InitialValues>({
   const [values, setValues] = React.useState(initialValues);
   const handleChange = React.useCallback(
     (name, value) => {
-      console.log('change', name)
       setValues(prevValues => ({
         ...prevValues,
         [name]: value

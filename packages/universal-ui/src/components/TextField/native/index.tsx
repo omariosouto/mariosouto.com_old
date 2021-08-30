@@ -31,6 +31,12 @@ export default function TextField({...mobileProps}: TextFieldPropsBase): JSX.Ele
         variant="body_2"
         value={props.value}
         {...props as any}
+        onChangeText={(text: string) => {
+          props.onChange && props.onChange({
+            value: text,
+            name: props.name,
+          });
+        }}
       />
     </Box>
   );
