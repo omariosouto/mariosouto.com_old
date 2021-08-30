@@ -12,7 +12,7 @@ export default function HomeScreen() {
     <Box
       as={{
         web: 'main',
-        mobile: 'View',
+        mobile: 'ScrollView',
       }}
       flex="1"
       alignItems="center"
