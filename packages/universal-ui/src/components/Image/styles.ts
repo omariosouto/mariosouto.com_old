@@ -10,7 +10,7 @@ type DynamicProps = keyof typeof dynamicProps;
 export const defaultProps = {};
 
 export type ImagePropsBase = {
-  $src?: string;
+  src?: string;
 } & Pick<CSSProperties, DynamicProps>;
 
 export const Styles = css<ImagePropsBase>`

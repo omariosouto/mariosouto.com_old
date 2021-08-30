@@ -20,21 +20,24 @@ const dynamicProps = {
 type DynamicProps = keyof typeof dynamicProps;
 
 export const defaultProps = {
-  $size: 'md',
-  $name: 'default',
-  $textColor: 'blue',
+  size: 'md',
+  name: 'default',
+  textColor: 'blue',
 };
 
 type IconName = keyof typeof iconMapByName;
 type Sizes = keyof typeof iconSizes;
 export type IconPropsBase = {
-  $size: Sizes | TypographyVariantsName;
-  $name: keyof typeof iconMapByName;
+  size?: Sizes | TypographyVariantsName;
+  name?: keyof typeof iconMapByName;
   xmlns?: string;
   style?: any;
 } & Pick<CSSProperties, DynamicProps>;
 
-export const Styles = css<IconPropsBase>`
+export type StylesProps = {
+  [K in keyof IconPropsBase as `$${K}`]: IconPropsBase[K];
+};
+export const Styles = css<StylesProps>`
   ${({ theme, $size }) => {
     if($size.includes('body') || $size.includes('display') || $size.includes('heading')) {
       const baseValue = theme.typography[$size as TypographyVariantsName];
@@ -56,7 +59,7 @@ export const Styles = css<IconPropsBase>`
 
 
 export type IconButton = {
-  $iconName?: IconName;
-  $iconColor?: string;
-  $iconPosition?: 'left' | 'right';
+  iconName?: IconName;
+  iconColor?: string;
+  iconPosition?: 'left' | 'right';
 };

@@ -15,32 +15,37 @@ const dynamicProps = {
 type DynamicProps = keyof typeof dynamicProps;
 
 export type ButtonPropsBase = {
-  $size?: SizeVariantName;
+  onPress?: () => void;
+  size?: SizeVariantName;
   /** @deprecated Prefer to use <Box /> with flexbox properties */
-  $fullWidth?: PropertyDefinition<boolean>;
-  $isFocusIn?: boolean;
-  children: React.ReactNode;
-  $baseColor?: 
+  fullWidth?: PropertyDefinition<boolean>;
+  isFocusIn?: boolean;
+  children?: React.ReactNode;
+  baseColor?: 
     | 'primary'
     | 'accent'
     | 'positive'
     | 'negative'
     | 'warning'
     | 'neutral';
-  $action?: 'primary' | 'secondary' | 'tertiary' | 'quartenary';
+  action?: 'primary' | 'secondary' | 'tertiary' | 'quartenary';
   disabled?: boolean;
 } & IconButton & Pick<CSSProperties, DynamicProps>;
 
 export const defaultProps: Partial<ButtonPropsBase> = {
-  $action: 'primary',
-  $baseColor: 'primary',
-  $fullWidth: false,
+  action: 'primary',
+  baseColor: 'primary',
+  fullWidth: false,
   disabled: false,
-  $size: 'sm',
-  $iconPosition: 'right',
+  size: 'sm',
+  iconPosition: 'right',
 };
 
-export const Styles = css<ButtonPropsBase>`
+
+export type StylesProps = {
+  [K in keyof ButtonPropsBase as `$${K}`]: ButtonPropsBase[K];
+};
+export const Styles = css<StylesProps>`
   flex: none;
   flex-direction: row;
   overflow: hidden;
@@ -48,11 +53,11 @@ export const Styles = css<ButtonPropsBase>`
   border-style: solid;
   border-width: 1px;
   ${propToStyle('$width', '$fullWidth', (active: boolean) => active ? '100%' : '')}
-  ${({ theme, $action, $isFocusIn, disabled }) => css`
+  ${({ theme, $action, $isFocusIn, $disabled }) => css`
     ${(props) => {
       const { background, borderColor, hoverfocus } = actions[$action](props);
 
-      if(disabled) return {
+      if($disabled) return {
         background,
         borderColor,
       };
@@ -79,7 +84,7 @@ export const Styles = css<ButtonPropsBase>`
   `}
   ${renderDynamicProps(commonDynamicProps)}
   
-  ${({ theme, disabled }) => (disabled && css`
+  ${({ theme, $disabled }) => ($disabled && css`
       opacity: .4;
       ${theme.platform === PLATFORM_WEB && css`
         &:hover, &:focus {
