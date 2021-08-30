@@ -1,10 +1,10 @@
 import { DefaultTheme } from 'styled-components';
 import breakpointsMedia, { CSSByBreakpoints } from '../breakpointsMedia';
-import { CSSProperties } from '../../types/CSSProperties';
+import { CSSInternalAPIPropNames } from '../../types/CSSProperties';
 import { parseValue } from './parseValue';
 import { PLATFORM_MOBILE } from '../../types/Platforms';
 
-type PropName = keyof CSSProperties;
+type PropName = keyof CSSInternalAPIPropNames;
 type CSSPropValues = { theme?: DefaultTheme } & Partial<
   Record<PropName | string, CSSByBreakpoints | string>
 >;

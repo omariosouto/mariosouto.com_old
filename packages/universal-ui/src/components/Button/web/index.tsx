@@ -6,6 +6,7 @@ import Text from '../../Text/web';
 import { actions } from '../actions';
 import { Styles, ButtonPropsBase, defaultProps } from '../styles';
 import { sizeVariants } from '../sizeVariants';
+import withStyledInternalProps from '../../../theme/utils/withStyledInternalProps';
 
 
 const StyledComponents = styled(Ripples)<ButtonPropsBase>`
@@ -19,7 +20,8 @@ const StyledComponents = styled(Ripples)<ButtonPropsBase>`
 `;
 
 type ButtonWebProps = ButtonPropsBase;
-function Button({ children, $fullWidth, ...props}: ButtonWebProps) {
+function Button({ children, fullWidth, ...webProps}: ButtonWebProps) {
+  const props = withStyledInternalProps(webProps) as any;
   const theme = useTheme();
   const { color: textColor } = actions[props.$action]({theme, ...props});
 
@@ -33,16 +35,16 @@ function Button({ children, $fullWidth, ...props}: ButtonWebProps) {
           $marginLeft: "x2"
         })
       }}
-      $name={props.$iconName}
-      $color={props.$iconColor}
-      $size={sizeVariants[props.$size].typographyVariant}
+      name={props.$iconName}
+      color={props.$iconColor}
+      size={sizeVariants[props.$size as 'lg'].typographyVariant}
     />
   );
 
   return (
-    <StyledComponents $fullWidth={$fullWidth} {...props}>
+    <StyledComponents $fullWidth={fullWidth} {...props} onClick={props.$onPress}>
       {props.$iconName && props.$iconPosition === 'left' && iconFormated }
-      <Text $textColor={textColor} $variant={sizeVariants[props.$size].typographyVariant} $uppercase $bold>
+      <Text textColor={textColor} variant={sizeVariants[props.$size as 'lg'].typographyVariant} uppercase bold>
         {children}
       </Text>
       {props.$iconName && props.$iconPosition === 'right' && iconFormated }

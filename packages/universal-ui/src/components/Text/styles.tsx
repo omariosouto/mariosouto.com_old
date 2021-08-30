@@ -36,19 +36,22 @@ const dynamicProps = {
 type DynamicProps = keyof typeof dynamicProps;
 
 export type TextPropsBase = {
-  children: React.ReactNode;
-  $bold?: boolean;
-  $uppercase?: boolean;
-  $variant?: TypographyVariantsName;
+  children?: React.ReactNode;
+  bold?: boolean;
+  uppercase?: boolean;
+  variant?: TypographyVariantsName;
  } & Pick<CSSProperties, DynamicProps>;
 
 export const defaultProps: Partial<TextPropsBase> = {
-  $bold: false,
-  $uppercase: false,
-  $variant: 'body_2',
+  bold: false,
+  uppercase: false,
+  variant: 'body_2',
 };
 
-export const Styles = css<TextPropsBase>`
+export type StylesProps = {
+  [K in keyof TextPropsBase as `$${K}`]: TextPropsBase[K];
+};
+export const Styles = css<StylesProps>`
   /* TODO: create a strategy for handling fonts for web and native */
   /* font-family: sans-serif; */
   ${({ theme, $bold, $variant, $uppercase }) => css`
