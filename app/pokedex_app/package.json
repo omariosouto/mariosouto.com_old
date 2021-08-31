@@ -1,6 +1,6 @@
 {
   "name": "@devsoutinho/pokedex_app",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "main": "__generated__/AppEntry.js",
   "scripts": {
     "start": "expo start --clear",
