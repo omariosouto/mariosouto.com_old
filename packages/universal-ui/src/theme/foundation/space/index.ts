@@ -33,7 +33,7 @@ const partition = {
 };
 
 const container = {
-  xcontainer_xs: '440px'  /* 27.5rem */,
+  xcontainer_xs: '0', // '440px'  /* 27.5rem */,
   xcontainer_sm: '640px'  /* 40rem */,
   xcontainer_md: '768px'  /* 48rem */,
   xcontainer_lg: '1024px' /* 64rem */,
