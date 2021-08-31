@@ -17,6 +17,7 @@ export const commonDynamicProps: Partial<Record<CSSPropertiesNames, any>> = {
   minHeight: propToStyle('$minHeight'),
   display: propToStyle('$display'),
   flex: propToStyle('$flex'),
+  flexWrap: propToStyle('$flexWrap'),
   border: propToStyle('$border'),
   flexDirection: propToStyle('$flexDirection'),
   order: propToStyle('$order'),

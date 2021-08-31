@@ -37,7 +37,10 @@
     "lint:universalui": "yarn universalui lint",
     "test:universalui": "yarn universalui test",
     "app:qrcode": "yarn workspace @devsoutinho/qrcodegenerator_app",
-    "dev:app:qrcode": "yarn app:qrcode start"
+    "dev:app:qrcode": "yarn app:qrcode start",
+    "app:pokedex": "yarn workspace @devsoutinho/pokedex_app",
+    "dev:app:pokedex": "yarn app:pokedex start"
+
   },
   "dependencies": {
     "tailwindcss": "^2.2.7",

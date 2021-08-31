@@ -42,6 +42,7 @@ export interface CSSProperties {
   paddingTop?: PropertyDefinition<SpaceThemeNames>;
   // Flex
   flex?: PropertyDefinition<string>;
+  flexWrap?: PropertyDefinition<'wrap' | 'nowrap'>;
   alignSelf?: PropertyDefinition<
     'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
   >;
