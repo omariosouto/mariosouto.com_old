@@ -30,12 +30,13 @@ export default function MainScreenWrapper({ Box, Text, Image }: SkynexComponents
     });
     return (
       <Box as={{ web: 'main', mobile: 'ScrollView' }} flex="1" background="neutral050" paddingTop="x20" paddingX="x4">
-        <Text variant="heading_1" textColor="negative500" bold>Welcome to my Pokedex!</Text>
-        <Box flexWrap="wrap" flexDirection="row">
+        <Text variant="heading_1" textColor="primary800" marginBottom="x4" alignSelf="center" bold>Welcome to my Pokedex!</Text>
+        <Text variant="heading_3" textColor="primary600" marginBottom="x8" alignSelf="center" bold>Created by DevSoutinho</Text>
+        <Box flexWrap="wrap" flexDirection="row" justifyContent="center">
           {pokemons.map((pokemon) => (
-            <Box key={pokemon.id} flex="1 1 200px" maxWidth="x96" flexDirection="column" background="white" margin="x4" padding="x4">
+            <Box key={pokemon.id} flex="1 1 x52" maxWidth={{ xs: 'x40', sm: "x52"}} flexDirection="column" border="x1 solid primary200" background="white" margin="x4" padding="x4" borderRadius="lg">
               <Text variant="body_1" textColor="neutral300" bold>#{pokemon.id} {capitalize(pokemon.name)}</Text>
-              <Image src={pokemon.image} width="x20" height="x20" />
+              <Image src={pokemon.image} width="x20" height="x20" alignSelf="flex-end" />
             </Box>
           ))}
         </Box>
